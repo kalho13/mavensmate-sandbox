@@ -1,0 +1,97 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "job", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 4
+            }, 
+            "type": "Job__c"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "selectedParts", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 6
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "errorMessage", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 10
+            }, 
+            "type": "String"
+        }
+    ], 
+    "methods": [], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "StandardController", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 51, 
+                "line": 14
+            }, 
+            "name": "stdController"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "filteredJobs", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 3
+            }, 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "filteredJobs", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 14
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "filteredJobs", 
+    "tableDeclaration": {
+        "type": "filteredJobs", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "filteredJobs"
+    }, 
+    "key": "01pS00000006YQz", 
+    "id": "01pS00000006YQz", 
+    "externalReferences": []
+}

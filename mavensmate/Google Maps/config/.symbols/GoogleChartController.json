@@ -1,0 +1,38 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "loadOpps", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 4
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "GoogleChartController", 
+    "tableDeclaration": {
+        "type": "GoogleChartController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "GoogleChartController"
+    }, 
+    "key": "01pS00000006ZJa", 
+    "id": "01pS00000006ZJa", 
+    "externalReferences": []
+}

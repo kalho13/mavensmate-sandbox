@@ -1,0 +1,132 @@
+{
+    "name": "SafetyEquipment", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "stdController", 
+            "location": {
+                "column": 57, 
+                "line": 6
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "startSerialNumber", 
+            "location": {
+                "column": 36, 
+                "line": 10
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "endSerialNumber", 
+            "location": {
+                "column": 63, 
+                "line": 10
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "status", 
+            "location": {
+                "column": 87, 
+                "line": 10
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "SafetyEquipment", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 6
+            }, 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "SafetyEquipment", 
+            "parameters": [
+                {
+                    "type": "Integer", 
+                    "name": "startSerialNumber"
+                }, 
+                {
+                    "type": "Integer", 
+                    "name": "endSerialNumber"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "status"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 10
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "mysObject", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 3
+            }, 
+            "type": "Safety_Equipment__c"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "SafetyEquipment", 
+        "name": "SafetyEquipment", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006A7D", 
+    "id": "01pS00000006A7D", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getRecordName", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 14
+            }, 
+            "returnType": "String", 
+            "type": null
+        }
+    ]
+}

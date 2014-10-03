@@ -1,0 +1,19 @@
+<apex:page standardController="Case">
+     <apex:form >
+          <apex:pageBlock rendered="{!case.reason=='Installation'}" >
+               <!-- <apex:pageBlockSection title="Installation and Warranty Documentation" columns="2"  >-->
+               <apex:pageBlockTable value="{!Case}" var="case">
+                   <apex:column value="{!case.manHours__c}"/>
+                  <apex:column value="{!case.materialCost__c}"/>
+                    <apex:column headerValue="Shipping Expenses">
+                        <apex:inputField value="{!case.shippingExpenses__c}"/>
+                    </apex:column>
+                     
+                    <apex:inputField value="{!case.otherExpenses__c}"/>
+                    <apex:inputField value="{!case.department__c}"/>
+                    <apex:inputTextarea value="{!case.solution__c}" cols="230" rows="12"/>
+               </apex:pageBlockTable>
+              <!--  </apex:pageBlockSection>-->
+          </apex:pageBlock>
+        </apex:form>
+</apex:page>

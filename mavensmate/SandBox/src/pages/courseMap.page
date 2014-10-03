@@ -1,0 +1,157 @@
+<apex:page controller="mapController" showHeader="false"  standardStylesheets="false">
+  <head> 
+    <script type="text/javascript" src="{!myKey}"> </script> 
+ 
+   <script type="text/javascript">
+   function addLoadEvent(func) { 
+       var oldonload = window.onload;
+       if (typeof window.onload != 'function') {
+          window.onload = func;
+       } else {
+          window.onload = function() {
+             oldonload();
+             func();
+            }
+        } //close if
+     }//close addLoadEvent(function)
+     
+      addLoadEvent(
+	     function() {
+	     	// if (GBrowserIsCompatible()) {
+	     	 	var my_geocoder = new GClientGeocoder();
+           		var map = new GMap2(document.getElementById("map"));
+           		var TC = new GMapTypeControl();
+          		var bottomRight = new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,10));
+          		var mCount =0;
+	     	 
+	     	 	map.addControl(new GSmallMapControl()); // Small arrows     
+				map.addControl(TC, bottomRight);  // Map type buttons 
+	     	 
+	     	 	function LTrim( value ) {
+              		var re = /\s*((\S+\s*)*)/;
+              		return value.replace(re, "$1");
+           		}
+           		
+           		function RTrim( value ) {
+              		var re = /((\s*\S+)*)\s*/;
+              		return value.replace(re, "$1");
+           		}
+           		
+           		// Remove leading and ending whitespaces     
+          		 function trim( value ) {
+              		return LTrim(RTrim(value));
+           		 }
+           		 
+           		 function doAddCourseToMap(Course, Street, City, State, Zip, Id){
+           		 	var address = Street + ", " + City + ", " + State + " " + Zip;
+           		 	console.log('address: ' + address);
+           		 	
+           		 	 my_geocoder.getLatLng (address, 
+           		 	 function(point){
+           		 	 	if(point){
+           		 	 		var mTag = '';
+                    		var myIcon = new GIcon(G_DEFAULT_ICON);
+               				//mCount ++;
+                          	var display = Course.split(":"); 
+                          	var compName = display[0];  // company name                           			    
+                          	var model = trim(display[1]); // course model
+                            var yearBuilt = display[2]; //year built
+                          			
+                          	mTag = "<b>" + compName + "</b>" + "<br>" + "Model: " +  model  + "<br> Year Built: " + yearBuilt ;
+                          			
+                          			// Set up marker colors based on priority  
+                          			// console.log('course mode ' + model);			
+                          			if (model == 'Sky Trail Explorer'){ 
+                          				myIcon.image ="{!URLFOR($Resource.markers,'markers/marker1.png')}";  
+                         			} else if (model == 'Sky Trail Navigator'){
+                         				myIcon.image ="{!URLFOR($Resource.markers,'markers/marker2.png')}";
+                         			}else if (model == 'Sky Trail Discovery'){ 
+                         				myIcon.image ="{!URLFOR($Resource.markers,'markers/marker3.png')}";
+                         			} else{
+                         				myIcon.image ="{!URLFOR($Resource.markers,'markers/marker4.png')}";
+                         			} 
+  	
+                         	//myIcon.image ="{!URLFOR($Resource.markers,'markers/marker4.png')}";  
+                         	//myIcon.image = "http://maps.google.com/mapfiles/marker.png";  
+                           	myIcon.iconSize=new GSize(20,34);                     		
+                    		myIcon.shadowSize=new GSize(56,32);
+                    		myIcon.iconAnchor=new GPoint(16,32);
+                    		myIcon.infoWindowAnchor=new GPoint(16,0);
+                    		markerOptions2 = { icon:myIcon };
+                    		var marker = new GMarker(point, markerOptions2);
+                    		map.setCenter(point, 8);
+                    		map.addOverlay(marker);
+                    		map.setZoom(3);
+                    	
+                       		GEvent.addListener(marker, "mouseover", function(){
+                       			marker.openInfoWindowHtml(mTag);                        		
+                       		});
+           		 	 	
+           		 	 	}  //close if(point)
+           		 	 
+           		 	 });//end of my_geocoder           		 
+        		 
+           		 }//end of doAddCourseToMap
+           		 
+           		           		            		 
+           		 var courseStr='{!CourseStr}'; // Get all courses
+           		 var courseList = courseStr.split("~::~");  //breaks up the list of courses 
+           		 
+           		 for(var c=0; c < courseList.length; c++){
+           		  	var courseListStr = courseList[c];
+           		  	var courseColumns = courseListStr.split("~:~");  //gets the columns for the single course
+           		
+           		  	if(courseColumns[0].length > 0){
+           		  		doAddCourseToMap(courseColumns[0], courseColumns[1],courseColumns[2], courseColumns[3],courseColumns[4],courseColumns[5]);
+           		  	}
+           		 }
+   
+	     	// } //close if (GBrowserIsCompatible()) {     
+	     } //close function argument to addLoadEvent    
+     );//close call to addLoadEvent     
+     
+   </script>
+  </head>
+  <!-- Create panel for Google Maps object -->
+  <table width="100%">
+  	<tr>
+  	<td width="90%">
+  	    <div class="panel" style="padding: 5px;"  >
+              <div id="map" style="width:100%; height:800px;"> </div>
+        </div>
+  	</td>
+  	<td width="10%">
+  		<table border="1">
+  		<tr>
+  		<td colspan="2">
+  		LEGEND
+  		</td>
+  		 		
+  		</tr>
+  		<tr>
+  		<td align="center">Explorer</td>
+  		<td align="center"><img src="{!URLFOR($Resource.markers,'markers/marker1.png')}" /></td>
+  		</tr>
+  		<tr>
+  		<td align="center">Navigator</td>
+  		<td align="center"><img src="{!URLFOR($Resource.markers,'markers/marker2.png')}" /></td>
+  		</tr>
+  		<tr>
+  		<td align="center">Discovery</td>
+  		<td align="center"><img src="{!URLFOR($Resource.markers,'markers/marker3.png')}" /></td>
+  		</tr>
+  		<tr>
+  		<td align="center">All Others</td>
+  		<td align="center"><img src="{!URLFOR($Resource.markers,'markers/marker4.png')}" /></td>
+  		</tr>
+  		
+  		</table>
+  	</td>
+  	
+  	
+  	</tr>
+  </table>     
+    
+      
+
+</apex:page>

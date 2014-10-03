@@ -1,0 +1,19 @@
+{
+    "username": "kalho13@gmail.com", 
+    "project_name": "Mobile", 
+    "org_url": "", 
+    "namespace": "", 
+    "metadata_container": "1dcd00000004KjKAAU", 
+    "environment": "developer", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "id": "RFASPUMY6JNXYYRJ2VHLZM84RKRH4EMF", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

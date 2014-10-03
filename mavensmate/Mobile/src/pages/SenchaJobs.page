@@ -1,0 +1,26 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">
+
+<head>
+		<meta charset="UTF-8"/>
+		<title>Sencha Jobs</title>
+
+		<apex:includeScript value="https://extjs.cachefly.net/touch/sencha-touch-2.3.0/sencha-touch-all-debug.js"/>
+
+		<apex:stylesheet value="https://extjs.cachefly.net/touch/sencha-touch-2.3.0/resources/css/sencha-touch.css"/>
+
+		<c:senchaPersonDemo/>
+		<c:PocketCRM_CSS/>
+	
+	</head>
+
+	<body>
+		<div id="appLoadingIndicator">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+
+	</body>
+
+	
+</apex:page>

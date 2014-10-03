@@ -1,0 +1,210 @@
+<apex:page controller="mapV4Controller" showHeader="false"  standardStylesheets="false">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0;}
+      #map_canvas { 
+      			height: 100%;
+      			width:100%; 
+      			}
+      
+      .legend{
+      	width:95px; 
+      	height:140px; 
+      	float:right;
+      	font:9px arial,sans-serif;
+      	font-weight:bold;
+      	border-color:orange;
+		border-spacing:5px 5px;
+		border-radius:10px;
+		background-color:white;
+		border-style:solid;
+		margin-right:3px;
+		opacity:0.8;
+      
+      }
+      .info {
+      	font:11px arial,sans-serif;
+      	border-style:solid;
+		border-color:orange;
+		border-spacing:20px 20px;
+		border-radius:10px;
+		background-color:orange; 
+		opacity:1.0;
+   	 }
+      
+        
+        .rciLogo{
+        	width: 120px;
+  			height: 40px;
+        }
+        
+      .icon{
+      	width: 65%;
+  		height: 65%;
+  		align:center;
+  		vertical-align:middle;
+      }
+      
+      .partner{
+	      font:16px arial,sans-serif;
+	      font-weight:bold;
+	      background-color:orange;
+	     
+      }
+      
+      .tableLegend{
+      	border-color:orange;
+      	border-style:solid;
+      	border-radius:10px;
+    	border-spacing:10px;
+      }
+      
+    #l2{
+    	background-color:white;
+    	margin-right:0px;
+    	margin-top:-920px;
+    	width:9.75%;
+    	font:12px arial,sans-serif;
+	}
+	
+    </style>
+    <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+	<script type="text/javascript" src="https://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js"></script>
+	
+	<script type="text/javascript">   
+   
+	    var geocoder;
+	    var map;
+	    var infoWindow = new google.maps.InfoWindow({});
+	    var ib = new InfoBox();
+	    var infoList = new Array();
+	    
+	      //initialize to create the base map  
+	    $(document).ready(function() {
+		    function initialize() {	    	    
+			      //set the center point for the map here in Allegan	
+				  var myLatLng = new google.maps.LatLng(42.512884, -85.828858);
+				  
+				  //setting map options
+				  console.log('calling mapOptions');
+				  var mapOptions = {
+				    zoom: 4,
+				    center: myLatLng,
+				    mapTypeId: google.maps.MapTypeId.ROADMAP
+				  };
+				
+					//adding the map to the div tag
+				   map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+				   
+				   
+			//get the records from Salesforce.com
+			var address = mapV4Controller.getOpenCourses(function(records, e){			
+				$.each(records,function(index, course){				
+					addMarker(course.Account__r.Location__Latitude__s, course.Account__r.Location__Longitude__s, course.Account__r.Name, course.Model__c, course.Account__r.ShippingCity,course.Account__r.ShippingState, course.Account__r.Website );
+					});			
+			});
+			
+			function addMarker(lat, lon, title, model, city, state, url) {
+			      // Create the marker			     
+				      var marker = new google.maps.Marker({
+				        position: new google.maps.LatLng(lat, lon),
+				        map: map,
+				        title:title,
+				        url:url
+				      });	
+				      
+				      
+				      if(url==null){url=""; }
+					  if(state==null){state='<b>Location: </b>'+ city +'<br>'}else{state='<b>Location: </b>'+ city +', ' + state + '<br>'}
+				      //add the event listener here as I have a handle on the marker variable	
+					 //when a mouseover event occurs for a marker an infoWindow pops up and display information about the course
+				       		 google.maps.event.addListener(marker, "mouseover", function(event) {
+				       		 
+				       		 
+				       		 	var href = '<a href="http://'+ url+ '"></a>';
+				       		 	var boxText = document.createElement("div");
+						        boxText.style.cssText = "font:11px arial;border-style:solid; border-color:orange; border-spacing:20px 20px; border-padding:20px; border-radius:10px; background-color:orange;";								
+							    boxText.innerHTML =
+												    '<div class="info">'+ 
+												    '<b>Site: </b>'+ title + '<br>'+
+												    //'<b>Location: </b>'+ city +', ' + state + '<br>'+
+												    state+
+												    '<b>Web Address: </b>'+url + '<br>'+
+												    '<b>Course Model: </b>' + model + '<br>' +
+												    '</div>';				       	
+				       		 
+				       		 	var myOptions = {
+					                 content: boxText
+					                ,disableAutoPan: false
+					                ,maxWidth: 0
+					                ,pixelOffset: new google.maps.Size(-140, 0)
+					                ,zIndex: null
+					                ,boxStyle: {opacity: 1 ,width: "280px"}
+					                ,closeBoxMargin: "10px 2px 2px 2px"
+					                ,closeBoxURL: ""					                
+					                ,infoBoxClearance: new google.maps.Size(1, 1)
+					                ,isHidden: false
+					                ,pane: "floatPane"
+					                ,enableEventPropagation: false
+					        	};	 
+					        
+					          	ib = new InfoBox(myOptions);					          
+					          
+					         	 if (ib) {
+                					ib.close();
+                					ib.open(map, this);
+       						 	} else {
+               						 ib.open(theMap, this);
+        						}      
+        						
+        					 });
+        					 
+        					 
+        					  google.maps.event.addListener(marker, "mouseout", function(event) {
+				       		  	ib.close();				       		  
+				       		  });
+				       		  
+				       		   google.maps.event.addListener(marker, "click", function(event) {
+    							 //window.open(this.url,"_blank");  		  
+				       		  });
+			      }		
+		
+				   //add to the RCI logo to the upper right of the page
+				  	var logoControlDiv = document.createElement('DIV');
+					var logoControl = new addLogoControl(logoControlDiv);
+					logoControlDiv.index = 0; // used for ordering
+					map.controls[google.maps.ControlPosition.RIGHT_TOP].push(logoControlDiv);
+
+					//addLegendControl(map);			
+			}  //close initialize  
+			
+			//trigger the initialize code
+			google.maps.event.addDomListener(window, 'load', initialize);
+
+	    });//close ready	
+	    
+	     function addLogoControl(controlDiv) {
+		  	
+		    controlDiv.style.padding = '5px';
+		    var logo = document.createElement('IMG');
+		    logo.src = "{!URLFOR($Resource.Logo)}"
+		    logo.style.cursor = 'pointer';
+		    controlDiv.appendChild(logo);
+		/*
+		    google.maps.event.addDomListener(logo, 'click', function() {
+		        window.location = 'http://www.ropescoursesinc.com'; 
+		    });
+		  */
+		}
+	    
+    </script>
+    
+	</head>
+    <body>
+     <div id="map_canvas"></div> 
+    </body>
+</apex:page>

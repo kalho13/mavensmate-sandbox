@@ -1,0 +1,103 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "mysObject", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 3
+            }, 
+            "type": "SObject"
+        }
+    ], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getRecordName", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 12
+            }, 
+            "returnType": "String", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getShippingProjects", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 43, 
+                "line": 16
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getOpenProjects", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 44, 
+                "line": 21
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "StandardController", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 70, 
+                "line": 8
+            }, 
+            "name": "stdController"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "ShippingLoadProjectExtension", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 8
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "ShippingLoadProjectExtension", 
+    "tableDeclaration": {
+        "type": "ShippingLoadProjectExtension", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "ShippingLoadProjectExtension"
+    }, 
+    "key": "01pS00000006Wbq", 
+    "id": "01pS00000006Wbq", 
+    "externalReferences": []
+}

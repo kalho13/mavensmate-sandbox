@@ -1,0 +1,75 @@
+<apex:page showHeader="false" docType="html-5.0" standardStylesheets="false" cache="true" controller="UserManagerController">
+    <html>
+        <head>
+            <title>Adoption Manager</title>
+            
+            <link rel="stylesheet" href="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.css')}" />
+			<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.min.js')}"/>
+			<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.js')}"/>
+           <!--   <link rel="stylesheet" href="{!URLFOR($Resource.usermanager_jQuery, 'jquery.mobile-1.0.1.min.css')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.usermanager_jQuery, 'jquery.min.js')}"/>
+            <apex:includeScript value="{!URLFOR($Resource.usermanager_jQuery, 'jquery.mobile-1.0.1.min.js')}"/>-->
+           <!--  <apex:includeScript value="{!URLFOR($Resource.usermanager)}"/> -->
+            <apex:includeScript value="{!URLFOR($Resource.forcetk)}"/>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
+        </head>
+        <body>
+            <div data-role="page" data-theme="d" id="newuserpage">
+                <div data-role="header">
+                    <h1>Create New</h1>
+                </div>
+                <div data-role="content">
+                    <div class="content-primary">
+                        <div id="errorMessageNewUserDiv">
+                            <span style="color:red;" id="errorMessageNewUser"></span>
+                        </div>
+                        <div>
+                            <span><strong>* All fields are required for user creation</strong></span><br/><br/></div>
+                        <form action="javascript:alert('This user has been created');" id="newUserFormForm">
+                            <div data-role="fieldcontain">
+                                <label for="firstNameForm">First Name:</label>
+                                <input type="text" name="firstNameForm" id="firstNameForm" value="" placeholder="First Name" data-mini="true" maxlength="40"/>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="lastNameForm">Last Name:</label>
+                                <input type="text" name="lastNameForm" id="lastNameForm" value="" placeholder="Last Name" data-mini="true" maxlength="80"/>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="emailForm">Email (Username):</label>
+                                <input type="email" name="emailForm" id="emailForm" value="" placeholder="Email@email.com" data-mini="true" maxlength="80"/>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="userlicenseForm" class="select">User License:</label>
+                                <select name="userlicenseForm" id="userlicenseForm" data-mini="true"></select>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="profileForm" class="select">Profile:</label>
+                                <select name="profileForm" id="profileForm" data-mini="true"></select>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="roleForm" class="select">Role:</label>
+                                <select name="roleForm" id="roleForm" data-mini="true"></select>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <label for="generatePassForm">Generate password and notify user?</label>
+                                <select name="generatePassForm" id="generatePassForm" data-role="slider" data-mini="true">
+                                    <option value="on">Yes</option>
+                                    <option value="off">No</option>
+                                </select>
+                            </div>
+                            <div class="ui-body ui-body-b">
+                                <fieldset class="ui-grid-a">
+                                    <div class="ui-block-b">
+                                        <button type="submit" data-theme="d" data-mini="true">Create</button>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div data-role="footer" data-id="foomain" data-position="fixed"></div>
+            </div>
+        </body>
+    </html>
+</apex:page>

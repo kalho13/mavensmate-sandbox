@@ -1,0 +1,19 @@
+{
+    "username": "kal@ropescoursesinc.com.sandbox", 
+    "environment": "sandbox", 
+    "project_name": "Sandbox Mobile", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "org_url": "", 
+    "namespace": "", 
+    "id": "9SDZZ3KAP2XNH3MA4R44LLCHVA1PN9TI", 
+    "metadata_container": "1dcS00000008cGnIAI", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

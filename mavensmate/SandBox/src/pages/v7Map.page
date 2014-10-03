@@ -1,0 +1,38 @@
+<apex:page controller="mapV4Controller" showHeader="false"  standardStylesheets="false">
+	<head>	
+	 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	 	 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+	 	
+	 	  <script type="text/javascript">
+		    var ge;
+		    google.load("earth", "1.x");
+		
+		    function init() {
+		      google.earth.createInstance('map3d', initCB, failureCB);
+		      
+		      var lookAt = ge.createLookAt('');
+  				lookAt.setLatitude(41.26);
+  				lookAt.setLongitude(-100.00);
+  				lookAt.setRange(800000.0);
+  				ge.getView().setAbstractView(lookAt);
+		    }
+		
+		    function initCB(instance) {
+		      ge = instance;
+		      ge.getWindow().setVisibility(true);
+		    }
+		
+		    function failureCB(errorCode) {
+		    }
+		
+		    google.setOnLoadCallback(init);
+  		</script>
+	 	
+	 </head>
+	 
+	 <body>
+	 	<div id="map3d" style="height: 100%; width: 100%;"></div>
+	 
+	 </body>
+</apex:page>

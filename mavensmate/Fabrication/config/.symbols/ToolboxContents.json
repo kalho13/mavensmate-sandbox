@@ -1,0 +1,74 @@
+{
+    "name": "ToolboxContents", 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "ToolboxContents", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 24
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "toolbox", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 4
+            }, 
+            "type": "Tool_Box__c"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "ToolboxContents", 
+        "name": "ToolboxContents", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000065qv", 
+    "id": "01pS000000065qv", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getToolBox", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 29
+            }, 
+            "returnType": "Tool_Box__c", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getAssignedTools", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 33
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ]
+}

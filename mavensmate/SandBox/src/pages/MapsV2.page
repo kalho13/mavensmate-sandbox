@@ -1,0 +1,9 @@
+<apex:page showHeader="false" sidebar="false" standardController="Account">
+    <script type="text/javascript" src="http://www.google.com/jsapi?key=AIzaSyA1NjbhAwdfru4t1-Yyadg6967WvjCAsRo"></script>
+    <script type="text/javascript">
+    google.load("maps","2.x");
+    var addressPoint;
+    
+    </script>
+
+</apex:page>

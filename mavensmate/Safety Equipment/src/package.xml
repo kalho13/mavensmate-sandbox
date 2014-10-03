@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SafetyEquipment</members>
+        <members>SafetyEquipmentController</members>
+        <members>SafetyItems</members>
+        <members>SendEmail</members>
+        <members>TestConfiguration</members>
+        <members>TestSafetyEquipment</members>
+        <members>TestScheduledOpportunity</members>
+        <members>TestSendEmail</members>
+        <members>TestSetTrainingDateTrigger</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AssignedTools</members>
+        <members>RDTraveler</members>
+        <members>SafetyEquipment</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Safety_Equipment__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>TableSorterCSS</members>
+        <members>jQuery_TableSorter</members>
+        <name>StaticResource</name>
+    </types>
+    <version>28.0</version>
+</Package>

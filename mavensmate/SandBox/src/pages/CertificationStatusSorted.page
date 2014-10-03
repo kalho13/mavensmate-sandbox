@@ -1,0 +1,56 @@
+<apex:page standardController="Account" standardstylesheets="false" extensions="CertificationStatusSortedController"  showHeader="false" sidebar="false">
+<head>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="{!URLFOR($Resource.jQuery_TableSorter, 'jquery.tablesorter.js')}"></script>
+<apex:stylesheet value="{!URLFOR($Resource.TableSorterCSS, '/css/filter.formatter.css')}"></apex:stylesheet>
+
+
+</head>
+
+<apex:form >
+	<div id="pageWrap">
+		<!-- wrap the entire page in an outputPanel so that ajax rerenders.  It triggers the jQuery.ready() function -->
+		<apex:outputPanel id="CertificationList">
+			<table id="certificationTable" class="list tablesorter">
+				<thead>
+					<tr class="headerRow">
+						<th colspan="1" scope="col">Contact</th>
+						<th colspan="1" scope="col">Certification Type</th>
+						<th colspan="1" scope="col">Certification Date</th>
+						<th colspan="1" scope="col">Expiration Date</th>
+						<th colspan="1" scope="col">Last Training Performed Date</th>
+					</tr>				
+				</thead>
+				<tbody>
+					<apex:repeat value="{!certifications}" var="e" id="certificationRepeater">
+						<tr class="dataRow">
+							<td>{!e.Contact__r.Name}</td>
+							<td>{!e.Certification_Type__c}</td>
+							<td>{!e.Certification_Date__c}</td>
+							<td>{!e.Expiration_Date__c}</td>
+							<td>{!e.Contact__r.Last_Training_Performed__c}</td>
+						</tr>
+					
+					</apex:repeat>
+				</tbody>
+			</table>			
+			<!-- 
+			
+			 <apex:pageBlock title="Certified Customer Trainers">  
+     <apex:pageBlockTable width="100%" columns="5"  value="{!certifications}" var="e">      
+     <apex:column headerValue="Contact"             value="{!e.Contact__r.Name}"/>
+     <apex:column headerValue="Certification Type"  value="{!e.Certification_Type__c}"/>
+     <apex:column headerValue="Certification Date"  value="{!e.Certification_Date__c}"/>
+     <apex:column headerValue="Expiration Date"     value="{!e.Expiration_Date__c}"/>  
+     <apex:column headerValue="Last Training Performed"  value="{!e.Contact__r.Last_Training_Performed__c}"/>
+    </apex:pageBlockTable>
+   </apex:pageBlock> 
+			
+			 -->
+		
+		
+		</apex:outputPanel>	
+	</div>
+</apex:form>
+</apex:page>

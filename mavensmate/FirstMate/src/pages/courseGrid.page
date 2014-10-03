@@ -1,0 +1,132 @@
+<apex:page controller="courseGridController">
+<head>
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.js"></script>
+ <script type="text/javascript" src="http://mleibman.github.com/SlickGrid/lib/jquery.event.drag-2.0.min.js"></script>
+ <script type="text/javascript" src="http://mleibman.github.com/SlickGrid/slick.core.js"></script>
+ <script type="text/javascript" src="http://mleibman.github.com/SlickGrid/slick.grid.js"></script>
+ <script type="text/javascript" src="http://mleibman.github.com/SlickGrid/slick.editors.js"></script> 
+
+<link rel="Stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/start/jquery-ui.css" />
+<link rel="Stylesheet" href="http://mleibman.github.com/SlickGrid/slick.grid.css" />
+
+  <script type="text/javascript">   
+
+    	var grid;
+    	var userTasks = [];
+   $(document).ready(function() {
+   		initializeUserTasks();
+	  });
+	   	
+	  function initializeUserTasks(){	  	
+	  	console.log('initializeUserTasks()'); 
+	  	
+	  	courseGridController.getCurrentUserTasks(function(records, e){  		  	
+		  	$.each(records, function(index, task){
+		  		console.log('The task Subject is: ' + task.Subject);
+		  		console.log('The task whoId is: ' + task.whoId);
+		  		userTasks['Id'] = task.Id;
+		  		var t = {};
+		  		t['Id'] = task.Id;
+		  		t['Subject'] = task.Subject +" <a href='http://salesforce.com'>Test Link</a>";
+		  		t['ActivityDate'] = task.ActivityDate;
+		  		t['whoId'] = task.whoId;
+		  		userTasks.push(t);		  	
+		  	});
+		  	
+		  	gridBuild();  //using the userTasks array build the grid
+		  	
+		});//end courseGridController.getCurrentUserTasks
+	  }//end initializeUserTasks
+	  
+	  function gridBuild(){
+		  var columns = [
+		    {id: "Id", name: "Id", field: "Id", width: 110, sortable: true, cssClass: '', maxLength: 250, editable: true},
+		    {id: "Subject", name: "Subject", field:"Subject", width: 110, sortable: true,  cssClass: '', maxLength: 250, editable: true},
+		    {id: "ActivityDate", name: "ActivityDate", field: "ActivityDate", width: 110, sortable: true,   cssClass: '',maxLength: 250, editable: true},
+		    {id: "whoId", name: "whoId", field: "whoId", width: 110, sortable: true,   cssClass: '', maxLength: 250, editable: true}
+		  ];
+		  var options = {
+		    enableCellNavigation: true,
+		    enableColumnReorder: true,
+		    editable:true
+		  };
+		  	
+		 	grid = new Slick.Grid("#myGrid", userTasks, columns, options);
+		 	grid.onClick.subscribe(function(e, args) {
+	  			var item = args.item;
+	  			console.log(item);
+	 				// or dataView.getItem(row);
+			});
+	  }
+	  
+	   
+	    function initialize() {	 
+	    	var courseList=[]; 	   
+		   console.log('initialize'); 
+ 				//get the records from Salesforce.com
+			courseGridController.getOpenCourses(function(records, e){			
+				$.each(records,function(index, course){					
+					courseList['key'] = course.Account__r.Location__Latitude__s + ':' + course.Account__r.Location__Longitude__s;
+	    			var c = {};
+	    			c['key']=course.Account__r.Location__Latitude__s + ':' + course.Account__r.Location__Longitude__s;
+	    			//c['Id']=course.Id;
+					//c['lat']=course.Account__r.Location__Latitude__s;
+					//c['lon']=course.Account__r.Location__Longitude__s;
+					c['customer']=course.Account__r.Name;
+					c['model']=course.Model__c;
+					//c['city']=course.Account__r.ShippingCity;
+					//c['state']=course.Account__r.ShippingState;
+					//c['country']=course.Account__r.ShippingCountry;
+					//c['website']=course.Account__r.Website;
+					courseList.push(c);
+					console.log(courseList.length);
+				});	//end of $.each		
+				
+ 	
+	   		 var grid;
+			  var columns = [
+			    {id: "key", name: "Key", field: "key"},
+			    {id: "customer", name: "customer", field: "customer"},
+			    {id: "model", name: "model", field: "model"},
+			  ];
+
+			  var options = {
+			    enableCellNavigation: true,
+			    enableColumnReorder: false
+			  };
+
+			//console.log('courseList Length: ' + courseList.length);
+	    	grid = new Slick.Grid("#myGrid", courseList, columns, options);
+	    	
+	    	}); //end of courseGridController
+		   	 
+	   }//end of initialize
+
+</script>
+</head>
+<body>
+
+
+<div style="position:relative">
+  <div style="width:600px;">
+    <div id="myGrid" style="width:100%;height:500px;"></div>
+  </div>
+
+  <div class="options-panel">
+    <h2>Demonstrates:</h2>
+    <ul>
+      <li>adding basic keyboard navigation and editing</li>
+      <li>custom editors and validators</li>
+      <li>auto-edit settings</li>
+    </ul>
+
+    <h2>Options:</h2>
+    <button onclick="grid.setOptions({autoEdit:true})">Auto-edit ON</button>
+    &nbsp;
+    <button onclick="grid.setOptions({autoEdit:false})">Auto-edit OFF</button>
+  </div>
+</div>
+
+</body>
+</apex:page>

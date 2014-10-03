@@ -1,0 +1,36 @@
+<apex:page standardController="Account" extensions="CertificationStatusController"  showHeader="false" sidebar="false">
+
+<style type="text/css">
+.lo{
+	background-color:red;
+	 width: 150px;
+}
+ .headerRow .TableTitle {
+    background-color: #F0F8FF !important;
+    background-image: none !important; //This is needed if you want to overwrite the header background
+    color: #CC0000 !important; 
+    font-size:100% !important; 
+     width: 33%;
+  }
+</style>
+
+     
+     <img src="{!URLFOR($Resource.Logo)}" width="220" height="95"/>
+       
+    <apex:pageBlock >
+    <apex:pageBlockTable value="{!inspections}" var="i">
+  	  <apex:column headerValue="Account" headerClass="TableTitle" value="{!i.Course__r.Account__r.Name}"/> 
+      <apex:column headerValue="Model" headerClass="TableTitle" value="{!i.Course__r.Model__c}"/>     
+       <apex:column headerValue="Last Inspect Date" headerClass="TableTitle" value="{!i.Inspection_Complete__c}"/>  
+    </apex:pageBlockTable>
+   </apex:pageBlock> 
+   
+    <apex:pageBlock >
+    <apex:pageBlockTable value="{!certifications}" var="e">      
+     <apex:column headerValue="Contact" headerClass="TableTitle" value="{!e.Contact__r.Name}"/>
+      <apex:column headerValue="Name" headerClass="TableTitle"  value="{!e.name}"/>
+      <apex:column headerValue="ExpDate" headerClass="TableTitle"  value="{!e.Expiration_Date__c}"/>        
+    </apex:pageBlockTable>
+   </apex:pageBlock> 
+    
+</apex:page>

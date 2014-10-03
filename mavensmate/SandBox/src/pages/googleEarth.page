@@ -1,0 +1,21 @@
+<apex:page controller="KMLController" cache="true" showHeader="false" contentType="application/vnd.google-earth.kml+xml">
+	<kml xmlns="http://earth.google.com/kml/2.x">
+		<Document>
+			<name>RCI Opportunities</name>
+			<apex:repeat value="{!oppList}" var="o">
+				<Placemark>
+					<name>{!o.Name}</name>
+					<address>{!o.Account.ShippingStreet} {!o.Account.ShippingCity}, {!o.Account.ShippingState} {!o.Account.ShippingPostalCode}</address>
+					<description>
+						<![CDATA[
+							<p><b>Account:</b>{!o.Account.Name}
+							<p><b>Amount: </b>{!o.Amount}
+							<p><b>Close Date:  </b>{!MONTH(o.CloseDate)}/{!DAY(o.CloseDate)}/{!YEAR(o.CloseDate)}
+						
+						]]>
+					</description>
+				</Placemark>
+			</apex:repeat>					
+		</Document>
+	</kml>
+</apex:page>

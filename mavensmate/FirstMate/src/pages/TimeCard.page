@@ -1,0 +1,283 @@
+<apex:page Controller="TimeCardController" tabStyle="Time_Card__c">
+  <apex:pageBlock >  
+     <apex:form id="time"> 
+         <table width="75%">
+                <tr>
+                    <td align="center">
+                     <apex:outputPanel id="buttons">
+                        <apex:commandButton action="{!save}" value="Save" status="closer" rerender="buttons" rendered="{!timeCard.Status__c = ''}"/>
+                        <apex:commandButton value="Cancel" onclick="javascript: history.go(-1);" rendered="{!timeCard.Status__c =''}"/>
+                        <apex:commandButton value="Submit" status="submit" action="{!submit}" rendered="{!timeCard.Status__c = ''}"/>
+                        <apex:commandButton value="Complete" action="{!markComplete}" rendered="{!timeCard.Status__c == 'Submitted'}" oncomplete="javascript: history.go(-1);"/>
+                        <apex:commandButton value="Close" onclick="javascript: history.go(-2);" rendered="{!timeCard.Status__c == 'Submitted'}"/>                         
+                        <apex:actionStatus startText="(Saving...)" stopText="" onStop="javascript: history.go(-2);" id="closer"/>
+                        <apex:actionStatus startText="(Submitting...)" stopText="" onStop="javascript: history.go(-1);" id="submit"/>
+                       </apex:outputPanel>
+                    </td>
+                </tr>
+          
+                <tr>
+                  <td align="center" >
+                     <apex:pageBlock id="pageTop">
+                     <table>
+                     <tr><td>&nbsp;</td></tr>
+                      <tr>
+                        <td width="15%">Time Card Description: </td>
+                        <td width="15%"><apex:outputField value="{!timeCard.name }"/></td>
+                        <td width="10%">&nbsp;</td>
+                        <td width="15%">Project Name: </td>
+                        <td width="15%"> <apex:outputField value="{!timeCard.Install_Project__r.Job_Number__c }"/> </td>
+                      </tr>
+                      <tr>
+                        <td>Employee: </td>
+                        <td><apex:outputField value="{!timeCard.Employee_Name__c }"/></td>
+                        <td>&nbsp;</td>
+                        <td>Week Ending: </td>
+                        <td> <apex:inputField value="{!timeCard.Week_Ending__c }"/></td>
+                      </tr>
+                      <tr>
+                        <td>Total Hours Worked: </td>
+                        <td><apex:outputField value="{!timeCard.Total_Hours_Week__c }"/></td>
+                        <td>&nbsp;</td>
+                        <td>Status: </td>
+                        <td><apex:outputField value="{!timeCard.Status__c }"/></td>
+                      </tr>
+                       <tr>
+                        <td>Per Diem Total: </td>
+                        <td><apex:outputField value="{!timeCard.Total_PerDiem__c }"/></td>
+                        <td>&nbsp;</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                       <tr><td>&nbsp;</td></tr>
+                     </table>
+                    </apex:pageBlock>
+                </td>
+             </tr>
+           
+                <tr>
+                    <td align="center">   
+                         <apex:pageBlock id="pbtime">
+                         <div id="showEdit" style="display:{!if(showEdit,"block","none")};">    
+                               
+                            <table width="68%">
+                             <tr>                            
+                                <td width="10%"><b> Monday</b></td>
+                                <td width="10%" align="right">{!MONTH(timeCard.Week_Ending__c-6)}/{!DAY(timeCard.Week_Ending__c-6)}/{!YEAR(timeCard.Week_Ending__c-6)}</td>
+                                <td width="16%" align="right">Hours Worked: </td>
+                                <td width="5%"><apex:inputText value="{!timeCard.Monday__c}"  id="m"/></td>
+                                <td width="10%" align="right">Breakfast</td>
+                                <td width="2%"><apex:inputCheckBox value="{!timeCard.Monday_Breakfast__c}"/></td>
+                                <td width="10%" align="right">Lunch</td>
+                                <td width="2%"><apex:inputCheckBox value="{!timeCard.Monday_Lunch__c}"/></td>
+                                <td width="10%" align="right">Dinner</td>
+                                <td width="2%"><apex:inputCheckBox value="{!timeCard.Monday_Dinner__c}"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Tuesday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c-5)}/{!DAY(timeCard.Week_Ending__c-5)}/{!YEAR(timeCard.Week_Ending__c-5)}</td>
+                                <td align="right">Hours Worked: </td>
+                                <td><apex:inputText value="{!timeCard.Tuesday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Tuesday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Tuesday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Tuesday_Dinner__c}"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Wednesday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c-4)}/{!DAY(timeCard.Week_Ending__c-4)}/{!YEAR(timeCard.Week_Ending__c-4)}</td> 
+                                <td align="right">Hours Worked: </td>
+                                <td><apex:inputText value="{!timeCard.Wednesday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Wednesday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Wednesday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Wednesday_Dinner__c}"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Thursday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c-3)}/{!DAY(timeCard.Week_Ending__c-3)}/{!YEAR(timeCard.Week_Ending__c-3)}</td>
+                                <td align="right">Hours Worked: </td>
+                                <td><apex:inputText value="{!timeCard.Thursday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Thursday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Thursday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Thursday_Dinner__c}"/></td>
+                           </tr>
+                           <tr>
+                                <td><b>Friday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c-2)}/{!DAY(timeCard.Week_Ending__c-2)}/{!YEAR(timeCard.Week_Ending__c-2)}</td>
+                                <td align="right">Hours Worked: </td>
+                                <td><apex:inputText value="{!timeCard.Friday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Friday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Friday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Friday_Dinner__c}"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Saturday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c-1)}/{!DAY(timeCard.Week_Ending__c-1)}/{!YEAR(timeCard.Week_Ending__c-1)}</td>
+                                <td align="right">Hours Worked</td>
+                                <td><apex:inputText value="{!timeCard.Saturday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Saturday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Saturday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Saturday_Dinner__c}"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Sunday</b></td>
+                                <td align="right">{!MONTH(timeCard.Week_Ending__c)}/{!DAY(timeCard.Week_Ending__c)}/{!YEAR(timeCard.Week_Ending__c)}</td>
+                                <td align="right">Hours Worked: </td>
+                                <td><apex:inputText value="{!timeCard.Sunday__c}"/></td>
+                                <td align="right">Breakfast</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Sunday_Breakfast__c}"/></td>
+                                <td align="right">Lunch</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Sunday_Lunch__c}"/></td>
+                                <td align="right">Dinner</td>
+                                <td><apex:inputCheckBox value="{!timeCard.Sunday_Dinner__c}"/></td>
+                            </tr>
+                       </table>
+                  </div>
+                </apex:PageBlock>
+           
+           <div id="showHide" style="display:{!if(showEdit,"none","block")};">  
+            
+                <table>
+                  <tr>
+                        <td width="10%"><b>Monday</b></td>
+                        <td width="10%" align="right">{!MONTH(timeCard.Week_Ending__c-6)}/{!DAY(timeCard.Week_Ending__c-6)}/{!YEAR(timeCard.Week_Ending__c-6)}</td>
+                        <td width="15%" align="right">Hours Worked: </td>
+                        <td width="4%">{!timeCard.Monday__c}</td>
+                        <td width="10%" align="right">Breakfast</td>
+                        <td width="4%"><apex:outputField value="{!timeCard.Monday_Breakfast__c}"/></td>
+                        <td width="10%" align="right">Lunch</td>
+                        <td width="4%"><apex:outputField value="{!timeCard.Monday_Lunch__c}"/></td>
+                        <td width="10%" align="right">Dinner</td>
+                        <td width="4%"><apex:outputField value="{!timeCard.Monday_Dinner__c}"/></td>
+                        <td width="12%">Monday Per Diem: </td>
+                        <td width="4%">$<apex:outputField value="{!timeCard.Monday_PerDiem__c}"/></td>
+                    </tr>
+                    <tr>
+                        <td><b>Tuesday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c-5)}/{!DAY(timeCard.Week_Ending__c-5)}/{!YEAR(timeCard.Week_Ending__c-5)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Tuesday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Tuesday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td ><apex:outputField value="{!timeCard.Tuesday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Tuesday_Dinner__c}"/></td>
+                        <td>Tuesday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Tuesday_PerDiem__c}"/></td>
+                    </tr>
+                     <tr>
+                        <td><b>Wednesday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c-4)}/{!DAY(timeCard.Week_Ending__c-4)}/{!YEAR(timeCard.Week_Ending__c-4)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Wednesday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Wednesday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td><apex:outputField value="{!timeCard.Wednesday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Wednesday_Dinner__c}"/></td>
+                        <td>Wednesday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Wednesday_PerDiem__c}"/></td>
+                    </tr>
+                      <tr>
+                        <td><b>Thursday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c-3)}/{!DAY(timeCard.Week_Ending__c-3)}/{!YEAR(timeCard.Week_Ending__c-3)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Thursday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Thursday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td><apex:outputField value="{!timeCard.Thursday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Thursday_Dinner__c}"/></td>
+                        <td>Thursday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Thursday_PerDiem__c}"/></td>
+                    </tr>
+                     <tr>
+                        <td><b>Friday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c-2)}/{!DAY(timeCard.Week_Ending__c-2)}/{!YEAR(timeCard.Week_Ending__c-2)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Friday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Friday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td><apex:outputField value="{!timeCard.Friday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Friday_Dinner__c}"/></td>
+                        <td>Friday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Friday_PerDiem__c}"/></td>
+                    </tr>
+                    
+                     <tr>
+                        <td><b>Saturday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c-1)}/{!DAY(timeCard.Week_Ending__c-1)}/{!YEAR(timeCard.Week_Ending__c-1)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Saturday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Saturday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td><apex:outputField value="{!timeCard.Saturday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Saturday_Dinner__c}"/></td>
+                        <td>Saturday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Saturday_PerDiem__c}"/></td>
+                    </tr>
+                    
+                     <tr>
+                        <td><b>Sunday</b></td>
+                        <td align="right">{!MONTH(timeCard.Week_Ending__c)}/{!DAY(timeCard.Week_Ending__c)}/{!YEAR(timeCard.Week_Ending__c)}</td>
+                        <td align="right">Hours Worked: </td>
+                        <td>{!timeCard.Sunday__c}</td>
+                        <td align="right">Breakfast</td>
+                        <td><apex:outputField value="{!timeCard.Sunday_Breakfast__c}"/></td>
+                        <td align="right">Lunch</td>
+                        <td><apex:outputField value="{!timeCard.Sunday_Lunch__c}"/></td>
+                        <td align="right">Dinner</td>
+                        <td><apex:outputField value="{!timeCard.Sunday_Dinner__c}"/></td>
+                        <td>Sunday Per Diem: </td>
+                        <td>$<apex:outputField value="{!timeCard.Sunday_PerDiem__c}"/></td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                </table>
+           </div>
+           
+           <div>
+            <table width="100%">
+             <tr>
+                    <td align="center">
+                     <apex:pageBlock >
+                        <apex:commandButton action="{!save}" value="Save" status="closer" rerender="buttons" rendered="{!timeCard.Status__c = ''}"/>
+                        <apex:commandButton value="Cancel" onclick="javascript: history.go(-1);" rendered="{!timeCard.Status__c = ''}"/>
+                        <apex:commandButton value="Submit" action="{!submit}" rendered="{!timeCard.Status__c = ''}"/>
+                        <apex:commandButton value="Complete" action="{!markComplete}" rendered="{!timeCard.Status__c == 'Submitted'}"/>
+                        <apex:commandButton value="Close" onclick="javascript: history.go(-1);" rendered="{!timeCard.Status__c == 'Submitted'}"/>  
+                        <apex:actionStatus startText="(Saving...)" stopText="" onStop="javascript: history.go(-1);" id="closer"/>
+                    </apex:pageblock>
+                    </td>
+                </tr>
+
+            </table>
+           </div>
+               </td>
+                </tr>
+               
+           </table>
+           
+        </apex:form>
+     </apex:pageBlock>
+</apex:page>

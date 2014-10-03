@@ -1,0 +1,142 @@
+{
+    "name": "TestScheduledOpportunity", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "accts", 
+            "location": {
+                "column": 22, 
+                "line": 5
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "oppsOne", 
+            "location": {
+                "column": 24, 
+                "line": 8
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "o", 
+            "location": {
+                "column": 22, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "contacts", 
+            "location": {
+                "column": 19, 
+                "line": 18
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "roles", 
+            "location": {
+                "column": 34, 
+                "line": 23
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "opps", 
+            "location": {
+                "column": 23, 
+                "line": 33
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "o", 
+            "location": {
+                "column": 21, 
+                "line": 35
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "oppsThree", 
+            "location": {
+                "column": 21, 
+                "line": 45
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "o", 
+            "location": {
+                "column": 19, 
+                "line": 47
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Contact", 
+            "name": "mainContact", 
+            "location": {
+                "column": 11, 
+                "line": 51
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [
+            "TEST"
+        ], 
+        "type": "TestScheduledOpportunity", 
+        "name": "TestScheduledOpportunity", 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }
+    }, 
+    "key": "01pS000000061WD", 
+    "id": "01pS000000061WD", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "myUnitTest", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 4
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

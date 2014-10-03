@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>TestConfiguration</members>
+        <members>TestSetTrainingDateTrigger</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>CourseInspectionComplete</members>
+        <members>GenerateHTML</members>
+        <members>TrainingPerformed</members>
+        <members>updateCost</members>
+        <name>ApexTrigger</name>
+    </types>
+    <version>28.0</version>
+</Package>

@@ -1,0 +1,163 @@
+<apex:component controller="SenchaJobsController">
+
+<script type="text/javascript">
+
+Ext.Loader.setConfig({
+	enabled:true,
+	paths:{
+		SenchaJobs: 'SenchaJobs'
+	}
+});
+
+Ext.require([
+	'SenchaJobs.MainContainer'
+]);
+
+Ext.application({
+	lanch:function(){
+		Ext.create('SenchaJobs.MainContainer',{
+			fullscreen:true
+		})
+	}
+});
+
+
+Ext.define('SenchaJobs.JobModel',{
+	extend:'Ext.data.Model',
+	config:{
+		fields:['city','firstname','lastname','middle','state','street','zip']
+	}
+});
+
+Ext.define('SenchaJobs.JobStore',{
+	extend: 'Ext.data.Store',
+	alias:'store.jobstore',
+	requires:['SenchaJobs.JobModel'],
+	config:{
+		//autoLoad:true,
+		model:'SenchaJobs.JobModel',
+		proxy:{
+			type:'jsonp',
+			url:'http://extjsinaction.com/dataQuery.php',
+			limit:20,
+			reader:{
+				type:'json',
+				rootProperty:'records'
+			}
+		}
+	}
+});
+
+Ext.define('SenchaJobs.JobList', {
+    extend   : 'Ext.List',
+    xtype    : 'joblist',
+    requires : [ 'SenchaJobs.JobStore' ],
+    config   : {
+        allowDeselect : false,
+        itemTpl       : '{lastname}, {firstname}',
+        store         : {
+            type     : 'jobstore',
+            autoLoad : true
+        },
+        items         : [
+            {
+                xtype  : 'toolbar',
+                title  : 'Jobs',
+                docked : 'top'
+            }
+        ],
+        listeners     : {
+            painted : function () {
+                this.getStore().load();
+            }
+        }
+    }
+});
+
+Ext.define('SenchaJobs.JobDetail',{
+	extend:'Ext.form.Panel',
+	xtype:'jobdetail',
+	config:{
+		items:[
+			{
+				xtype:'fieldset',
+				defaultType:'textfield',
+				defaults:{labelWidth:100},
+				items:[
+					{
+						label:'First',
+						name:'firstname'
+					},
+					{
+						label:'Last',
+						name:'lastname'
+					},
+					{
+						label:'Street',
+						name:'street'
+					},
+					{
+						label:'City',
+						name:'city'
+					},
+					{
+						label:'State',
+						name:'state'
+					},
+					{
+						label:'Zip',
+						name:'zip'
+					}
+
+				]
+			},
+			{
+				xtype:'toolbar',
+				title:'Job Details',
+				docked:'top'
+			}
+		]
+	}
+});
+
+
+Ext.define('SenchaJobs.MainContainer',{
+	extend:'Ext.Container',
+	requires:[
+		'SenchaJobs.JobList',
+		'SenchaJobs.JobDetail'
+	],
+	config:{
+		layout:{
+			type:'hbox',
+			align:'stretch'
+		},
+		items:[
+			{
+				xtype:'joblist',
+				itemId:'list',
+				width:200,
+				style:'border-right:1px solid #999'
+			},
+			{
+				xtype:'jobdetail',
+				itemId:'detail',
+				flex:1
+			}
+		],
+
+		listeners:{
+			select:{
+				fn:'onListSelect',
+				delegate:'> #list'
+			}
+		}
+	},
+	onListSelect: function(list,record){
+		//this.getComponent('detail').setRecord(record);
+		this.down('detail').setRecord(record);
+	}
+});
+
+</script>
+</apex:component>

@@ -1,0 +1,90 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "mysObject", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 3
+            }, 
+            "type": "SObject"
+        }
+    ], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getRecordName", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 12
+            }, 
+            "returnType": "String", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getJobShippingParts", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 16
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "StandardController", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 63, 
+                "line": 8
+            }, 
+            "name": "stdController"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "ShippingLoadExtension", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 8
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "ShippingLoadExtension", 
+    "tableDeclaration": {
+        "type": "ShippingLoadExtension", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "ShippingLoadExtension"
+    }, 
+    "key": "01pS00000006Wbg", 
+    "id": "01pS00000006Wbg", 
+    "externalReferences": []
+}

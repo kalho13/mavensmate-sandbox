@@ -1,0 +1,175 @@
+<apex:component controller="SenchaJobsController">
+
+<script type="text/javascript">
+
+Ext.application({
+    name:'SenchaJobs',
+    models:['Job'],
+    stores:['Jobs'],
+    views:['JobsList'],
+    controllers:['Jobs'],
+
+    launch: function() {
+      console.log('Sencha Jobs Launch');
+
+        var jobsListView = {
+            xtype: "jobslistview"
+        };
+        console.log('Ext.ViewPort is next');
+       Ext.Viewport.add([jobsListView]);
+    }
+
+});
+
+//======================================== Jobs List View ==========================
+Ext.define("SenchaJobs.view.JobsList",{
+	extend:"Ext.Container",
+	requires:"Ext.dataview.List",
+	alias:"widget.jobslistview",
+	config:{
+		layout:{
+			type:'fit'
+		},//close layout
+		items:[
+			{xtype:"toolbar",title:"Sencha Jobs",docked:"top",items:[{xtype:'spacer'}]},
+			{//insert the list view here
+				xtype:"list",
+				store:"Jobs", //this ties it to the model and the proxy to load the initial data?
+				itemId:"jobsList", //ties to the reference in the controller?
+				onItemDisclosure:false,
+				indexBar:true,
+				grouped:false,
+				disableSelection:false,
+				loadingText:"Loading Jobs",
+				emptyText:'<div class="leads-list-empty-text">No Jobs Found.</div>',
+				itemTpl:'<div class="list-item-line-main">Job Number is: {Name}</div>'
+			}
+		] //end of items		
+	} //close config	
+});
+
+//the store is defined here, but instantiated in the application
+Ext.define("SenchaJobs.store.Jobs", {
+	extend:"Ext.data.Store",
+	requires:"Ext.data.proxy.LocalStorage",
+	config:{
+		model:"SenchaJobs.model.Job", 
+		autoLoad:true, //loads the data automatically
+		pageSize:25
+	}
+});
+
+//======================== Jobs CONTROLLER =======================
+Ext.define("SenchaJobs.controller.Jobs",{
+	extend:"Ext.app.Controller",
+	config:{
+		refs:{
+			jobsListView:"jobslistview",  //I think this is reference in the activateJobsList below
+			jobsList:"#jobsList"  //not exactly sure on the variable and configuration relationship here
+		}//close refs		
+	},//close config
+
+	 //View Transitions
+    slideLeftTransition: {
+        type: 'slide',
+        direction: 'left'
+    },
+      slideRightTransition: {
+        type: 'slide',
+        direction: 'right'
+    },
+	
+	activateJobsList:function(){
+		console.log('Activating Jobs List');
+		Ext.Viewport.animateActiveItem(this.getJobsListView(), this.slideRightTransition);
+	},
+
+	loadList:function(){//called as part of the onSyncJobPartsCommand function above		
+		var jobsStore = Ext.getStore("Jobs");  //there could be multiples stores
+		var model = Ext.ModelMgr.getModel('SenchaJobs.model.Job');  //there could be multiple models
+		model.getProxy();//reference the proxy settings defined
+		jobsStore.getData().clear();
+		//jobsStore.loadPage(1);  //what is it loading?
+		jobsStore.load();
+		this.activateJobsList();  //call to the activateJobPartsList earlier in the controller
+	},//close loadList
+
+	//Base class functions?
+	launch:function(){
+		 console.log('Base Class functions launch');
+		 this.callParent(arguments);  //what are the arguments?
+		 console.log("load jobs");
+		 this.loadList();
+	},
+
+	init:function(){
+		this.callParent(arguments);
+		console.log("init triggered");
+		//Listen for exceptions by the proxy to we can report them and clean up
+		Ext.getStore("Jobs").getProxy().addListener('exception', function(proxy, response, operation, options){
+			if(response){
+				if(response.errorMessage){
+					Ext.Msg.alert('Error', response.errorMessage);
+				}else{
+					Ext.Msg.alert('Error', operation.config.action + 'failed:' + response.errorMessage);
+				}
+			}else{
+				Ext.Msg.alert('Error', operation.config.action + 'failed for an unknow reason:proxy' + proxy);
+
+			}//close if response
+		}); //close addListener
+	} //close init function
+});
+
+//======================== Job MODEL =======================
+//defined here, but instantiated in the application
+Ext.define("SenchaJobs.model.Job",{
+	extend:"Ext.data.Model",
+	config:{
+		idProperty:'Id',
+		fields:[ 
+			{name:'Id', type:'string', persist:false},
+			{name:'Name', type:'string'}			 
+		],//close fields
+
+		proxy:{
+			type:'direct',
+			api:{
+				read:SenchaJobsController.QueryOpenJobs  //this is a call to the Apex Controller not the Sencha 
+			},//close api
+
+			limitParam:'recordCount',
+			sortParam:'sortParams',
+			pageParam:false,
+
+			reader:{ 
+				type:'json',
+				rootProperty:'records',
+				messagePropety:'errorMessage'
+			},//close reader
+
+			writer:{
+				type:'json',
+				root:'records',
+				writeAllFields:false,
+				allowSingle:false,
+				encode:false
+			}//close writer
+		}//close proxy
+	}//close config
+});//close model
+
+
+
+//==========================PROXY CONFIGURATION =======
+SenchaJobsController.QueryOpenJobs.directCfg.method.getArgs = function(params, paramOrder, paramsAsHash){console.log('getArgs: '+ params.data); return [params];}
+Ext.data.proxy.Direct.prototype.createRequestCallback = function(request, operation, callback, scope){
+	var me = this;
+	return function(data, event){
+		console.log('createRequestCallback: ' + operation);
+		me.processResponse(event.status, operation, request, data, callback, scope);
+	};
+};
+</script>
+
+</apex:component>

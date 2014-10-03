@@ -1,0 +1,439 @@
+<apex:component controller="JobPartController">
+<script type="text/javascript">
+
+Ext.Loader.setConfig({
+    enabled: true
+});
+//======================== APPLICATION =======================
+Ext.application({
+	name:"PartsManager",
+	models:["JobPart", "Job"],
+	stores:["JobParts", "Jobs"],
+	controllers:["JobParts", "Jobs"],
+	views:["JobPartsList", "JobsList"],
+	 launch:function(){	
+	 	var jobsListView = {xtype:"jobslistview"};
+	 	var jobPartsListView = {xtype:"jobpartslistview"};
+	 	Ext.Viewport.add([jobsListView, jobPartsListView]);
+	 }
+});
+//======================== JobParts STORE =======================
+
+Ext.define("PartsManager.store.JobParts", {
+	extend:"Ext.data.Store",
+	requires:"Ext.data.proxy.LocalStorage",
+	config:{
+		model:"PartsManager.model.JobPart",
+		autoLoad:true, 
+		pageSize:25,
+	},
+});
+//======================== Job STORE =======================
+
+Ext.define("PartsManager.store.Jobs", {
+	extend:"Ext.data.Store",
+	requires:"Ext.data.proxy.LocalStorage",
+	config:{
+		model:"PartsManager.model.Job",
+		autoLoad:true, //loads the data automatically
+		pageSize:25,
+	},
+});
+//======================== Job Part MODEL =======================
+Ext.define("PartsManager.model.JobPart",{
+	extend:"Ext.data.Model",
+	config:{
+		idProperty:'Id',
+		fields:[
+			{name:'Id', type:'string', persist:false},
+			{name:'Name', type:'string'}
+			 
+		],//close fields
+		validations:[
+		],//close validation
+		//can I define the extraParams here?
+		proxy:{
+			type:'direct',
+			api:{
+				read:JobPartController.Query,  //this is a call to the Apex Controller not the Sencha Controller
+				//create:JobParts.Add,
+				//update:JobParts.Edit,
+				//destroy:JobParts.Destroy
+
+			},//close api
+			limitParam:'recordCount',
+			sortParam:'sortParams',
+			pageParam:false,
+			reader:{
+				type:'json',
+				rootProperty:'records',
+				messagePropety:'errorMessage'
+			},//close reader
+			writer:{
+				type:'json',
+				root:'records',
+				writeAllFields:false,
+				allowSingle:false,
+				encode:false
+			}//close writer
+		}//close proxy		
+	}//close config
+});//close model
+
+//======================== Job MODEL =======================
+Ext.define("PartsManager.model.Job",{
+	extend:"Ext.data.Model",
+	config:{
+		idProperty:'Id',
+		fields:[
+			{name:'Id', type:'string', persist:false},
+			{name:'Name', type:'string'}
+			 
+		],//close fields
+		validations:[
+		],//close validation
+		//can I define the extraParams here?
+		proxy:{
+			type:'direct',
+			api:{
+				read:JobPartController.QueryOpenJobs,  //this is a call to the Apex Controller not the Sencha 
+			},//close api
+			limitParam:'recordCount',
+			sortParam:'sortParams',
+			pageParam:false,
+			reader:{
+				type:'json',
+				rootProperty:'records',
+				messagePropety:'errorMessage'
+			},//close reader
+			writer:{
+				type:'json',
+				root:'records',
+				writeAllFields:false,
+				allowSingle:false,
+				encode:false
+			}//close writer
+		}//close proxy		
+	}//close config
+});//close model
+//==========================PROXY CONFIGURATION =======
+JobPartController.Query.directCfg.method.getArgs = function(params, paramOrder, paramsAsHash){console.log('getArgs: '+ params.data); return [params];}
+JobPartController.QueryOpenJobs.directCfg.method.getArgs = function(params, paramOrder, paramsAsHash){console.log('getArgs: '+ params.data); return [params];}
+Ext.data.proxy.Direct.prototype.createRequestCallback = function(request, operation, callback, scope){
+	var me = this;
+	return function(data, event){
+		console.log('createRequestCallback: ' + operation);
+		me.processResponse(event.status, operation, request, data, callback, scope);
+	};
+};
+//======================== Job Parts VIEW =======================
+
+Ext.define("PartsManager.view.JobPartsList",{
+	extend:"Ext.Container",
+	requires:"Ext.dataview.List",
+	alias:"widget.jobpartslistview",
+	config:{
+		layout:{
+			type:'fit'
+		},//close layout
+		items:[
+			{
+				xtype:"toolbar",
+				title:"Parts Manager",
+				docked:"top",
+				items:[
+					{
+						xtype:'spacer'
+					},
+				]
+			},
+			{
+				xtype:"toolbar",
+				docked:"bottom",
+				itemId:"bottomToolBar",
+				items:[
+					{
+						xtype: "button",
+		                iconCls: "refresh",
+		                iconMask: true,
+		                itemId: "syncButton"
+					}
+				]
+			},
+			{//insert the list view here
+				xtype:"list",
+				store:"JobParts",
+				itemId:"jobPartsList", //ties to the reference in the controller?
+				onItemDisclosure:true,
+				indexBar:true,
+				grouped:false,
+				disableSelection:false,
+				loadingText:"Loading Job Parts",
+				emptyText:'div class="leads-list-empty-text">No Job Parts Found.</div>',
+				itemTpl:'<div class="list-item-line-main">The Part Name is: {Name}</div>'
+			}
+		], //end of items
+		listeners:[
+			{
+				delegate: "#syncButton",
+	            event: "tap",
+	            fn: "onSyncButtonTap"
+			},
+		]//end of listeners
+	}, //close config
+	onSyncButtonTap: function () {
+        console.log("onSyncButtonTap");
+        this.fireEvent("syncJobPartsCommand", this);
+    },
+	
+});
+//======================================== Jobs List View ==========================
+Ext.define("PartsManager.view.JobsList",{
+	extend:"Ext.Container",
+	requires:"Ext.dataview.List",
+	alias:"widget.jobslistview",
+	config:{
+		layout:{
+			type:'fit'
+		},//close layout
+		items:[
+			{
+				xtype:"toolbar",
+				title:"Parts Manager",
+				docked:"top",
+				items:[
+					{
+						xtype:'spacer'
+					},
+				]
+			},
+			{
+				xtype:"toolbar",
+				docked:"bottom",
+				itemId:"bottomToolBar",
+				items:[
+					{
+						xtype: "button",
+		                iconCls: "refresh",
+		                iconMask: true,
+		                itemId: "syncButton"
+					}
+				]
+			},
+			{//insert the list view here
+				xtype:"list",
+				store:"Jobs", //this ties it to the model and the proxy to load the initial data?
+				itemId:"jobsList", //ties to the reference in the controller?
+				onItemDisclosure:true,
+				indexBar:true,
+				grouped:false,
+				disableSelection:false,
+				loadingText:"Loading Job Parts",
+				emptyText:'div class="leads-list-empty-text">No Jobs Found.</div>',
+				itemTpl:'<div class="list-item-line-main">Job Number is: {Name}</div>'
+			}
+		], //end of items
+		listeners:[
+			{
+				delegate: "#syncButton",
+	            event: "tap",
+	            fn: "onSyncButtonTap"
+			 },
+			 {   delegate: "#jobsList",
+             	event: "disclose",
+             	fn: "onJobsListDisclose"
+         	}//close listener
+		]//end of listeners
+
+	}, //close config
+	onSyncButtonTap: function () {
+        console.log("onSyncButtonTap");
+        this.fireEvent("syncJobPartsCommand", this);
+    },
+    onJobsListDisclose: function (list, record, target, index, evt, options) {
+        console.log("viewJobPartsCommand");
+        this.fireEvent('disclosureJobsListCommand', this);
+    }
+	
+});
+//======================== CONTROLLER =======================
+Ext.define("PartsManager.controller.JobParts",{
+	extend:"Ext.app.Controller",
+	config:{
+		refs:{
+			jobPartsListView:"jobpartslistview",  //I think this is reference in the activateJobPartsList below
+			jobPartsList:"#jobPartsList",  //not exactly sure on the variable and configuration relationship here
+
+		},//close refs
+		control:{
+			jobPartsListView:{ //binds commands for the jobPartsListView
+				syncJobPartsCommand:"onSyncJobPartsCommand",
+				//newJobPartsCommand:"onNewJobPartsCommand",
+				//editJobPartsCommand:"onEditJobPartsCommand",
+			}//close jobPartsListView
+		}//close control
+	},//close config
+
+	//View transitions
+	slideLeftTransition:{type:'slide', direction:'left'},
+	slideRightTransition:{type:'slide', direction:'right'},
+
+	 //View event handler functions
+    onSyncJobPartsCommand: function () {
+        console.log("onSyncJobPartsCommand");
+        //Get a ref to the store and remove it.
+        var jobPartsStore = Ext.getStore("JobParts");
+        //Resync the proxy, reload and activate the list.      
+        jobPartsStore.sync();
+        jobPartsStore.load();
+        this.activatejobPartsList();
+    },
+
+	activateJobPartsList:function(){
+		console.log('Activating Parts List');
+		Ext.Viewport.animateActiveItem(this.getJobPartsListView(), this.slideRightTransition);
+	},
+
+	loadList:function(){//called as part of the onSyncJobPartsCommand function above		
+		var jobPartsStore = Ext.getStore("JobParts");  //there could be multiples stores
+		var model = Ext.ModelMgr.getModel('PartsManager.model.JobPart');  //there could be multiple models
+
+		/*
+ //Get any search text.
+    var leadSearchField = this.getLeadsListSearchField();
+    var searchText = leadSearchField.getValue();
+    //Validate for at least 2 or more characters.
+    if (searchText.length > 0 && searchText.length < 2) {
+        var msg = 'Search requires more text.';
+        Ext.Msg.alert('Please correct errors!', msg, Ext.emptyFn);
+        return;
+    }
+    //Add wild cards to the search string. 
+    if (searchText != '') {
+        //Surround the search value with wildcards for SOQL LIKE search.
+        searchText = '%' + searchText + '%';
+    } else {
+        //Set wildcard for wide open filter.  
+        searchText = '%';
+    }		*/
+		//var model = Ext.ModelMgr.getModel('PocketCRM.model.Lead');
+		//model.getProxy().setExtraParam('searchFilter', searchText);
+
+		model.getProxy();//reference the proxy settings defined
+		jobPartsStore.getData().clear();
+		//jobPartsStore.loadPage(1);  //what is it loading?
+		jobPartsStore.load();
+		this.activateJobPartsList();  //call to the activateJobPartsList earlier in the controller
+	},//close loadList
+
+	//Base class functions?
+	launch:function(){
+		 console.log('Base Class functions launch');
+		 this.callParent(arguments);  //what are the arguments?
+		 this.loadList();
+	},
+
+	init:function(){
+		this.callParent(arguments);
+		console.log("init triggered");
+		//Listen for exceptions by the proxy to we can report them and clean up
+		Ext.getStore("JobParts").getProxy().addListener('exception', function(proxy, response, operation, options){
+			if(response){
+				if(response.errorMessage){
+					Ext.Msg.alert('Error', response.errorMessage);
+				}else{
+					Ext.Msg.alert('Error', operation.config.action + ' failed:' + response.errorMessage);
+				}
+			}else{
+				Ext.Msg.alert('Error', operation.config.action + ' failed for an unknow reason:proxy' + proxy);
+
+			}//close if response
+		}); //close addListener
+
+	} //close init function
+
+});
+
+//======================== Jobs CONTROLLER =======================
+Ext.define("PartsManager.controller.Jobs",{
+	extend:"Ext.app.Controller",
+	config:{
+		refs:{
+			jobsListView:"jobslistview",  //I think this is reference in the activateJobPartsList below
+			jobsList:"#jobsList",  //not exactly sure on the variable and configuration relationship here
+
+		},//close refs
+		control:{
+			jobsListView:{ //binds commands for the jobPartsListView
+				syncJobsCommand:"onSyncJobsCommand",
+				disclosureJobsListCommand:"onDisclosureJobsListCommand",
+			}//close jobPartsListView
+		}//close control
+	},//close config
+
+	//View transitions
+	slideLeftTransition:{type:'slide', direction:'left'},
+	slideRightTransition:{type:'slide', direction:'right'},
+
+	 //View event handler functions
+    onSyncJobsCommand: function () {
+        console.log("onSyncJobsCommand");
+        //Get a ref to the store and remove it.
+        var jobsStore = Ext.getStore("Jobs");
+        //Resync the proxy, reload and activate the list.      
+        jobsStore.sync();
+        jobStore.load();
+        this.activatejobsList();
+    },
+
+    onDisclosureJobsListCommand:function(record){
+    	Ext.Viewport.animateActiveItem(this.getJobPartsView(), this.slideRightTransition);
+    },
+
+	activateJobsList:function(){
+		console.log('Activating Jobs List');
+		Ext.Viewport.animateActiveItem(this.getJobsListView(), this.slideRightTransition);
+	},
+
+	loadList:function(){//called as part of the onSyncJobPartsCommand function above		
+		var jobsStore = Ext.getStore("Jobs");  //there could be multiples stores
+		var model = Ext.ModelMgr.getModel('PartsManager.model.Job');  //there could be multiple models
+		model.getProxy();//reference the proxy settings defined
+		jobsStore.getData().clear();
+		//jobPartsStore.loadPage(1);  //what is it loading?
+		jobsStore.load();
+		this.activateJobsList();  //call to the activateJobPartsList earlier in the controller
+	},//close loadList
+
+	//Base class functions?
+	launch:function(){
+		 console.log('Base Class functions launch');
+		 this.callParent(arguments);  //what are the arguments?
+		 console.log("load job parts");
+		 this.loadList();
+	},
+
+	init:function(){
+		this.callParent(arguments);
+		console.log("init triggered");
+		//Listen for exceptions by the proxy to we can report them and clean up
+		Ext.getStore("Jobs").getProxy().addListener('exception', function(proxy, response, operation, options){
+			if(response){
+				if(response.errorMessage){
+					Ext.Msg.alert('Error', response.errorMessage);
+				}else{
+					Ext.Msg.alert('Error', operation.config.action + ' failed:' + response.errorMessage);
+				}
+			}else{
+				Ext.Msg.alert('Error', operation.config.action + ' failed for an unknow reason:proxy' + proxy);
+
+			}//close if response
+		}); //close addListener
+
+	} //close init function
+
+});
+//======================== FORM =======================
+
+</script>
+</apex:component>

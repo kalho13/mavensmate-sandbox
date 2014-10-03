@@ -1,0 +1,82 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testGetCourseInspections", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 31, 
+                "line": 4
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 6
+            }, 
+            "name": "accounts"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 10
+            }, 
+            "name": "courses"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 15
+            }, 
+            "name": "inspections"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 21
+            }, 
+            "name": "actualInspections"
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "InspectionMapController_Test", 
+    "tableDeclaration": {
+        "type": "InspectionMapController_Test", 
+        "modifiers": [
+            "TEST"
+        ], 
+        "references": [], 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }, 
+        "name": "InspectionMapController_Test"
+    }, 
+    "key": "01pS00000006Z4LIAU", 
+    "id": "01pS00000006Z4LIAU", 
+    "externalReferences": []
+}

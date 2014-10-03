@@ -1,0 +1,67 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getContactRecs", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 7
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "StandardController", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 54, 
+                "line": 3
+            }, 
+            "name": "controller"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "Contacts_Ext", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "controller"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 3
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "Contacts_Ext", 
+    "tableDeclaration": {
+        "type": "Contacts_Ext", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "Contacts_Ext"
+    }, 
+    "key": "01pd0000002uTXD", 
+    "id": "01pd0000002uTXD", 
+    "externalReferences": []
+}

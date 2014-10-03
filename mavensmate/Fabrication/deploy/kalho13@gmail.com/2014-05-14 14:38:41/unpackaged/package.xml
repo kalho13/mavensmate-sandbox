@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>SelectPartsControllerV2</members>
+        <members>SelectedPartsController</members>
+        <members>SelectedPartsControllerV2</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Job</members>
+        <members>JobDisplay</members>
+        <members>JobPart</members>
+        <members>JobPartRD</members>
+        <members>JobParts</members>
+        <members>JobPartsV2</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Job_Fabrication_Detail__c</members>
+        <members>Job_Paint_Detail_del__c</members>
+        <members>Job_Part_QA_Detail__c</members>
+        <members>Job_Part__c</members>
+        <members>Job_Shipping_Details__c</members>
+        <members>Job__c</members>
+        <members>R_D_Statement__c</members>
+        <name>CustomObject</name>
+    </types>
+    <version>28.0</version>
+</Package>

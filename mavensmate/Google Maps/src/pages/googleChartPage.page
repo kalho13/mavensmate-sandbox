@@ -1,0 +1,85 @@
+<apex:page controller="inspectionMapController" sidebar="false">
+    <!-- Google API inclusion -->
+    <head>
+    <apex:includeScript id="a" value="https://www.google.com/jsapi" />
+    <apex:includeScript value="{!$Resource.DateJS}"/>
+     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+      
+   
+      
+    <script type="text/javascript">
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', {'packages':['corechart']});
+        
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initCharts);
+    
+        function initCharts() {        
+          inspectionMapController.getCourseInspections(
+                 function(result, event){ 
+
+                     var current = 0;
+                     var due = 0;
+                     var expired = 0;
+                     var wayExpired = 0;
+                     var expDate;
+
+                     for(var i =0; i<result.length;i++){
+                       
+                        console.log(result[i]);
+                        var days = getDiffDays(result[i].Inspection_Expiration__c);
+
+                        if(days > 90){
+                           current = current + 1;
+						}else if(days > 0){
+							due = due+1;
+						}else if(days < (-365)){
+							wayExpired = wayExpired + 1;
+						}else{
+							expired = expired + 1;
+						}		
+                    }
+
+                     var visualization = new google.visualization.PieChart(document.getElementById('chart'));
+
+                      var data = google.visualization.arrayToDataTable([
+				          ['Inspection Status', 'Percentage'],
+				          ['Current',     current],
+				          ['Inspection Due < 90 Days',     due],
+				          ['Inspection Expired < 1 Year',  expired],
+				          ['Inspection Expired > 1 Year', wayExpired]
+				        ]);
+
+                      var options = {
+                      	legend:{position:'right', alignment:'start', textStyle:{color:'black', fontSize: 11}},
+                      	pieSliceText:'percentage',
+                      	chartArea:{left: 10, top:10, height:120, width:450},
+          				height:140,
+          				width:450,  
+          				backgroundColor:'transparent',
+          				backgroundColor:{fill:'transparent', stroke:'red', strokeWidth:3},
+          				pieSliceTextStyle:{color:'black', fontSize: 9},
+          				colors:['green','yellow', 'red', 'gray'],        				
+          				is3D: true
+       				 };
+
+                    visualization.draw(data, options);
+              }, {escape:true});
+          }
+
+
+          function getDiffDays(expDate){
+
+				var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+				var firstDate = new Date(expDate);
+				var secondDate = new Date(Date.today());
+				var diffDays = Math.round((firstDate.getTime() - secondDate.getTime())/(oneDay));
+			  return diffDays;
+          }
+    </script>
+</head>
+    <body backgroundColor="#E6E6FA" >
+    	  <!-- Google Charts will be drawn in this DIV -->
+    <div id="chart" width="400px" height="200px"/>
+    </body>
+</apex:page>

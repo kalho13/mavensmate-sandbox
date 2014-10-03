@@ -1,0 +1,29 @@
+<apex:page standardController="Account">
+    <apex:pageBlock title="Hello {!$User.FirstName} ">
+        You are displaying contacts from {!account.name} account.  Click a contact's name to view details.    
+    </apex:pageBlock>
+    <apex:pageBlock title="Form Fields">
+        <apex:form >
+            <apex:pageBlockTable value="{!account}" var="a" cellPadding="4"  border="1">
+                 <apex:column >
+                    <apex:facet name="header">Name</apex:facet>
+                    <apex:inputField value="{!a.industry}" onchange="rerender"></apex:inputField>
+                </apex:column>
+               
+            </apex:pageBlockTable>
+             </apex:form>
+            <apex:pageBlockTable value="{!account}" var="a" cellPadding="4"  border="1" rendered="{!account.Industry=='Banking'}">
+                <apex:form id="output">
+                    Form Here
+                </apex:form>
+            </apex:pageBlockTable>
+        
+    </apex:pageBlock>
+    
+   <apex:pageBlock >
+    
+    
+   
+    
+  </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,217 @@
+<apex:component>
+	<script type="text/javascript">
+	
+	//===================== APPLICATION ===================
+	//The applicaiton class is the entry point into the Sencha Touch Application
+	Ext.application({
+		name:"PocketCRM",
+		//load the various components into memory
+		models:["Leads"],
+		stores:["Leads"],
+		controllers:["Leads"],
+		views:["LeadsList"],
+
+		launch: function(){
+			//Instantiate your main list view for leads
+			var leadsListView = {
+				xtype:"leadslistview"
+			};
+			Ext.Viewprt.add([leadsListView]);
+		}//close launch
+	});
+
+	//===================== STORE ==================================
+	Ext.define("PocktCRM.store.Leads",{
+		extend: "Ext.data.Store",
+		requires: "Ext.data.proxy.LocalStorage",
+		config:{
+			model:"PocketCRM.model.Lead",
+
+			data:[
+				{"attributes" : {
+					"type" : "Lead",
+					"url" : "/services/data/v30.0/sobjects/Lead/00Qd000000LlsOBEAZ"
+				},
+				"Status" : "Open - Not Contacted",
+				"Id" : "00Qd000000LlsOBEAZ",
+				"Company" : "Home",
+				"LastName" : "Larry"
+			}, {
+				"attributes" : {
+				"type" : "Lead",
+				"url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntEEAS"
+				},
+				"Status" : "Closed - Converted",
+				"Phone" : "(336) 222-7000",
+				"Email" : "jrogers@btca.com",
+				"FirstName" : "Jack",
+				"Id" : "00Qd0000005UntEEAS",
+				"Company" : "Burlington Textiles Corp of America",
+				"LastName" : "Rogers",
+				"Title" : "VP, Facilities"
+			}, {
+				"attributes" : {
+				"type" : "Lead",
+				"url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntFEAS"
+				},
+				"Status" : "Closed - Not Converted",
+				"Phone" : "(614) 431-5000",
+				"Email" : "bill_dadio@zenith.com",
+				"FirstName" : "Bill",
+				"Id" : "00Qd0000005UntFEAS",
+				"Company" : "Zenith Industrial Partners",
+				"LastName" : "Dadio Jr",
+				"Title" : "CFO"
+			}, {
+				"attributes" : {
+				"type" : "Lead",
+				"url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntGEAS"
+				},
+				"Status" : "Closed - Not Converted",
+				"Phone" : "(781) 270-6500",
+				"Email" : "eluce@pacificretail.com",
+				"FirstName" : "Eugena",
+				"Id" : "00Qd0000005UntGEAS",
+				"Company" : "Pacific Retail Group",
+				"LastName" : "Luce",
+				"Title" : "CEO"
+			}, {
+				"attributes" : {
+				"type" : "Lead",
+				"url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntHEAS"
+				},
+				"Status" : "Working - Contacted",
+				"Phone" : "(626) 440-0700",
+				"Email" : "sandra_e@highland.net",
+				"FirstName" : "Sandra",
+				"Id" : "00Qd0000005UntHEAS",
+				"Company" : "Highland Manufacturing Ltd.",
+				"LastName" : "Eberhard",
+				"Title" : "VP, Production"
+			} 
+			],
+
+			groupField: 'Status',
+			groupDir: 'ASC',
+		
+			sorters:[
+				{
+					property:'LastName',
+					direction: 'ASC'
+				},
+				{
+					property: 'FirstName',
+					direction: 'ASC'
+				}
+			]		
+		}//close config
+
+	}); //close define store
+
+
+//==========================CONTROLLER=========================
+//Controllers manage the communications of your application and the coordination between
+// the view and the model.  They listen for events emitted by the views and
+//react accordingly
+
+Ext.define("PocketCRM.controller.Leads", {
+	extend: "Ext.app.Controller",
+	config:{},
+	//Base class function
+	launch:function(){
+		console.log('Leads Launched');
+		this.callParent(arguments);
+
+		//Load the store associated with the controller
+		console('Store Leads Loaded');
+		var leadsStore = Ext.getStore("Leads");
+		leadsStore.load();
+	},//close launch function
+	init:function(){
+		this.callParent(arguments);
+		console.log('Init Leads');
+	}//close init function
+}); //close the controller define
+
+//========================== MODEL ============================
+Ext.define("PocketCRM.model.Lead", {
+	extend: "Ext.data.Model",
+	config:{
+		idProperty: 'id',
+		fields:[
+			{name:'id',type:'string'},
+			{name:'FirstName', type:'string', required:true},
+			{name:'LastName', type:'string', required:true},
+			{name:'Company',type:'string'},
+			{name:'Title',type:'string'},
+			{name:'Phone',type:'string'},
+			{name:'Email', type:'string', required:true},
+			//Status must contain a value as our grouping on this field requires it not to be null
+			{name:'Status', type:'string', required:true},
+			//This is a derived field using an anonymous 'convert' anonymous function to calculate a string value
+			{name:'FullName', 
+				convert:function(value, record){
+					var fn = record.get('FirstName');
+					var ln = record.get('LastName');
+					return fn+" "+ln;
+				}
+			}, //do I really need this comma here?
+
+		], //close fields
+	} //close config
+
+}); //close define model
+
+
+
+//==================================== VIEWS =========================================
+//Views display data top your users and gather input fromthem.  They also emit
+//events about user interaction.
+
+Ext.define("PocketCRM.view.LeadsList", {
+	extend:"Ext.Container",
+
+	//It uses the base list class
+	requires: "Ext.dataview.List",
+	alias:"widget.leadsListView",
+	config:{
+		//Take up the full space available in the parent container
+		layout:{
+			type:'fit'
+		},
+		//add the components to include within the listview
+		items:[
+			{
+				//a simple top title bar
+				xtype:"titlebar",
+				title:"PocketCRM: Leads",
+				docked:"top",
+			},
+			//the main list and it properties
+			{
+				xtype:"list",
+				store:"leads",
+				itemId:"leadList",
+				onItemDisclosure:false,
+				grouped:true,
+				disableSection:false,
+
+				//The template for display if the store is empty of records
+				//Note the style to control visual presentation
+				loadingText:"Loading Leads....",
+				emptyText:'<div class="leads-list-empty-text">No Leads Found.</div>',
+				//emptyText:"None",
+				itemTpl:"Empty Template",
+
+				//The template for the display of each list item representing one record
+				//one row will display for each record in the data store
+				//The fields referenced are from the entity's Model
+				//itemTpl:'<div class="list-item-line-main">{LastName}</div>'+ '<div class="list-item-line-detail">{Company}</div>'+'<div class="list-item-line-detail">{Title} - Phone: {Phone}</div>' + '<div class="list-item-line-detail">{Email}</div>',
+			}//end of main list and properties
+		],
+
+	}, //close config
+
+}); //close view definition
+	</script>
+</apex:component>

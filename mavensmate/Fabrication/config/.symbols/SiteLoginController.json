@@ -1,0 +1,109 @@
+{
+    "name": "SiteLoginController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "startUrl", 
+            "location": {
+                "column": 16, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "SiteLoginController", 
+            "name": "controller", 
+            "location": {
+                "column": 29, 
+                "line": 17
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "SiteLoginController", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 13
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "username", 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 5
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "password", 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 6
+            }, 
+            "type": "String"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "SiteLoginController", 
+        "name": "SiteLoginController", 
+        "location": {
+            "column": 27, 
+            "line": 4
+        }
+    }, 
+    "key": "01pS00000005zfX", 
+    "id": "01pS00000005zfX", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "login", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 8
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testSiteLoginController", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 49, 
+                "line": 15
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

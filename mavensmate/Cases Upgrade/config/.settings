@@ -1,0 +1,19 @@
+{
+    "username": "kal@ropescoursesinc.com.sandbox", 
+    "environment": "sandbox", 
+    "project_name": "Cases Upgrade", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "org_url": "", 
+    "namespace": "", 
+    "id": "D9SCHQIV12K33QTKJO074QZJK7A95VHS", 
+    "metadata_container": "1dcS00000008PVzIAM", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

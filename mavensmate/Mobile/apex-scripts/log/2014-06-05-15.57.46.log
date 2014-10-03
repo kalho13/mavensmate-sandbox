@@ -1,0 +1,333 @@
+Execute Anonymous
+
+================================
+
+List<Lead> leadList = [SELECT FirstName, LastName, Company, Title,Phone,Email, Status FROM Lead];
+system.debug(JSON.serializePretty(leadList));
+
+================================
+
+28.0 APEX_CODE,DEBUG;APEX_PROFILING,DEBUG;CALLOUT,INFO;DB,INFO;VALIDATION,INFO;WORKFLOW,INFO
+Execute Anonymous: List<Lead> leadList = [SELECT FirstName, LastName, Company, Title,Phone,Email, Status FROM Lead];
+Execute Anonymous: system.debug(JSON.serializePretty(leadList));
+15:57:46.144 (144462947)|EXECUTION_STARTED
+15:57:46.144 (144474898)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+15:57:46.145 (145206168)|SOQL_EXECUTE_BEGIN|[1]|Aggregations:0|select FirstName, LastName, Company, Title, Phone, Email, Status from Lead
+15:57:46.234 (234049336)|SOQL_EXECUTE_END|[1]|Rows:23
+15:57:46.237 (237094178)|USER_DEBUG|[2]|DEBUG|[ {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd000000LlsOBEAZ"
+  },
+  "Status" : "Open - Not Contacted",
+  "Id" : "00Qd000000LlsOBEAZ",
+  "Company" : "Home",
+  "LastName" : "Larry"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntEEAS"
+  },
+  "Status" : "Closed - Converted",
+  "Phone" : "(336) 222-7000",
+  "Email" : "jrogers@btca.com",
+  "FirstName" : "Jack",
+  "Id" : "00Qd0000005UntEEAS",
+  "Company" : "Burlington Textiles Corp of America",
+  "LastName" : "Rogers",
+  "Title" : "VP, Facilities"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntFEAS"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(614) 431-5000",
+  "Email" : "bill_dadio@zenith.com",
+  "FirstName" : "Bill",
+  "Id" : "00Qd0000005UntFEAS",
+  "Company" : "Zenith Industrial Partners",
+  "LastName" : "Dadio Jr",
+  "Title" : "CFO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntGEAS"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(781) 270-6500",
+  "Email" : "eluce@pacificretail.com",
+  "FirstName" : "Eugena",
+  "Id" : "00Qd0000005UntGEAS",
+  "Company" : "Pacific Retail Group",
+  "LastName" : "Luce",
+  "Title" : "CEO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntHEAS"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(626) 440-0700",
+  "Email" : "sandra_e@highland.net",
+  "FirstName" : "Sandra",
+  "Id" : "00Qd0000005UntHEAS",
+  "Company" : "Highland Manufacturing Ltd.",
+  "LastName" : "Eberhard",
+  "Title" : "VP, Production"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntIEAS"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(610) 265-9100",
+  "Email" : "bblair@abankingco.com",
+  "FirstName" : "Betty",
+  "Id" : "00Qd0000005UntIEAS",
+  "Company" : "American Banking Corp.",
+  "LastName" : "Bair",
+  "Title" : "VP, Administration"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UnsxEAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(850) 644-4200",
+  "Email" : "bertha@fcof.net",
+  "FirstName" : "Bertha",
+  "Id" : "00Qd0000005UnsxEAC",
+  "Company" : "Farmers Coop. of Florida",
+  "LastName" : "Boxer",
+  "Title" : "Director of Vendor Relations"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UnsyEAC"
+  },
+  "Status" : "Open - Not Contacted",
+  "Phone" : "(703) 757-1000",
+  "Email" : "pcotton@abbottins.net",
+  "FirstName" : "Phyllis",
+  "Id" : "00Qd0000005UnsyEAC",
+  "Company" : "Abbott Insurance",
+  "LastName" : "Cotton",
+  "Title" : "CFO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UnszEAC"
+  },
+  "Status" : "Open - Not Contacted",
+  "Phone" : "886-2-25474189",
+  "Email" : "jeffg@jackson.com",
+  "FirstName" : "Jeff",
+  "Id" : "00Qd0000005UnszEAC",
+  "Company" : "Jackson Controls",
+  "LastName" : "Glimpse",
+  "Title" : "SVP, Procurement"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt0EAC"
+  },
+  "Status" : "Open - Not Contacted",
+  "Phone" : "(410) 381-2334",
+  "Email" : "likeb@metro.com",
+  "FirstName" : "Mike",
+  "Id" : "00Qd0000005Unt0EAC",
+  "Company" : "Metropolitan Health Services",
+  "LastName" : "Braund",
+  "Title" : "VP, Technology"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt1EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(336) 777-1970",
+  "Email" : "patricia_feager@is.com",
+  "FirstName" : "Patricia",
+  "Id" : "00Qd0000005Unt1EAC",
+  "Company" : "International Shipping Co.",
+  "LastName" : "Feager",
+  "Title" : "CEO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt2EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(847) 262-5000",
+  "Email" : "brenda@cardinal.net",
+  "FirstName" : "Brenda",
+  "Id" : "00Qd0000005Unt2EAC",
+  "Company" : "Cadinal Inc.",
+  "LastName" : "Mcclure",
+  "Title" : "CFO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt3EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(770) 395-2370",
+  "Email" : "violetm@emersontransport.com",
+  "FirstName" : "Violet",
+  "Id" : "00Qd0000005Unt3EAC",
+  "Company" : "Emerson Transport",
+  "LastName" : "Maccleod",
+  "Title" : "VP, Finance"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt4EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(860) 273-0123",
+  "Email" : "ksynder@tnr.net",
+  "FirstName" : "Kathy",
+  "Id" : "00Qd0000005Unt4EAC",
+  "Company" : "TNR Corp.",
+  "LastName" : "Snyder",
+  "Title" : "Regional General Manager"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt5EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(952) 346-3500",
+  "Email" : "tom.james@delphi.chemicals.com",
+  "FirstName" : "Tom",
+  "Id" : "00Qd0000005Unt5EAC",
+  "Company" : "Delphi Chemicals",
+  "LastName" : "James",
+  "Title" : "SVP, Production"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt6EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(408) 326-9000",
+  "Email" : "shellyb@westerntelecom.com",
+  "FirstName" : "Shelly",
+  "Id" : "00Qd0000005Unt6EAC",
+  "Company" : "Western Telecommunications Corp.",
+  "LastName" : "Brownell",
+  "Title" : "SVP, Technology"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt7EAC"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(570) 326-1571",
+  "Email" : "pam_owenby@hendricksontrading.com",
+  "FirstName" : "Pamela",
+  "Id" : "00Qd0000005Unt7EAC",
+  "Company" : "Hendrickson Trading",
+  "LastName" : "Owenby",
+  "Title" : "SVP, Technology"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt8EAC"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(419) 289-3555",
+  "Email" : "norm_may@greenwich.net",
+  "FirstName" : "Norm",
+  "Id" : "00Qd0000005Unt8EAC",
+  "Company" : "Greenwich Media",
+  "LastName" : "May",
+  "Title" : "VP, Facilities"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005Unt9EAC"
+  },
+  "Status" : "Closed - Converted",
+  "Phone" : "33562156600",
+  "Email" : "pat@pyramid.net",
+  "FirstName" : "Pat",
+  "Id" : "00Qd0000005Unt9EAC",
+  "Company" : "Pyramid Construction Inc.",
+  "LastName" : "Stumuller",
+  "Title" : "SVP, Administration and Finance"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntAEAS"
+  },
+  "Status" : "Closed - Converted",
+  "Phone" : "(620) 241-6200",
+  "Email" : "a_young@dickenson.com",
+  "FirstName" : "Andy",
+  "Id" : "00Qd0000005UntAEAS",
+  "Company" : "Dickenson plc",
+  "LastName" : "Young",
+  "Title" : "SVP, Operations"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntBEAS"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(434) 369-3100",
+  "Email" : "kakin@athenahome.com",
+  "FirstName" : "Kristen",
+  "Id" : "00Qd0000005UntBEAS",
+  "Company" : "Aethna Home Products",
+  "LastName" : "Akin",
+  "Title" : "Director, Warehouse Mgmt"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntCEAS"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(033) 452-1299",
+  "Email" : "david@blues.com",
+  "FirstName" : "David",
+  "Id" : "00Qd0000005UntCEAS",
+  "Company" : "Blues Entertainment Corp.",
+  "LastName" : "Monaco",
+  "Title" : "CFO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntDEAS"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(251) 679-2200",
+  "Email" : "carolync@aceis.com",
+  "FirstName" : "Carolyn",
+  "Id" : "00Qd0000005UntDEAS",
+  "Company" : "Ace Iron and Steel Inc.",
+  "LastName" : "Crenshaw",
+  "Title" : "VP, Technology"
+} ]
+15:57:46.653 (237178960)|CUMULATIVE_LIMIT_USAGE
+15:57:46.653|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 100
+  Number of query rows: 23 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+15:57:46.653|CUMULATIVE_LIMIT_USAGE_END
+
+15:57:46.237 (237213666)|CODE_UNIT_FINISHED|execute_anonymous_apex
+15:57:46.237 (237220584)|EXECUTION_FINISHED

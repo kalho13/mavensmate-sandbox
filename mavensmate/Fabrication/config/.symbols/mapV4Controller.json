@@ -1,0 +1,85 @@
+{
+    "name": "mapV4Controller", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "control", 
+            "location": {
+                "column": 28, 
+                "line": 28
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Account", 
+            "name": "account", 
+            "location": {
+                "column": 13, 
+                "line": 29
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "actual", 
+            "location": {
+                "column": 28, 
+                "line": 34
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "mapV4Controller", 
+        "name": "mapV4Controller", 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000005zfh", 
+    "id": "01pS00000005zfh", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getOpenCourses", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 5
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testGetOpenCourses", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 27
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

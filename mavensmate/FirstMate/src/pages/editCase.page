@@ -1,0 +1,52 @@
+<apex:page standardController="Case" sidebar="false">
+    <apex:sectionHeader title="Edit Case" subtitle="{!case.caseNumber}"/>
+    <apex:form >
+        <apex:pageBlock title="Edit Case" id="thePageBlock" mode="edit">
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>                
+            </apex:pageBlockButtons>
+            <apex:actionRegion >
+                <apex:pageBlockSection title="Basic Information" columns="2">
+                 <apex:inputField value="{!case.ownerId}"/>
+	                    <apex:pageBlockSectionItem >
+	                        <apex:outputLabel value="Status"/>
+	                        <apex:outputPanel >
+	                            <apex:inputField value="{!case.status}">
+	                                <apex:actionSupport event="onchange" rerender="thePageBlock" status="status"/>
+	                            </apex:inputField>
+	                            <apex:actionStatus startText="applying value..." id="status"/>
+	                        </apex:outputPanel>
+	                    </apex:pageBlockSectionItem>
+                    <apex:inputField value="{!case.caseNumber}"/>                    
+                    <apex:inputField value="{!case.priority}"/>
+                   
+                    <apex:inputField value="{!case.contactId}"/>
+                    <apex:inputField value="{!case.Contact.Phone}"/>
+                      <apex:inputField value="{!case.accountId}"/>
+                        <apex:inputField value="{!case.Contact.Email}"/>
+                     <apex:inputField value="{!case.type}"/>
+                </apex:pageBlockSection>
+            </apex:actionRegion>
+            <apex:pageBlockSection title="Closed Information" columns="1"
+                                   rendered="{!case.status == 'Closed'}">
+                <apex:inputField value="{!case.suppliedEmail}"  required="true"/>
+                <apex:inputField value="{!case.suppliedPhone}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+  
+</apex:page>
+
+<!-- 
+Case Owner -Status
+Case Number -Priority
+Contact Name -Contact Phone
+Account Name -Contact Email
+Type -Case Origin
+Case Reason
+Date Time Opened -Date Time Closed
+Created By -Last Modified By
+
+ -->

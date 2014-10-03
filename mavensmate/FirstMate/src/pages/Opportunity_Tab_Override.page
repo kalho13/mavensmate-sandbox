@@ -1,0 +1,7 @@
+<apex:page >
+<h1>TEST</h1>
+<apex:form >
+ <apex:commandButton action="{!new}" value="New O"/>
+ </apex:form> 
+<apex:enhancedList type="Opportunity" height="400" customizable="true"/>
+</apex:page>

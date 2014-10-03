@@ -1,0 +1,114 @@
+{
+    "name": "Utility", 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "invoiceNotification", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 3
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "opportunityScheduled", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 4
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "projectUmbrella", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 5
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "setTrainingDate", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 6
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "trainingPerformed", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 7
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "toolDetail", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 8
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "updateCost", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 9
+            }, 
+            "type": "Boolean"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "Utility", 
+        "name": "Utility", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000067fb", 
+    "id": "01pS000000067fb", 
+    "externalReferences": [], 
+    "methods": []
+}

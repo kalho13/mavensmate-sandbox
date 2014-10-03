@@ -1,0 +1,139 @@
+<apex:page sidebar="false"  showHeader="false" StandardController="R_D_Statement__c" >
+<!-- Consider making this a tabbed page -->
+ <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0;}
+      			
+      .panelHeader {
+      	font:12px optima, arial,sans-serif;
+      	background-color:#faf4cb; 
+		line-height: 1.5;
+		letter-spacing:1px;	
+   	 }  
+   	 
+   	 .fieldTitleAbove{
+   	 	align:center;
+   	 	text-align:center;
+   	 	font:12px optima, arial,sans-serif;
+   	 }
+   	 
+   	 .textarea {
+	width: 600px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	}
+      </style>
+<apex:form id="Traveler">
+<apex:pageBlock id="block1">
+	<apex:panelGrid width="100%" columns="1" id="block1Header" rules="all" styleClass="panelHeader">
+		<apex:outputText value="R&D STATEMENT"/>	
+	</apex:panelGrid>
+	<table width="100%" border="1"><tr>
+	
+	<td width="32%">
+	<table width="100%">
+		<tr>
+			<td width="65%">Job Number:</td>
+			<td><apex:inputField value="{!R_D_Statement__c.Job_Number__c}"/></td>			
+		</tr>
+		<tr>
+			<td width="65%">Product Name:</td>
+			<td><apex:inputField value="{!R_D_Statement__c.Product_Name__c}"/></td>		
+		</tr>
+	
+	</table>
+	</td>
+	
+	<td><apex:inputTextArea rows="10" cols="120" value="{!R_D_Statement__c.Product_Description__c}"/>	</td>
+	
+	</tr>
+	<tr><td>Date</td><td>Initials</td></tr>
+	</table>
+	<apex:panelGrid width="100%" columns="1" id="grid1" title="Panel Grid TITLE" rules="all">
+	
+		
+	<apex:actionRegion >
+		<!-- Allows submitting a portion of the form -->
+		<!-- Can add a save button for each region -->
+		<apex:commandButton value="Submit Statement" action="{!save}"/>
+		</apex:actionRegion>	
+	</apex:panelGrid>
+</apex:pageBlock>
+	<apex:pageBlock id="block2">
+		<apex:panelGrid width="100%" columns="1" id="block2Header" rules="all" styleClass="panelHeader">
+			<apex:outputText value="ENGINEERING"/>	
+		</apex:panelGrid>
+		<table width="100%" border="1">
+			<tr>
+				<td width="32%">	
+				<table width="100%">
+					<tr>
+						<td width="65%">BOM</td><td><apex:inputCheckbox label="BOM" value="{!R_D_Statement__c.Eng_Bom__c}"/></td>
+					</tr>
+					<tr>
+						<td width="65%">Parts List</td><td><apex:inputCheckbox value="{!R_D_Statement__c.Eng_Parts_List__c}"/></td>
+					</tr>
+					<tr>
+						<td width="65%">Prints</td><td><apex:inputCheckbox value="{!R_D_Statement__c.Prints__c}"/></td>
+					</tr>
+					<tr>
+						<td width="65%">Steel Weight</td><td><apex:inputField value="{!R_D_Statement__c.Steel_Weight__c}"/></td>
+					</tr>
+					<tr>
+						<td width="65%">Other Material Weight</td><td><apex:inputField value="{!R_D_Statement__c.Other_Material_Weight__c}"/></td>
+					</tr>
+					<tr>
+						<td width="65%">Engineering Number</td><td><apex:inputField value="{!R_D_Statement__c.Engineering_Number__c}"/></td>
+					</tr>
+				
+				</table>
+				</td>
+				<td><apex:inputTextArea rows="10" cols="120" value="{!R_D_Statement__c.Eng_Notes__c}"/></td>
+			</tr>
+			<tr>
+				<td>Date</td><td>Initials</td>
+			</tr>
+		</table>
+		<apex:commandButton value="Submit Engineering" action="{!save}"/>	
+	</apex:pageBlock>
+	<apex:pageBlock id="block3">
+		<apex:panelGrid width="100%" columns="1" id="block3Header" rules="all" styleClass="panelHeader">
+			<apex:outputText value="ENGINEERING TECH/PRODUCTION"/>	
+		</apex:panelGrid>	
+		
+			<table width="100%" border="1">
+			<tr>
+				<td width="25%">One Unit Production Time</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.One_Unit_Production_Time__c}"/></td><td width="25%">Shipping Time</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.Shipping_Time__c}"/></td>
+			</tr>
+			<tr>
+				<td width="25%">One Unit Paint Time</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.One_Unit_Production_Time__c}"/></td><td width="25%">Shipping Materials</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.Shipping_Time__c}"/></td>
+			</tr>
+			<tr>	
+				<td width="25%">Elements/Theming Assembly Time</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.One_Unit_Production_Time__c}"/></td><td width="25%">Gallons of Paint</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.Shipping_Time__c}"/></td>
+			</tr>
+			<tr>
+				<td width="25%">Cleaning Time</td><td width="25%"><apex:inputField value="{!R_D_Statement__c.One_Unit_Production_Time__c}"/></td><td width="25%"></td><td width="25%"></td>
+			</tr>
+			<tr><td colspan="2">Date</td><td colspan="2">Initials</td></tr>
+			</table>
+			<apex:commandButton value="Submit Production" action="{!save}"/>	
+	</apex:pageBlock>
+	<apex:pageBlock id="block4">
+		<apex:panelGrid width="100%" columns="1" id="block4Header" rules="all" styleClass="panelHeader">
+			<apex:outputText value="PURCHASING"/>	
+		</apex:panelGrid>	
+			<apex:commandButton value="Submit Purchasing" action="{!save}"/>	
+	</apex:pageBlock>
+	<apex:pageBlock id="block5">
+		<apex:panelGrid width="100%" columns="1" id="block5Header" rules="all" styleClass="panelHeader">
+			<apex:outputText value="PRODUCT SALES"/>	
+		</apex:panelGrid>
+			<apex:commandButton value="Submit Sales" action="{!save}"/>		
+	</apex:pageBlock>
+
+</apex:form>
+</apex:page>

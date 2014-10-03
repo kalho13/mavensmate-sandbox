@@ -1,0 +1,87 @@
+{
+    "name": "ProjectModuleExt", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "stdController", 
+            "location": {
+                "column": 58, 
+                "line": 5
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Project_Module__c", 
+            "name": "m", 
+            "location": {
+                "column": 28, 
+                "line": 11
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "ProjectModuleExt", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 5
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "stdController", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 3
+            }, 
+            "type": "StandardController"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "ProjectModuleExt", 
+        "name": "ProjectModuleExt", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006BrC", 
+    "id": "01pS00000006BrC", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "save", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 10
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }
+    ]
+}

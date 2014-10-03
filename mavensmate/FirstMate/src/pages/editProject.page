@@ -1,0 +1,100 @@
+<apex:page standardController="Customer_Project__c" sidebar="true" extensions="ProjectController">
+    <apex:sectionHeader title="Customer Project" description="{!Customer_Project__c.Name}"/>
+    
+     <apex:form >
+        <apex:pageBlock title="Edit Project" id="thePageBlock" mode="edit">
+        
+        	<apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>                
+            </apex:pageBlockButtons>
+            
+             <apex:actionRegion >
+             	<apex:pageBlockSection title="Project Information" columns="2">
+             		<apex:inputField value="{!Customer_Project__c.Name}"/>
+             		 <apex:inputField value="{!Customer_Project__c.Account__c}"/>
+             		<apex:pageBlockSectionItem >
+	                	<apex:outputLabel value="Project Type"/>
+	                    <apex:outputPanel >
+	                    	<apex:inputField required="true" value="{!Customer_Project__c.Project_Type__c}">
+	                        	<apex:actionSupport event="onchange" rerender="thePageBlock" status="type"/>
+	                        </apex:inputField>
+	                       
+	                    </apex:outputPanel>
+	                </apex:pageBlockSectionItem>
+	                
+	                 <apex:inputField value="{!Customer_Project__c.Opportunity__c}"/>
+	                 <apex:inputField value="{!Customer_Project__c.Job_Number__c}"/>
+	                 <apex:inputField value="{!Customer_Project__c.Revenue__c}"/>             
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Project Status" columns="2"  rendered="{!Customer_Project__c.Project_Type__c == 'Course'}">
+	                <apex:inputField value="{!Customer_Project__c.Engineering_Complete__c}"/> 
+	                <apex:inputField value="{!Customer_Project__c.Fabrication_Complete__c}"/>
+	                <apex:inputField value="{!Customer_Project__c.Paint_Complete__c}"/>
+	                <apex:inputField value="{!Customer_Project__c.Shipping_Complete__c}"/> 
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Course Design" columns="2"  rendered="{!Customer_Project__c.Project_Type__c == 'Course'}">
+                	<apex:inputField value="{!Customer_Project__c.Overhead_Color__c}"/> 
+                	<apex:inputField value="{!Customer_Project__c.Column_Color__c}"/> 
+                	<apex:inputField value="{!Customer_Project__c.Platform_Color__c}"/> 
+                	<apex:inputField value="{!Customer_Project__c.Galvanized__c}"/> 
+                
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockSection title="Shipping Detail" columns="2"  rendered="{!Customer_Project__c.Project_Type__c == 'Course'}">               
+                	<apex:inputField value="{!Customer_Project__c.Release_to_Ship__c}"/>
+                	<apex:inputField value="{!Customer_Project__c.Freight_Cost__c}"/>
+                	<apex:inputField value="{!Customer_Project__c.Shipper__c}"/>
+                	<apex:inputField value="{!Customer_Project__c.Tracking_Number__c}"/>
+                
+                </apex:pageBlockSection>
+                
+                 <apex:pageBlockSection title="Installation Detail" columns="2"  rendered="{!Customer_Project__c.Project_Type__c == 'Installation'}"> 
+                	<apex:pageBlockSectionItem >
+                		<apex:outputLabel value="Installed By"/>
+	                   	<apex:actionRegion >
+	                    	<apex:inputField label="Installed By" required="true" value="{!Customer_Project__c.Installed_By__c}">
+	                        	<apex:actionSupport event="onchange" rerender="thePageBlock" status="consult"/>
+	                        </apex:inputField>	                        
+	                        
+	                        </apex:actionRegion>
+	                  </apex:pageBlockSectionItem>      
+                		 
+		                 <apex:inputField value="{!Customer_Project__c.Install_Start_Date__c}"/>
+		                 <apex:inputField value="{!Customer_Project__c.Installation_Budget__c}"/>
+		                 <apex:inputField value="{!Customer_Project__c.Install_End_Date__c}"/>
+		                 <apex:inputField value="{!Customer_Project__c.Days_to_Install__c}"/>
+		                  <apex:inputField rendered="{!Customer_Project__c.Installed_By__c=='Customer'}" value="{!Customer_Project__c.Consultation__c}"/>
+                
+                   </apex:pageBlockSection>       
+                 
+                 <apex:pageBlockSection title="Installation Notes" columns="1"  rendered="{!Customer_Project__c.Project_Type__c == 'Installation'}"> 
+                 <apex:inputTextArea rows="6" cols="120" value="{!Customer_Project__c.Install_Notes__c}"/>
+                 </apex:pageBlockSection>
+                 
+                  <apex:pageBlockSection title="Inspection" columns="2"  rendered="{!Customer_Project__c.Project_Type__c == 'Inspection'}"> 
+               
+                  	 <apex:pageBlockSectionItem >
+	                  	  <apex:outputLabel value="Customer Courses"/>
+		                  <apex:dataList type="1" value="{!courses}" var="c">
+		       				<apex:outputText value="{!c.Model__c}"/> - &nbsp;<apex:outputText value="{!c.Year_Built__c}"/>
+		    			 </apex:dataList>
+                   </apex:pageBlockSectionItem> 
+                   
+                  	 <apex:inputField value="{!Customer_Project__c.Inspection_Budget__c}"/>
+                  	 <apex:inputField value="{!Customer_Project__c.Installation_Inspection__c}"/>
+                  	 <apex:inputField value="{!Customer_Project__c.Days_On_Site_Inspection__c}"/>
+                  	 <apex:inputField value="{!Customer_Project__c.Inspection_Performed_By__c}"/>
+                  </apex:pageBlockSection>
+                  
+                  
+                  <apex:pageBlockSection title="Training Detail" columns="1"  rendered="{!Customer_Project__c.Project_Type__c == 'Training'}"> 
+                  
+                  </apex:pageBlockSection>
+             </apex:actionRegion>
+        
+        </apex:pageBlock>
+        
+        </apex:form>
+</apex:page>

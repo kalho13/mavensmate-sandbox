@@ -1,0 +1,58 @@
+<apex:page controller="ManageInspectionsController">
+<apex:form >
+
+	 <script type="text/javascript">
+      function checkAll(cb,filter)   {
+            var inputElem = document.getElementsByTagName("input");  
+            for(var i=0; i<inputElem.length; i++)  {
+                if(inputElem[i].id.indexOf(filter)!=-1)  {   
+                inputElem[i].checked = cb.checked;
+                }
+            }
+        }
+	</script>	
+		<apex:pageBlock >
+		  <table width="80%">
+		  	<tr>
+		  	<td width="20%" align="left"><apex:image value="{!URLFOR($Resource.RCIImages, 'RCLogo.png')}" width="100" height="50"/></td>
+		  	<td width="80%" align="center" style="font-family:arial;color:black;font-size:28px; vertical-align:middle;"> Courses Missing Active Inspection Records</td>
+		  	</tr>
+		  </table>
+	       		  
+	       		
+	    	</apex:pageBlock>
+	 <apex:pageBlock >	 
+	 	
+	  	<apex:pageBlockButtons location="top">
+         	<apex:commandButton action="{!process}" value="Create Inspections for Selected Courses"/>   
+        	<apex:commandButton action="{!cancel}" value="Cancel"/>	 
+        </apex:pageBlockButtons>
+        
+        <apex:pageMessages />
+        
+         <apex:pageBlockSection title="Course Results -  Page #{!pageNumber}" columns="1" id="baseList">
+	        <apex:pageBlockTable value="{!courses}" var="c">        
+	         <apex:column width="8px"><apex:facet name="header">
+					<input type="checkbox" onclick="checkAll(this,'check')" />
+				</apex:facet>        
+	            <apex:inputCheckbox value="{!c.Selected__c}" id="check"/>
+	         </apex:column>
+				
+		         <apex:column value="{!c.Account__c}" headerValue="Customer"/>
+		         <apex:column value="{!c.Model__c}" headerValue="Model"/>
+		         <apex:column value="{!c.Year_Built__c}" headerValue="Year Built"/>
+		         <apex:column value="{!c.Distributor__c}" headerValue="Distributor"/>
+		       	 <apex:column value="{!c.Status__c}" headerValue="Status"/>
+	        </apex:pageBlockTable>   
+      </apex:pageBlockSection>
+        
+	 </apex:pageBlock>	 
+
+<apex:panelGrid columns="4">
+    <apex:commandLink action="{!first}">First</apex:commandlink>
+    <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandlink>
+    <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandlink>
+    <apex:commandLink action="{!last}">Last</apex:commandlink>
+    </apex:panelGrid>
+</apex:form>
+</apex:page>

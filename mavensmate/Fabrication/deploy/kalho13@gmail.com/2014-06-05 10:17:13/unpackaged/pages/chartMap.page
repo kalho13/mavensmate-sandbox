@@ -1,0 +1,311 @@
+<apex:page controller="inspectionMapController" showHeader="false" sidebar="false" standardStylesheets="false">
+<head>
+  <apex:includeScript value="{!$Resource.DateJS}"/>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link href='https://fonts.googleapis.com/css?family=Tenor+Sans|Open+Sans+Condensed:300' rel='stylesheet' type='text/css' />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 3px;}
+      #map_canvas { 
+            height: 100%;
+            width:100%; 
+            }           
+      .info {
+        font:12px optima, arial,sans-serif;
+        border-style:solid;
+        border-color:#faf4cb;
+        border-spacing:20px 20px;
+        border-radius:10px;
+        background-color:#faf4cb; 
+        line-height: 1.5;
+        letter-spacing:1px; 
+     }
+
+      .icon{
+        width: 50%;
+      height: 65%;
+      text-align: center;
+      vertical-align:middle;
+      background: white;
+      }
+
+      .legend {
+      background: white;
+      padding: 5px;
+      border:2px solid;
+     border-radius:15px;
+    }
+
+    </style>      
+   <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+   <script type="text/javascript" src="https://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js"></script>
+   
+   <script type="text/javascript">   
+    
+    google.load('visualization', '1.0', {'packages':['corechart']});
+   /* Written by K.Howell @ Ropes Courses Inc.  May 2014. */
+
+    $(document).ready(function() {
+        console.log('ready');
+        
+         google.maps.event.addDomListener(window, 'load', buildMap);
+        // google.visualization.event.addDomListener(window, 'load', buildChart);
+        
+
+      document.addEventListener('DOMContentLoaded', function () {
+          //google.load('visualization', '1.0', {'packages':['corechart']});
+          google.setOnLoadCallback(function () {
+              window.map = new google.maps.Map(
+              document.querySelectorAll('#chart')[0], {
+                  zoom: 2,
+                  center: new google.maps.LatLng(0, 0),
+                  mapTypeId: google.maps.MapTypeId.TERRAIN
+              });
+          });
+      });
+     
+
+     
+    }); //close ready
+
+    function buildChart(){
+      console.log('####### initCharts');
+       google.load('visualization', '1.0', {'packages':['corechart']});
+        
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(initCharts);
+    }
+
+    function buildMap() { 
+          var inspectionList=[]; /* Used to create a key of longitude and latitude values */
+          var processedInspections=[]; 
+          var myLatLng = new google.maps.LatLng(40.707123,  -99.033065);   //set the map center point        
+
+          var mapOptions = {
+             zoom: 5,
+             center: myLatLng,
+             mapTypeId: google.maps.MapTypeId.ROADMAP
+          };  //setting map options
+
+          //adding the map to the div tag
+          map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+          var address = inspectionMapController.getCourseInspections(function(records, e){  
+           $.each(records,function(index, inspection){
+            /* Create the inspectionList key to hold the coordinates of each course location  The key to each inspection is the longitude and latitude of the course location*/
+             inspectionList['key'] = inspection.Course__r.Account__r.Location__Latitude__s + ':' + inspection.Course__r.Account__r.Location__Longitude__s;
+              /* Add the details of each inspection record to an index */
+              var inspectionRecord = {};
+              inspectionRecord['key']=inspection.Course__r.Account__r.Location__Latitude__s + ':' + inspection.Course__r.Account__r.Location__Longitude__s;            
+                      inspectionRecord['lat']=inspection.Course__r.Account__r.Location__Latitude__s ;
+                      inspectionRecord['lon']=inspection.Course__r.Account__r.Location__Longitude__s;
+                      inspectionRecord['customer']=inspection.Course__r.Account__r.Name;
+                      inspectionRecord['city']=inspection.Course__r.Account__r.ShippingCity;
+                      inspectionRecord['state']=inspection.Course__r.Account__r.ShippingState;
+                      inspectionRecord['country']=inspection.Course__r.Account__r.ShippingCountry;
+                      inspectionRecord['model']=inspection.Course__r.Model__c;
+                      inspectionRecord['expirationDate']=new Date(inspection.Inspection_Expiration__c);                   
+                    inspectionList.push(inspectionRecord);
+           }); //end each  
+            
+          /* iterate through the list of inspections just created */
+          $.each(inspectionList, function(key, value) {   
+                            
+                    //if this customer location has not been processed then proceed               
+                     if( $.inArray(value['key'], processedInspections) == -1 ) { //continue if false key not found in processedInspections array
+                        //return all of the inspection records for a customer location as there may be many inspections for many courses
+                         var result = $.grep(inspectionList, function(v,i) {  
+                            return v['key'] === value.key;
+                        });
+                      
+                        var pinColor = getMarkerColor(result);
+              var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                new google.maps.Size(21, 34),
+                new google.maps.Point(0,0),
+                new google.maps.Point(10, 34));
+                                    
+                        var marker = new google.maps.Marker({
+                          position: new google.maps.LatLng(result[0]['lat'], result[0]['lon']),
+                          map: map,
+                          icon:pinImage
+                         });   
+
+                         //the result can have many items as there may be many courses at a single customer location
+                        setMouseOver(result, marker);    //create the mouseover event listener
+                        setMouseOut(marker);    //create the mouseout event listener
+                        setMouseClick(marker);
+                        processedInspections.push(value.key);  //add the inspections processed to the processedInspectionsList so it will not be processed again
+                                                              
+                 }//end if processedCourses == -1 (meaning we have already processed this record)
+              });//end $.each  inspectionList
+
+          //add a legend to the map
+          addLegendControl(map);
+
+         }); //ends call to inspectionMapController
+
+      } //close initialize  
+  
+
+
+      function getMarkerColor(result) {
+        //look for date differences
+        //if greater than 90 then green
+        //if greater than 0 but less than 90 yellow
+        //if less than 0 but greater than -365 then red
+        //if less than -365 then black
+        var color;
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        var firstDate = new Date(result[0]['expirationDate']);
+        var secondDate = new Date(Date.today());
+        var largestDiffDays= 0;
+        
+        for(var i = 0; i< result.length; i++) {   
+        //change this to calculate the difference for all courses and display the worst value as the icon color          
+            
+              var firstDate = new Date(result[i]['expirationDate']);
+            var secondDate = new Date(Date.today());
+            var diffDays = Math.round((firstDate.getTime() - secondDate.getTime())/(oneDay));
+            
+            if(diffDays < 0 ){
+              if(diffDays < largestDiffDays){
+                largestDiffDays = diffDays;
+              }
+            }else if(diffDays > largestDiffDays){
+              largestDiffDays = diffDays;
+            }        
+
+          }
+          if(largestDiffDays > 90){
+            color ="339900";
+          }else if(largestDiffDays >= 0 &&  diffDays <= 90) {
+            color="FFFF00";
+          }else if(largestDiffDays >= -365 &&  diffDays < 0) {
+            color="FF0000";
+          }else{
+            color="808080";
+          }
+        return color;          
+      }
+
+     function setMouseOver(result, marker){
+
+        var model;
+        var location;
+        var customer;
+        var xdate;
+        var expdate;
+        var city;
+        var state;
+        var country;
+                  
+       for(var i = 0; i< result.length; i++) {
+           xdate = new Date(result[i]['expirationDate']);
+           expdate =  (xdate.getMonth()+1)+ '/'+ xdate.getDate() + '/' + xdate.getFullYear();              
+          if(i==0){
+           customer = result[i]['customer'];  
+           city = result[i]['city'];
+           state = result[i]['state'];
+           country =  result[i]['country'];
+           
+           
+           if( result[i]['model'].indexOf("Sky Trail")>= 0){
+          // console.log('i==0 (if): '  + result[i]['model']);
+            model = result[i]['model'].replace("Sky Trail", "Sky Trail&#174;");
+            model = model + '-Expires: ' + (xdate.getMonth()+1)+ '/'+ xdate.getDate() + '/' + xdate.getFullYear();
+           }else{
+           // console.log('i==0 (else): '  + result[i]['model']);
+            model = result[i]['model']+ '-Expires: ' + (xdate.getMonth()+1)+ '/'+ xdate.getDate() + '/' + xdate.getFullYear();;
+           }          
+        }else{
+        
+         if( result[i]['model'].indexOf("Sky Trail")>= 0){
+          //console.log('[else] i>0 (if): '  + result[i]['model']);
+            model = model + '</br>' + result[i]['model'].replace("Sky Trail", "Sky Trail&#174;");
+            model = model + '-Expires: ' + (xdate.getMonth()+1)+ '/'+ xdate.getDate() + '/' + xdate.getFullYear();  
+           }else{
+          //console.log('[else] i>0 (else): '  + result[i]['model']);
+            model =  model + '</br>' + result[i]['model'] + '-Expires: ' + (xdate.getMonth()+1)+ '/'+ xdate.getDate() + '/' + xdate.getFullYear();
+           }
+        } //end if i==0
+      } //end for loop
+
+    //with the variables set above it is time to use this information to create an infobox
+    //city and state if US or CA.  For rest the of global city and country
+      if((country !='US')&&(country !='USA')&&(country !='United States') &&(country !='CA')&&(country !='Canada')&&(country !=null)){
+        location = city + ', ' + country;     
+      }else{
+        location = city + ', ' + state;       
+      } 
+
+      //add mouseover event listener
+      google.maps.event.addListener(marker, "mouseover", function(event) {
+      var boxText = document.createElement("div");
+        boxText.style.cssText = "font:12px optima;border-style:solid; border-color:#faf4cb; border-spacing:20px 20px; border-padding:20px; border-radius:10px; background-color:#faf4cb;";
+        boxText.innerHTML =  '<div class="info"><b>Customer: </b>'+ customer + '<br>'+ '<b>Location: </b>'+ location + '<br>'+'<b>Course(s): </b></br>' + model +'<br>' + '</div>';
+                                               
+      var myOptions = {
+             content: boxText
+             ,disableAutoPan: false
+             ,maxWidth: 0
+             ,pixelOffset: new google.maps.Size(-140, 0)
+             ,zIndex: null
+             ,boxStyle: {opacity:1 ,width: "280px"}
+             ,closeBoxMargin: "10px 2px 2px 2px"
+             ,closeBoxURL: ""                         
+             ,infoBoxClearance: new google.maps.Size(1, 1)
+             ,isHidden: false
+             ,pane: "floatPane"
+             ,enableEventPropagation: false
+          };   
+                  
+        ib = new InfoBox(myOptions);             
+        if (ib) {ib.open(map, this);}                                       
+         });  //close mouseover listener 
+  } //end mouse over
+
+  function setMouseOut(marker){
+        google.maps.event.addListener(marker, "mouseout", function(event) {                   
+          //create ib2 otherwise scrolling across multiple markers causes loss of focus on infobox object
+             var ib2 = new InfoBox();
+             ib2 = ib;
+           setTimeout(function(){
+              ib2.close(); },200);
+            }); //close mouseout listener
+      }//close function setMouseOut
+
+  function setMouseClick(marker){     
+      google.maps.event.addListener(marker, "click", function(event) {
+         map.setZoom(9);
+         map.setCenter(marker.getPosition());
+      });//close click listener
+      }//close function setMouseClick
+
+  function addLegendControl(map){   
+    $('#legend').append('<table>');
+    $('#legend').append( '<tr><td colspan="2"><img src="' + "{!URLFOR($Resource.Logo)}" +'"></td></tr>' );
+    $('#legend').append( '<tr><td>Inspection Current </td><td><img class="icon" src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|339900"></td></tr>' );
+      $('#legend').append( '<tr><td>Inspection Due < 90 Days </td><td><img class="icon" src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FFFF00"></td></tr>' );
+      $('#legend').append( '<tr><td>Inspection Past Due < 1 Year </td><td><img class="icon" src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FF0000"></td></tr>' );
+      $('#legend').append( '<tr><td>Inspection Past Due > 1 Year &nbsp;&nbsp;</td><td><img class="icon" src="http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|808080"></td></tr>' );
+    $('#legend').append(  '</table>' );
+  
+    var legendControlDiv = document.getElementById('legend');   
+    map.controls[google.maps.ControlPosition.RIGHT].push(legendControlDiv);
+  } 
+
+
+   </script>
+
+
+    </head>
+    <body>
+     <div id="map_canvas"></div>
+     <div id="legend" class="legend" ></div>
+     <div id="chart" class="chart" ></div>
+       
+    </body>
+  
+</apex:page>

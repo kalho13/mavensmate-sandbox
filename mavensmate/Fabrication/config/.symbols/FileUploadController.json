@@ -1,0 +1,206 @@
+{
+    "name": "FileUploadController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "parentId", 
+            "location": {
+                "column": 44, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "attachmentId", 
+            "location": {
+                "column": 61, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "fileName", 
+            "location": {
+                "column": 82, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "contentType", 
+            "location": {
+                "column": 99, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "base64BlobValue", 
+            "location": {
+                "column": 119, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Attachment", 
+            "name": "att", 
+            "location": {
+                "column": 24, 
+                "line": 15
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Attachment", 
+            "name": "atm", 
+            "location": {
+                "column": 28, 
+                "line": 27
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Account", 
+            "name": "acct", 
+            "location": {
+                "column": 13, 
+                "line": 41
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Course_Detail__c", 
+            "name": "course", 
+            "location": {
+                "column": 22, 
+                "line": 44
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "FileUploadController", 
+            "name": "fc", 
+            "location": {
+                "column": 26, 
+                "line": 50
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Blob", 
+            "name": "bodyBlob", 
+            "location": {
+                "column": 10, 
+                "line": 52
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Attachment", 
+            "name": "attachment", 
+            "location": {
+                "column": 16, 
+                "line": 54
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Attachment", 
+            "name": "a", 
+            "location": {
+                "column": 17, 
+                "line": 61
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "FileUploadController", 
+        "name": "FileUploadController", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000060nc", 
+    "id": "01pS000000060nc", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "attachBlob", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "parentId"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "attachmentId"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "fileName"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "contentType"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "base64BlobValue"
+                }
+            ], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 4
+            }, 
+            "returnType": "String", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testFileUploads", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 39
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

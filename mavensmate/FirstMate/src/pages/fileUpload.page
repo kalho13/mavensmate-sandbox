@@ -1,0 +1,4 @@
+<apex:page showHeader="false" >
+        <!-- Replace parentId attribute with Id of an object that >supports attachments -->
+        <c:fileUpload parentId="{!$CurrentPage.parameters.parentId}"/>
+    </apex:page>

@@ -1,0 +1,201 @@
+<apex:page standardController="Tool_Box__c" extensions="AssignedTools" applyhtmltag="false" showHeader="false" renderAs="pdf" sidebar="false">
+   <html>
+ <head>
+  <style> 
+  
+  @page {
+		size: Letter; 	 
+	 	margin: 20mm; 
+	 	margin-top:40mm; 		 	
+	    @top-center {		  	
+		   	content: element(header);		   
+	   }
+	   @bottom-center {
+	 	font-family:Sans-Serif;
+	 	content: "Page " counter(page) " of " counter(pages);
+	   }
+	}
+	 div.header {
+		  margin:10mm;
+		  position:running(header);	
+		 page-break-before: always;
+		 
+	 }
+	
+	 
+	 .infobox{
+	 	border:1px dashed #CCCCCC;
+	 	font-size: 100%;
+	 }
+	 
+
+	 
+	 .toolAssignment{
+	 	text-align:center;
+	 	background-color:#FF8C00;
+	 	border-radius:25px;
+	 	font-family:Sans-Serif; 
+	 	font-size:24px; 
+	 	border:2px;	 
+	 }
+	 
+	 div.main {
+		  margin-top:1mm;
+		  position:relative	  		 
+	 }
+	 
+
+	
+     body {
+     font-family:Sans-Serif;
+     }      
+ 
+   
+        
+     .panel{
+     	background-color:blue;
+     }    
+     
+     .tableHead{
+     	border-bottom:3px solid;
+     	background-color:#FFFFFF;
+     	font-weight:bold;
+     	font-size:16px;
+     	padding:2px;
+     	spacing:2px;
+     	text-align:center;
+     	text-color:red;
+     }
+     
+      .headerSubTable{
+	 	width:100%; 
+	 	border:2; 
+	 	border-color:black;
+	 	cellpadding:2px; 
+	 	cellspacing:2px;	 
+	 }
+     
+     .outputText{
+     	font-size:12px;
+     	text-align:center;
+     	align:center;
+     	font-color:red;
+     }
+     
+     .odd{
+     	border-bottom:1px solid #000;
+     	background-color: #FF9900;
+     	padding:1px 1px 1px 1px;
+     	font-size:100%;
+     	
+     }
+     
+     .even{
+     	border-bottom:1px solid #000;
+     	padding:1px 1px 1px 1px;
+     	font-size:100%;
+     	background-color: #FFFFFF;
+     }
+  
+  </style>
+ </head>
+  <body>
+
+ 
+ <div class="header">
+ 
+	 <table class="headerMainTable" >
+	 	<tr>
+	 		<td width="40%">
+		 		<table class="headerSubTable">
+		 			<tr>
+		 				<td>
+		 				<img src="{!URLFOR($Resource.Logo)}" width="220" height="95"/>
+		 				</td>
+		 			</tr>
+		 		</table>
+		 	</td>
+		 	<td width="60%">
+		 		<table class="headerSubTable">
+		 			<tr>
+		 				<td align="center" colspan="4" class="toolAssignment"> 		
+	 						<b>Tool Assignment</b> 		
+	 					</td>
+	 				</tr>
+	 			</table>
+	 		</td>
+		 </tr>
+	 </table>	 	
+  </div> 		
+	 <div>
+   <table style="text-align:left;border-color:blue;border-radius:25px;font-family:Sans-Serif;font-size:16px; border:2px;width:100%">
+	 	<tr>
+	 		<td width="25%"><b>Tool Box Owner:</b></td>
+	 		<td width="75%"><apex:outputText value="{!toolbox.name}"/> </td>
+	 	</tr>
+	 	<tr>
+	 		<td><b>Tool Box Cost:</b> </td>
+	 		<td>
+		 		<apex:outputText value="${0, number, ###,###,###,##0.00}">  
+		      		<apex:param value="{!toolbox.Tool_Box_Value__c}"/>  
+		 		</apex:outputText>
+	 		</td>
+	 	</tr>  	
+ 	</table> 	
+</div>			
+      <br/>
+      <br/>
+	 		<br/>
+	 		<br/>
+	 	 <table style="font-family:Sans-Serif;border:3px solid black; width:100%;">
+    	<tr>
+    		<td style="font-family:Sans-Serif;border:1px solid black; width:65%"><b>Signature:</b></td><td style="font-family:Sans-Serif;border:1px solid black; width:35%"><b>Date:</b></td>
+    	</tr>
+    </table>
+    
+    <p style="font-family:Sans-Serif;font-size:14px;">I understand and acknowledge responsibility for all assigned tools.</p>
+    
+    <br/>
+      <br/>
+	 			<apex:repeat value="{!tools}" var="toolList" id="theFirstList">
+	 			<div style="page-break-after:auto;" >
+	 			
+	 			<!-- Main table with all of the tool information -->
+	 			<apex:dataTable value="{!toolList}" var="tool" id="theTable" headerClass="tableHead"  rowClasses="odd,even" style="font-size:100%;" columnsWidth="500px, 50px, 150px,100px, 100px">
+	 			
+	 			<apex:column >
+    				<apex:facet name="header">Tool</apex:facet>	
+    				<apex:outputText value="{!tool.Tool_Entry__r.Name}" style="font-size:12px;"/>
+    			</apex:column>
+    			<apex:column >
+    				<apex:facet name="header">Qty</apex:facet>    		
+    				<apex:outputText value="{!tool.Quantity__c}" styleClass="outputText"/>
+    			</apex:column> 
+    			<apex:column >
+    				<apex:facet name="header">S/N</apex:facet>    		
+    				<apex:outputText value="{!tool.Serial_Number__c}" styleClass="outputText"/>
+    			</apex:column>
+     			<apex:column >
+    				<apex:facet name="header">Date</apex:facet>    		
+    				<apex:outputText value="{0,date,MM/dd/yyyy}" styleClass="outputText">
+						<apex:param value="{!tool.Date_Assigned__c}"/>
+					</apex:outputText>
+    			</apex:column>
+    			<apex:column >
+    				<apex:facet name="header">Cost</apex:facet>  
+    				<apex:outputText value="${0, number, ###,###,###,##0.00}" styleClass="outputText">  
+      					<apex:param value="{!tool.Calculated_Tool_Cost__c}"/>  
+ 					</apex:outputText>   				
+		    	</apex:column>
+	 			
+	 			</apex:dataTable> 
+	 			
+	 			</div>
+	 			</apex:repeat>
+	 		<br/>	
+	 			
+
+  </body>
+  </html>
+
+</apex:page>

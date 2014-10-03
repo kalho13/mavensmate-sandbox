@@ -1,0 +1,41 @@
+{
+    "name": "TestSendEmail", 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [
+            "TEST"
+        ], 
+        "type": "TestSendEmail", 
+        "name": "TestSendEmail", 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }
+    }, 
+    "key": "01pS000000061VF", 
+    "id": "01pS000000061VF", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "sendEmailTest", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 6
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

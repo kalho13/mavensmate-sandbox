@@ -1,0 +1,19 @@
+{
+    "username": "kal@ropescoursesinc.com.sandbox", 
+    "project_name": "Google Maps", 
+    "org_url": "", 
+    "namespace": "", 
+    "metadata_container": "1dcS00000008nP7IAI", 
+    "environment": "sandbox", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "id": "BBOQSTCICHV8I4CQJWTPCM8FPMW22DVU", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

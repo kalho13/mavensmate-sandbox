@@ -1,0 +1,19 @@
+{
+    "username": "kalho13@gmail.com", 
+    "environment": "developer", 
+    "project_name": "Restful", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "org_url": "", 
+    "namespace": "", 
+    "id": "9QDOLCQ70ZS0LVCZPL66FNIOA5CA797K", 
+    "metadata_container": "1dcd00000004KjKAAU", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

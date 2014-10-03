@@ -1,0 +1,324 @@
+<apex:page standardController="Job__c" extensions="filteredJobs" showHeader="true" sidebar="false">
+
+<!-- Control rendering based on the type of job.  There are a few different fields for R & D and Customer Project.  This is the starting point -->
+
+<apex:form id="Job" style="background-color:#E8E9ED;">
+<head>
+<style type="text/css">
+
+table {
+    margin: 0px auto;            
+}
+
+.mainTable{
+	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;	
+	border: 1px  solid #0088cc;
+	background-color:#FFFFFF;
+	width: 98%;
+	padding: 5px;
+	color: white;	
+}
+.mainCustomer{
+	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border: 1px  solid #0088cc;
+	background-color:#FFFFFF;
+	width: 99%;
+	padding: 5px;
+	color: white;	
+
+}
+.mainInternal{
+	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border: 1px  solid #FF9933;
+	background-color:#FFFFFF;
+	width: 99%;
+	padding: 5px;
+	color: #333333;	
+}
+.mainRD{
+	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border: 1px  solid red;
+	background-color:#FFFFFF;
+	width: 99%;
+	padding: 5px;
+	color: #333333;	
+
+}
+
+.mainEngineering{
+	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border: 1px  solid #0088cc;
+	width: 99%;
+	padding: 5px;
+	color: white;	
+
+}
+
+.mainSubTable{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 5px;
+	border-style: solid;
+	background-color:#FFFFFF;
+	border-color: #0088cc;
+	background-color: #444444;
+	width: 99%;
+	color:#FFFFFF;	
+}
+
+.mainSubCustomer{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 5px;
+	border: 2px solid #0088cc;
+	background-color: #444444;
+	width: 99%;
+	color:#FFFFFF;
+}
+
+.mainSubInternal{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 5px;
+	border-style: solid;
+	border-color: #FF9933;
+	background-color: #F7EFD5;
+	width: 99%;
+	color: #333333;	
+}
+
+.mainSubEngineering{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 5px;
+	border-style: solid;
+	border-color: #0088cc;
+	background-color: #444444;
+	width: 99%;
+	color:#FFFFFF;
+}
+
+.mainSubRD{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 5px;
+	border-style: solid;
+	border-color: red;
+	background-color: #444444;
+	width: 99%;
+	color: #333333;	
+}
+
+
+
+.label{
+	font-family: helvetica, arial; 
+	font-weight:bold; 
+	font-size:10pt;
+	color:#FFF;
+	text-align: right;
+}
+
+.darkLabel{
+	font-family: helvetica, arial; 
+	font-weight:bold; 
+	font-size:10pt;
+	color:#333333;	
+	text-align: right;
+}
+
+.field{
+	font-family: helvetica, arial; 
+	font-size:10pt;
+	text-align: left;
+	color:#FFF;	
+}
+
+.columnTables{	
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border: 2px  solid #000000;
+	width: 100%;
+	padding: 2px;
+}
+.columnHeader{
+	border-radius: 10px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	background-color: #0088cc;
+	font-family: helvetica, arial; 
+	font-size:10pt;
+	text-align: center;
+	color:#FFFFFF;
+}
+.columnFieldLabel{
+	background-color: #CCCCCC;
+	font-family: helvetica, arial; 
+	font-size:10pt;
+	text-align: center;	
+	border-spacing: 5px;
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #000000;
+}
+.columnFieldValue{
+	padding:5px;
+	font-size:10pt;
+	text-align: center;	
+}
+
+.mainOuter {
+  width: 100%;
+  margin: 0 auto; 
+  border-style: solid;
+  background-color:red;
+  border: 2pt;
+}
+
+.mainInner{
+  width: 96%;
+  margin: 0 auto; 
+  border-style: solid;
+  background-color:#000000;
+  border: 2pt;
+
+}
+
+
+
+</style> 
+
+
+
+</head>
+<br/>
+	<table class="mainTable" id="main"><tr><td>
+		<table class="mainSubTable" id="mainSubTable">
+			<tr>
+				<td width="17%" class="label"><apex:outputLabel value="Job Name: "/></td>
+				<td width="17%" class="field"><apex:outputField id="jobName" value="{!Job__c.Name}"/></td>
+				<td width="17%" class="label"><apex:outputLabel value="Job Type: "/></td>
+				<td width="17%" class="field"><apex:outputField id="jobType" value="{!Job__c.Job_Type__c}"/></td>
+				<td width="17%" id="budgetLabel"  class="label"><apex:outputLabel value="Budget: "/></td>
+				<td width="17%" id="budget" class="field"><apex:outputField value="{!Job__c.Budget_Estimate__c}"/></td>
+				<td width="17%" id="hideLabel" ></td>
+				<td width="17%" id="hideBudget" ></td>
+			</tr>
+			<tr>
+				<td width="17%" class="label"><apex:outputLabel value="Account: "/></td>
+				<td width="17%" class="field"><apex:outputField id="jobAccount" value="{!Job__c.Account__c}"/></td>
+				<td width="17%" class="label"><apex:outputLabel value="Job Status: "/></td>
+				<td width="17%" class="field"><apex:outputField id="jobStatus" value="{!Job__c.Status__c}"/></td>						
+			</tr>
+		</table>
+	</td></tr></table>
+			
+			<br/>
+		<div id="fabrication">	
+			<table id="customerContent" class="mainTable" width="100%"><tr><td>
+				<table id="customerColumns" style="vertical-align:text-top; width:100%;"><tr>
+					<td width="33%">				
+						<table class="columnTables">
+							<tr><th class="columnHeader">Fabrication Hours</th></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Estimated Fabrication Hours"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricationEstimatedHours" value="{!Job__c.Fabrication_Estimated_Hours__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Projected Fabrication Hours"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricationProjectedHours" value="{!Job__c.Fabrication_Projected_Job_Hours__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Used Fabrication Hours"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricationUsedHours" value="{!Job__c.Fabrication_Used_Hours__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Estimated Fabrication Pounds Per Hour"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="estimatedFabricationPoundsPerHour" value="{!Job__c.Fabrication_Estimated_Pounds_Per_Hour__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Actual Fabrication Pounds Per Hour"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="actualFabricatedPoundsPerHour" value="{!Job__c.Fabrication_Pounds_Per_Hour__c}"/></td></tr>							
+						</table>
+					</td>			
+					<td width="33%">				
+						<table class="columnTables">
+							<tr><th class="columnHeader">Parts Counts</th></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Total Fabricated Parts"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricatedTotalParts" value="{!Job__c.Fabricated_Total_Parts__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Fabricated Parts Complete"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricatedPartsComplete" value="{!Job__c.Fabrication_Quantity_Complete__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Fabricated Parts Remaining"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricatedPartsRemaining" value="{!Job__c.Fabrication_Quantity_Remaining__c}"/></td></tr>							
+						</table>
+					</td>
+					<td width="33%">				
+						<table class="columnTables">
+							<tr><th class="columnHeader">Weight Details</th></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Weight All Releases"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField value="{!Job__c.Weight_All_Releases__c}"/></td></tr>
+							<tr><td class="columnFieldLabel"><apex:outputLabel value="Weight Current Releases"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="weightCurrentReleases" value="{!Job__c.Weight_of_Current_Releases__c}"/></td></tr>
+							<tr><td class="columnFieldLabel" ><apex:outputLabel value="Fabrication Weight Complete"/></td></tr>
+							<tr><td class="columnFieldValue"><apex:outputField id="fabricationWeightComplete" value="{!Job__c.Fabrication_Weight_Complete__c}"/></td></tr>
+							
+						</table>
+					</td></tr></table>
+		</td></tr></table>
+
+	</div>
+	<div id="rd">
+		<table style="border:3px;">
+		<tr>
+			<td></td>
+		</tr>
+		</table>
+
+	</div>
+
+	<div id="internal">
+	<table style="border:3px;">
+		<tr>
+			<td></td>
+		</tr>
+		</table>
+
+	</div>
+
+	<div id="engineering">
+	<table style="border:3px;">
+		<tr>
+			<td></td>
+		</tr>
+		</table>
+
+	</div>
+<br/>
+<br/>
+
+	<apex:pageBlock >
+
+		
+
+		<apex:outputpanel layout="block" style="text-align:center;">		
+		 	<apex:commandButton action="{!cancel}" value="Close Job Record" id="closeButton"/>			
+		</apex:outputpanel>
+
+	</apex:pageBlock>
+	</apex:form>
+	<!--- Can have multiple related List that all roll up to the job parent -->
+	<!-- The can be different visualforce pages, not necessarily different Job Part objects -->
+
+    <apex:relatedList list="Job_Part_QA_Details__r">
+        <apex:facet name="header"></apex:facet>
+    </apex:relatedList>
+   
+	
+</apex:page>

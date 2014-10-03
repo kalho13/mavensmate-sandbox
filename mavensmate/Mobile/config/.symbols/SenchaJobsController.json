@@ -1,0 +1,379 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "Query", 
+            "parameters": [
+                {
+                    "type": "QueryRequest", 
+                    "name": "qr"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 35
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "QueryOpenJobs", 
+            "parameters": [
+                {
+                    "type": "QueryRequest", 
+                    "name": "qr"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 57
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getAllJobParts", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 82
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getOpenJobs", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 30, 
+                "line": 86
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [
+        {
+            "properties": [
+                {
+                    "modifiers": [], 
+                    "name": "start", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 18, 
+                        "line": 5
+                    }, 
+                    "type": "Integer"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "recordCount", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 18, 
+                        "line": 6
+                    }, 
+                    "type": "Integer"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "sortParams", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 41, 
+                        "line": 7
+                    }, 
+                    "type": "LIST"
+                }
+            ], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [
+                {
+                    "type": "Integer", 
+                    "modifiers": [], 
+                    "references": [], 
+                    "location": {
+                        "column": 38, 
+                        "line": 14
+                    }, 
+                    "name": "pStart"
+                }, 
+                {
+                    "type": "Integer", 
+                    "modifiers": [], 
+                    "references": [], 
+                    "location": {
+                        "column": 54, 
+                        "line": 14
+                    }, 
+                    "name": "pRecordCount"
+                }
+            ], 
+            "constructors": [
+                {
+                    "modifiers": [], 
+                    "name": "QueryRequest", 
+                    "parameters": [], 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 9
+                    }, 
+                    "type": null
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "QueryRequest", 
+                    "parameters": [
+                        {
+                            "type": "Integer", 
+                            "name": "pStart"
+                        }, 
+                        {
+                            "type": "Integer", 
+                            "name": "pRecordCount"
+                        }
+                    ], 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 14
+                    }, 
+                    "type": null
+                }
+            ], 
+            "namespace": null, 
+            "name": "QueryRequest", 
+            "tableDeclaration": {
+                "type": "QueryRequest", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 19, 
+                    "line": 4
+                }, 
+                "name": "QueryRequest"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }, 
+        {
+            "properties": [
+                {
+                    "modifiers": [], 
+                    "name": "success", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 25, 
+                        "line": 22
+                    }, 
+                    "type": "Boolean"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "errorMessage", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 24, 
+                        "line": 23
+                    }, 
+                    "type": "String"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "records", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 34, 
+                        "line": 24
+                    }, 
+                    "type": "LIST"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "total", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 25, 
+                        "line": 25
+                    }, 
+                    "type": "Integer"
+                }
+            ], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [], 
+            "constructors": [
+                {
+                    "modifiers": [], 
+                    "name": "Response", 
+                    "parameters": [], 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 10, 
+                        "line": 26
+                    }, 
+                    "type": null
+                }
+            ], 
+            "namespace": null, 
+            "name": "Response", 
+            "tableDeclaration": {
+                "type": "Response", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 19, 
+                    "line": 21
+                }, 
+                "name": "Response"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }
+    ], 
+    "variables": [
+        {
+            "type": "QueryRequest", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 47, 
+                "line": 35
+            }, 
+            "name": "qr"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 36
+            }, 
+            "name": "resp"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 37
+            }, 
+            "name": "partList"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 46
+            }, 
+            "name": "recno"
+        }, 
+        {
+            "type": "QueryRequest", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 55, 
+                "line": 57
+            }, 
+            "name": "qr"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 58
+            }, 
+            "name": "resp"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 59
+            }, 
+            "name": "openJobList"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 73
+            }, 
+            "name": "recno"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "SenchaJobsController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 2
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "SenchaJobsController", 
+    "tableDeclaration": {
+        "type": "SenchaJobsController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "SenchaJobsController"
+    }, 
+    "key": "01pd0000002uVbu", 
+    "id": "01pd0000002uVbu", 
+    "externalReferences": []
+}

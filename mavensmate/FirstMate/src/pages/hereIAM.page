@@ -1,0 +1,6 @@
+<apex:page standardController="Case"  rendered="{!case.reason='Installation'}">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  Here I am
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

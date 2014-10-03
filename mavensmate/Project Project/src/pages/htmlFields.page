@@ -1,0 +1,33 @@
+<apex:page standardController="Opportunity" showHeader="false" sidebar="false">
+<apex:pageBlock>
+<table border = "1" width="100%">
+
+<tr>
+<td colspan="2"><apex:outputText value="{!Opportunity.htmlModelSet__c}" escape="false"/></td>
+</tr>
+<tr>
+<td colspan="2"><apex:outputText value="{!Opportunity.htmlOptions__c}" escape="false"/></td>
+</tr>
+<tr>
+<td colspan="2"><apex:outputText value="{!Opportunity.htmlProjectOverviews__c}" escape="false"/></td>
+</tr>
+<tr>
+<td width="50%"><apex:outputText value="{!Opportunity.htmlEntranceBarriers__c}" escape="false"/></td><td><apex:outputText value="{!Opportunity.Project_Owner__c}" escape="false"/></td>
+</tr>
+<tr>
+<td width="50%"><apex:outputText value="{!Opportunity.htmlSkyTykesOverview__c}" escape="false"/></td><td><apex:outputText value="{!Opportunity.htmlElements__c}" escape="false"/></td>
+</tr>
+<tr>
+<td><apex:outputText value="{!Opportunity.htmlProjectSkyRailOverview__c}" escape="false"/></td>
+</tr>
+<tr>
+<td><apex:outputText value="{!Opportunity.htmlInstallation__c}" escape="false"/></td><td><apex:outputText value="{!Opportunity.htmlOptions__c}" escape="false"/></td>
+</tr>
+<tr>
+<td><apex:outputText value="{!Opportunity.htmlTraining__c}" escape="false"/></td>
+</tr>
+
+
+</table>
+</apex:pageBlock>	
+</apex:page>

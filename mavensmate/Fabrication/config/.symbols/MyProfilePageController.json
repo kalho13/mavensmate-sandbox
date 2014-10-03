@@ -1,0 +1,268 @@
+{
+    "name": "MyProfilePageController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Contact", 
+            "name": "c", 
+            "location": {
+                "column": 50, 
+                "line": 61
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "User", 
+            "name": "u", 
+            "location": {
+                "column": 58, 
+                "line": 61
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "existingPortalUsers", 
+            "location": {
+                "column": 20, 
+                "line": 78
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "User", 
+            "name": "currentUser", 
+            "location": {
+                "column": 18, 
+                "line": 81
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "MyProfilePageController", 
+            "name": "controller", 
+            "location": {
+                "column": 37, 
+                "line": 83
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Contact", 
+            "name": "c", 
+            "location": {
+                "column": 21, 
+                "line": 91
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "User", 
+            "name": "existingPortalUser", 
+            "location": {
+                "column": 18, 
+                "line": 99
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "randFax", 
+            "location": {
+                "column": 20, 
+                "line": 100
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "MyProfilePageController", 
+            "name": "controller", 
+            "location": {
+                "column": 41, 
+                "line": 103
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "MyProfilePageController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 14
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "user", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 7
+            }, 
+            "type": "User"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "isEdit", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 8
+            }, 
+            "type": "Boolean"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "MyProfilePageController", 
+        "name": "MyProfilePageController", 
+        "location": {
+            "column": 27, 
+            "line": 5
+        }
+    }, 
+    "key": "01pS00000005zfb", 
+    "id": "01pS00000005zfb", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getUser", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 10
+            }, 
+            "returnType": "User", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getIsEdit", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 25
+            }, 
+            "returnType": "Boolean", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "edit", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 29
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "save", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 33
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "changePassword", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 49
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "cancel", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 53
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "setContactFields", 
+            "parameters": [
+                {
+                    "type": "Contact", 
+                    "name": "c"
+                }, 
+                {
+                    "type": "User", 
+                    "name": "u"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 61
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testSave", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 76
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

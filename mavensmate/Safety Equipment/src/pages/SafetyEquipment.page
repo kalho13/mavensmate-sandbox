@@ -1,0 +1,150 @@
+<apex:page standardController="Safety_Equipment__c" extensions="SafetyEquipmentController" standardstylesheets="true"  showHeader="true" sidebar="true">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+     <script type="text/javascript">
+      $j = jQuery.noConflict();
+
+       $j(document).ready(function() {
+            $j("[id$='b1']").hide();
+            $j("[id$='b2']").hide();
+            $j("[id$='b3']").hide();  
+            $j("[id$='b4']").hide();
+            $j("[id$='SNRange']").hide();   
+
+
+            $j('.saveAction').click(function(e) {
+
+                var start = $j('input[id$="serialNumberStart"]').val();
+                var end = $j('input[id$="serialNumberEnd"]').val()
+                var total = parseInt(end) - parseInt(start);
+                if(total > 50){
+                   if ( confirm('Wow you have '  + total.toString() +  ' to be added to inventory for safety items in your start to end range for serial numbers.  Are you really sure you want to add this many?') ) {
+                        return true;
+                    }
+                }else{
+                    return true;
+                 }
+                e.preventDefault();
+            }); 
+
+
+            $j('.assignAction').click(function(e){
+                console.log(start);
+                var start = $j('input[id$="assignSerialNumberStart"]').val();
+                var end = $j('input[id$="assignSerialNumberEnd"]').val()
+                var account = $j('input[id$="account"]').val()
+                var total = parseInt(end) - parseInt(start);
+                console.log(start);
+                console.log(end);
+                console.log(account);
+                console.log(total);
+                if(total > 50){
+                   
+                         if ( confirm('Wow you have '  + total.toString() +  ' items in the serial number range to be assigned to ' + account +  '.  Are you really sure you want to assign this many?') ) {
+                        return true;
+                    }
+                }else{
+                  return true;
+                }
+                e.preventDefault();
+
+            }); 
+          });
+
+         function validateEndSN(){
+            var a = $j("[id$='serialNumberStart']").val();
+            var b = $j("[id$='serialNumberEnd']").val();   
+            console.log(a);
+            console.log(b);         
+    
+            if(parseInt(a) < parseInt(b)){
+                $j("[id$='b1']").show();
+                $j("[id$='b2']").show();
+                $j("[id$='SNRange']").hide();   
+            }else{
+                $j("[id$='SNRange']").show();
+            }
+        }
+
+         function validateEndAssign(){
+            var c = $j("[id$='assignSerialNumberStart']").val();
+            var d = $j("[id$='assignSerialNumberEnd']").val();
+
+            if(parseInt(c) < parseInt(d)){
+                $j("[id$='b3']").show();  
+                $j("[id$='b4']").show();
+                $j("[id$='SNRange']").hide();  
+            }else{
+                $j("[id$='SNRange']").show();
+            }
+         }    
+    </script> 
+
+    <style>
+
+     .title{
+            text-align:center;
+            background-color:#1798c1;
+            border-radius:25px;
+            font-family:Sans-Serif; 
+            font-size:24px;
+            color: white; 
+            border:2px;  
+         }
+
+         .errorMesg{
+            color:red; 
+         }
+
+    </style>
+
+     <p class="title">Safety Equipment Management</p>
+    <br/>
+
+     <apex:form id="inventory"  >
+        <apex:pageBlock id="inventoryBlock" title="Add to Inventory"  rendered="{!$CurrentPage.parameters.action == 'Inventory'}">
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:pageBlockButtons >
+               <apex:commandButton id="b1" action="{!assignInventory}" value="Add to Inventory" styleClass="saveAction"/>
+                <apex:commandButton id="b2" action="{!assignInventoryClose}" value="Add to Inventory and Close" styleClass="saveAction"/>
+            </apex:pageBlockButtons>
+                <apex:pageBlockSection id="sectionInventory" columns="2">
+                <apex:inputField value="{!Safety_Equipment__c.Assigned_Date__c}"/>
+                <apex:outputText value="{!errorMessage}" styleClass="errorMsg" rendered="{!LEN(errorMessage)>0}"/>                
+                <apex:outputText id="SNRange" value="The serial number begin range must be less than the serial number end range" styleClass="errorMsg"/>     
+                <apex:inputField id="serialNumberStart" value="{!Safety_Equipment__c.Start_Serial_Number__c}"/>
+                <apex:inputField id="serialNumberEnd" onblur="validateEndSN()" value="{!Safety_Equipment__c.End_Serial_Number__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Ferule_Batch__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Ball_Shank_Batch__c}"/>                
+                <apex:inputField value="{!Safety_Equipment__c.Ferule_Die__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Ball_Shank_Die__c}"/>               
+                <apex:inputField value="{!Safety_Equipment__c.Test_Date__c}"/>
+                <apex:inputField id="testedBy" value="{!Safety_Equipment__c.Tested_By__c}"/>                
+                <apex:inputField value="{!Safety_Equipment__c.Test_Results__c}"/>
+                 <apex:inputField value="{!Safety_Equipment__c.Model__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Comma_Separated_Serial_Numbers__c}"/>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+
+    <apex:form id="account" >
+        <apex:pageBlock id="accountBlock" title="Assign to Account"  rendered="{!$CurrentPage.parameters.action == 'Assign'}">
+         <apex:pageMessages ></apex:pageMessages>      
+            <apex:pageBlockButtons >
+               <apex:commandButton id="b3" action="{!assignAccount}" value="Assign to Account" styleClass="assignAction"/>
+                <apex:commandButton id="b4" action="{!assignAccountClose}" value="Assign to Account and Close" styleClass="assignAction"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection id="sectionAssign" columns="2">
+                <apex:inputField id="assignSerialNumberStart" value="{!Safety_Equipment__c.Start_Serial_Number__c}"/>
+                <apex:inputField id="assignSerialNumberEnd" onblur="validateEndAssign()" value="{!Safety_Equipment__c.End_Serial_Number__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Assigned_Date__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Reviewed_By__c}"/>
+                <apex:inputField id="account" value="{!Safety_Equipment__c.Account__c}"/> 
+                 <apex:inputField value="{!Safety_Equipment__c.Safety_Equipment__c}"/>
+                 <apex:inputField id="opportunity" value="{!Safety_Equipment__c.Opportunity__c}"/>
+                <apex:inputField value="{!Safety_Equipment__c.Comma_Separated_Serial_Numbers__c}"/> 
+               <apex:outputText value="{!errorMessage}" styleClass="errorMsg" rendered="{!LEN(errorMessage)>0}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>	
+</apex:page>

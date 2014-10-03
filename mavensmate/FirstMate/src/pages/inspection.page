@@ -1,0 +1,213 @@
+<apex:page showHeader="false" docType="html-5.0" standardStylesheets="false" cache="true" controller="InspectionController" >
+<html>
+<head>
+<title>Inspection Reports</title>
+
+<link rel="alternate" href="/apex/inspection" id="desktop" media="only screen and (touch-enabled:0)"/>
+<link rel="alternate" href="apex/jQueryTest" id="phone" media="only screen and (max-device-width:640px)"/>
+<link rel="stylesheet" href="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.css')}" />
+<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.js')}"/>
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+<meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<script type="text/javascript">
+
+	var $j = jQuery.noConflict();
+	var customerList = new Array();
+	var courseList = new Array();
+	var inspectionList = new Array();
+	
+	$j(document).ready(init);
+	
+	function init(){
+	
+		if(window.location.href.indexOf('#')>0){
+			window.location.href = window.location.href.split("#")[0];
+		}
+		getCustomers(function(){});
+	}
+	
+	function getCustomers(callback){
+			//clear the existing customer list
+		$j('#customerList').empty();
+		//query a new list of customers
+		InspectionController.queryAccounts(function(records, e) {showCustomers(records, callback)}, {escape:true})
+	}
+	
+	
+	function getCourses(customerId, callback){
+		$j('#courseList').empty();		
+		InspectionController.queryCourses(customerId, function(records, e) {showCourses(records, callback)}, {escape:true})
+	}
+	
+	function getInspections(courseId, callback){
+		alert('getting inspections');
+		$j('#inspectionList').empty();
+		InspectionController.queryInspections(courseId, function(records, e){showInspections(records, callback)}, {escape:true})
+	}
+	
+	
+	function showCustomers(records, callback){
+		//iterate through the list of records to  build the customerList
+		$j.mobile.showPageLoadingMsg();
+		
+		for(var i=0; i < records.length; i++){
+			customerList[records[i].Id]=records[i];
+		}
+		
+			$j.each(records, 
+				function(){
+				$j('<li></li>')
+				.attr('id', this.Id)
+				.hide()
+				.append('<h2>' + this.Name + '</h2>')
+				.click(function(e){
+					e.preventDefault();					
+					//$j('#customerName').html(customerList[this.Id].Name);
+					//$j('#customerId').val(customerList[this.Id].Id);
+					var onCoursesLoaded = function(){
+						$j.mobile.hidePageLoadingMsg();
+					}
+					getCourses(customerList[this.id].Id, onCoursesLoaded);					
+				})
+				.appendTo('#customerList')
+				.show();
+				}
+			); //end if $.j.each
+		
+			$j('customerList').listview('refresh');
+			$j.mobile.changePage('#accountspage',{changeHash:true});
+			if(callback!=null){callback();}			
+	}
+		
+	
+	function showCourses(records, callback){
+		$j.mobile.showPageLoadingMsg();
+
+		for(var i=0; i < records.length; i++){
+			courseList[records[i].Id]=records[i];			
+		}
+		
+		$j.each(records, function(){			
+			$j('<li></li>')
+			.attr('id', this.Id)
+			.hide()
+			.append('<h2>' + this.Course_Type__c + '</h2>')
+			
+			.click(function(e){
+				e.preventDefault();
+				var onInspectionsLoaded = function(){				
+					$j.mobile.hidePageLoadingMsg();
+				}				
+				getInspections(courseList[this.id].Id, onInspectionsLoaded);			
+			})			
+			.appendTo('#courseList')
+			.show();		
+		}); //end for each
+	
+		if(callback!=null){
+			callback();
+			$j.mobile.changePage('#coursepage', {changeHash:true});
+			$j('#courseList').listview('refresh');
+		}
+		
+	}
+	
+	function showInspections(records, callback){
+		$j.mobile.showPageLoadingMsg();
+				
+		for(var i=0; i < records.length; i++){
+			inspectionList[records[i].Id]=records[i]
+		}
+		
+		$j.each(records, function(){
+			$j('<li></li>')
+			.attr('id', this.Id)
+			.hide()
+			.append('<h2>' + this.Name + '</h2>')
+			.appendTo('#inspectionList')
+			.show();		
+		});
+		
+		if(callback!=null){
+			callback();
+			$j.mobile.changePage('#inspectionpage', {changeHash:true});
+			$j('#inspectionList').listview('refresh');
+		}		
+	}
+
+</script>
+</head>
+
+<body>
+	<ul>
+		<li><a href="?device=phone">Phone Version</a></li>
+		<li><a href="?device=desktop">Computer Version</a></li>
+	</ul>
+
+	<div data-role="page" data-theme="b" id="homepage">
+		<div data-role="header">
+			<h1>Course Inspection App</h1>
+		</div>	
+	</div>
+
+	<div data-role="page" data-theme="b" id="accountspage">
+	
+		<ul>
+			<li><a href="?device=phone">Phone Version</a></li>
+			<li><a href="?device=desktop">Computer Version</a></li>
+		</ul>
+		<div data-role="header">
+			<a href='#homepage' id="logout" class='ui-btn-left' data-con='home'>Home</a>
+			<h1>Customers</h1>		
+		</div>
+		<div data-role="content">
+			<h1 id="customerName"></h1>
+			<h1 id="customerId"></h1>
+			<ul id="customerList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="b">
+			</ul>
+		</div>		
+	</div>
+	
+	<div data-role="page" data-theme="b" id="coursepage">
+		<div data-role="header">
+			<a href='#accountspage' id="backToAccounts" class='ui-btn-left' data-icon='arrow-l'>Customers</a>
+			<h1>Courses</h1>
+		</div>
+		<div data-role="content">
+			<h1 id="courseName"></h1>
+			<input type="hidden" id="courseId"/>
+			<ul id="courseList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="c"></ul>
+		</div>
+	</div>
+	
+	<div data-role="page" data-theme="b" id="inspectionpage">		
+		<div data-role="header">
+			<a href='#coursepage' id="backToCourses" class='ui-btn-left' data-icon='arrow-l'>Courses</a>
+			<h1>Inspections</h1>
+		</div>
+		<div data-role="content">
+			<ul id="inspectionList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="b">
+			</ul>
+		</div>	
+	</div>
+	
+	<div data-role="page" data-theme="b" id="inspectiondocument">
+		<div data-role="header">
+			<h1>Inspection Record</h1>
+		</div>
+		<div data-role="content">
+			<div data-role="fieldcontain">
+                <label for="firstNameForm">Inspected By:</label>
+                <input type="text" name="inspectedBy" id="inspectedBy" value="" placeholder="Inspected By" data-mini="true" maxlength="40"/>
+            </div>		
+		</div>
+	
+		
+		 
+	</div>
+	
+</body>
+
+</html>
+</apex:page>

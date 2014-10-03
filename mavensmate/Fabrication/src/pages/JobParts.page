@@ -1,0 +1,97 @@
+<apex:page standardController="Job__c"  extensions="SelectedPartsController" showHeader="true" sidebar="false">
+<apex:form >
+	<apex:outputpanel layout="block" style="text-align:center;">		
+		<apex:outputLink target="_parent" value='/a0S/e'>New Job Part
+			<apex:param name="CF00NS00000010qkU" value="{!Job__c.Name}"/>
+			<apex:param name="CF00NS00000010qkU_lkid" value="{!Job__c.Id}"/>
+			<apex:param name="retURL" value="%2F{!Job__c.Id}"/>
+		</apex:outputLink>		
+	</apex:outputpanel>
+<apex:outputPanel id="panel" title="Job Parts">
+ <table width="100%">
+ <tr>
+ <td>
+<apex:outputLabel id="remainingItems"  value="Show Remaining Quantity > 0 Only"/>
+		<apex:inputField rendered="{!checkRemainingItems==false}" value="{!Job__c.Remaining_Items_Only__c}">
+				<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkRemainingItems" value="true" assignTo="{!checkRemainingItems}"/>
+			</apex:actionSupport>			
+		</apex:inputField>
+		<apex:inputField rendered="{!checkRemainingItems}" value="{!Job__c.Remaining_Items_Only__c}">
+				<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkRemainingItems" value="false" assignTo="{!checkRemainingItems}"/>
+			</apex:actionSupport>			
+		</apex:inputField>
+ </td>
+ </tr>
+	<tr>
+	<td width="15%">
+	<apex:outputLabel id="fabrication"  value="Fabrication Parts"/>
+		<apex:inputField rendered="{!checkFabrication==false}" value="{!Job__c.Fabrication__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkFabrication" value="true" assignTo="{!checkFabrication}"/>
+			</apex:actionSupport>			
+		</apex:inputField>
+		<apex:inputField rendered="{!checkFabrication}" value="{!Job__c.Fabrication__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkFabrication" value="false" assignTo="{!checkFabrication}"/>
+			</apex:actionSupport>
+			
+		</apex:inputField>
+	</td>
+	<td width="15%"> <!-- Next is the Paint checkbox -->
+
+		<apex:outputLabel id="paint"  value="Paint Parts"/>
+		<apex:inputField rendered="{!checkPaint==false}" value="{!Job__c.Paint__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkPaint" value="true" assignTo="{!checkPaint}"/>
+			</apex:actionSupport>
+		</apex:inputField>
+		<apex:inputField rendered="{!checkPaint}" value="{!Job__c.Paint__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkPaint" value="false" assignTo="{!checkPaint}"/>
+			</apex:actionSupport>
+		</apex:inputField>
+	</td>
+		<td width="15%">
+		<apex:outputLabel id="shipping"  value="Shipping Parts"/>
+		<apex:inputField rendered="{!checkShipping==false}" value="{!Job__c.Shipping__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkShipping" value="true" assignTo="{!checkShipping}"/>
+			</apex:actionSupport>
+		</apex:inputField>
+		<apex:inputField rendered="{!checkShipping}" value="{!Job__c.Shipping__c}">
+			<apex:actionSupport event="onclick" reRender="panel">
+				<apex:param name="checkPaint" value="false" assignTo="{!checkShipping}"/>
+			</apex:actionSupport>
+		</apex:inputField>
+		</td>
+		</tr>
+		</table>
+		
+	 <apex:pageBlock >
+
+	
+	  <apex:pageblockTable value="{!selectedParts}" var="part">
+	 	 <apex:column >
+	    	 <apex:outputLink target="_blank" value="/{!part.id}">{!part.name}</apex:outputLink>
+	     </apex:column>
+	    <apex:column value="{!part.Description__c}"/>
+	    <apex:column value="{!part.Quantity__c}"/>
+	    <apex:column rendered="{!Job__c.Fabrication__c}"  value="{!part.Fabrication__c}"/>
+	    <apex:column rendered="{!Job__c.Fabrication__c}"  value="{!part.Fabrication_Quantity_Complete__c}"/>
+	    <apex:column rendered="{!Job__c.Fabrication__c}"  value="{!part.Fabrication_Quantity_Remaining__c}"/>
+	    <apex:column rendered="{!Job__c.Paint__c}"  value="{!part.Paint__c}"/>
+	    <apex:column rendered="{!Job__c.Paint__c}"  value="{!part.Rollup_Paint_Complete__c}"/>	
+	    <apex:column rendered="{!Job__c.Paint__c}"  value="{!part.Paint_Remaining__c}"/>
+	    <apex:column rendered="{!Job__c.Shipping__c}"  value="{!part.Shipping__c}"/>
+	    <apex:column rendered="{!Job__c.Shipping__c}"  value="{!part.Rollup_Loaded_Items__c}"/>	
+	    <apex:column rendered="{!Job__c.Shipping__c}"  value="{!part.Quantity_To_Be_Loaded__c}"/>    
+	       
+	  </apex:pageblockTable>
+	  </apex:pageBlock>
+	  </apex:outputPanel>
+</apex:form>
+
+	
+</apex:page>

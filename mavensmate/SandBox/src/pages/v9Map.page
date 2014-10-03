@@ -1,0 +1,118 @@
+<apex:page controller="v9MapController" showHeader="false"  standardStylesheets="false">
+<head>
+
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />   	
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"> </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+    
+  <script type="text/javascript">
+    var ge;   
+    var courseList=[]; 
+    google.load("earth", "1");
+    
+  	$(document).ready(function() {
+	    function init() {
+	    var processedCourses=[];
+	 
+	      google.earth.createInstance('map3d', initCB, failureCB);
+	      
+	      	v9MapController.getOpenCourses(function(records, e){			
+				$.each(records,function(index, course){	
+			
+					courseList['key'] = course.Account__r.Location__Latitude__s + ':' + course.Account__r.Location__Longitude__s;
+    				var c = {};
+    				c['key']=course.Account__r.Location__Latitude__s + ':' + course.Account__r.Location__Longitude__s;
+					c['lat']=course.Account__r.Location__Latitude__s;
+					c['lon']=course.Account__r.Location__Longitude__s;
+					c['customer']=course.Account__r.Name;
+					c['model']=course.Model__c;
+					c['city']=course.Account__r.ShippingCity;
+					c['state']=course.Account__r.ShippingState;
+					c['country']=course.Account__r.ShippingCountry;
+					c['website']=course.Account__r.Website;
+					courseList.push(c);
+				});	//end .each
+	  
+	   
+		    $.each(courseList, function(key, value) { 			    
+		     	if( $.inArray(value['key'], processedCourses) == -1 ) {
+							//return all of the course records with the same key
+							 var result = $.grep(courseList, function(v,i) {					
+			    				return v['key'] === value.key;
+							});
+										
+		   				 	var placemark = ge.createPlacemark('');
+		   				 	setPlaceMark(result, placemark); 	         				
+	         				console.log(placemark.getName());
+	         				
+	         			   		
+		   				processedCourses.push(value.key); 
+		   						 	  						  
+		   			}//end if processedCourses == -1 (meaning we have already processed this record)
+		     });//end .each courseList
+		      
+	   	  var la = ge.createLookAt('');
+         la.set(42.512884, -85.828858, 0, ge.ALTITUDE_RELATIVE_TO_GROUND, 0, 0, 5000000);
+         ge.getView().setAbstractView(la);    
+	     
+	   	 }); //close v9MapController	
+	   	
+	   }//close init
+	    
+	    google.setOnLoadCallback(init);
+    }); //close $.ready
+    
+ 
+	  function setPlaceMark(result, placemark){  
+	  		  	
+		  	for(var i = 0; i< result.length; i++) {
+		  		placemark.setName(result[i]['customer']);
+		  		
+		         // Set the placemark's location.  
+		         var point = ge.createPoint('');
+		         point.setLatitude(result[i]['lat']);
+		         point.setLongitude(result[i]['lon']);
+		         placemark.setGeometry(point);
+		         
+			         var normalStyle = ge.createStyle('');
+	         		 var normalIcon = ge.createIcon('');
+	         		  normalIcon.setHref('http://maps.google.com/mapfiles/kml/paddle/red-circle.png');
+	        		  normalStyle.getIconStyle().setIcon(normalIcon);
+        		  
+	        		  // Create highlight style for style map.
+			         var highlightStyle = ge.createStyle('');
+			        // var highlightIcon = ge.createIcon('');
+			        //highlightIcon.setHref('http://google-maps-icons.googlecode.com/files/girlfriend.png');
+			        //highlightStyle.getIconStyle().setIcon(highlightIcon);
+			        //highlightStyle.getIconStyle().setScale(5.0);
+		         
+		          // Create a style map.
+         			var styleMap = ge.createStyleMap('');		         
+		          	styleMap.setNormalStyle(normalStyle);
+		         	styleMap.setHighlightStyle(highlightStyle);
+		
+		         	// Apply stylemap to a placemark.
+		         	placemark.setStyleSelector(styleMap);
+		
+		         	// Add the placemark to Earth.
+		         	ge.getFeatures().appendChild(placemark);
+		  	}//end for results
+
+	  }
+
+    function initCB(instance) {
+      ge = instance;
+      ge.getWindow().setVisibility(true);
+    }
+
+    function failureCB(errorCode) {
+    }
+
+  </script>
+
+</head>
+<body>
+  <div id="map3d" style="height:800px; width: 100%;"></div>
+</body>
+</apex:page>

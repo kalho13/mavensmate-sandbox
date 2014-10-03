@@ -1,0 +1,6 @@
+<apex:page showHeader="true" sidebar="true">
+
+<h1>HELLO</h1>
+<apex:relatedList id="departmentItems" title="Job Parts" list="Job_Parts__r"/> 
+	
+</apex:page>

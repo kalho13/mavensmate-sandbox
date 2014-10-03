@@ -1,0 +1,19 @@
+{
+    "username": "kal@ropescoursesinc.com.sandbox", 
+    "environment": "sandbox", 
+    "project_name": "Safety Equipment", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "org_url": "", 
+    "namespace": "", 
+    "id": "8RDSRG83E0XL9EU9TJBMXS0ITO5O3K2B", 
+    "metadata_container": "1dcS00000008cGnIAI", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

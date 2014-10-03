@@ -1,0 +1,17 @@
+{
+    "username": "kalho13@gmail.com", 
+    "project_name": "FirstMate", 
+    "namespace": "", 
+    "metadata_container": "1dcd00000004F0iAAE", 
+    "environment": "developer", 
+    "id": "U08DYT25EYOYN8JZ13F2XDX7Y47QV2WT", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "CustomObject", 
+        "Profile", 
+        "StaticResource"
+    ]
+}

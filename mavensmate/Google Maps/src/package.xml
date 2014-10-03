@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>GoogleChartController</members>
+		<members>GoogleDataEncoding</members>
+		<members>InspectionMapController_Test</members>
+		<members>TestConfiguration</members>
+		<members>Utility</members>
+		<members>inspectionMapController</members>
+		<members>mapV4Controller</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>chartMap</members>
+		<members>googleChartPage</members>
+		<members>googleDataEncoding</members>
+		<members>inspectionMap</members>
+		<members>publicMapPage</members>
+		<members>v10Map</members>
+		<name>ApexPage</name>
+	</types>
+	<types>
+		<members>Course_Detail__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Footer</members>
+		<members>Logo</members>
+		<members>TableSorterCSS</members>
+		<members>jQuery_TableSorter</members>
+		<members>markers</members>
+		<name>StaticResource</name>
+	</types>
+	<version>28.0</version>
+</Package>

@@ -1,0 +1,210 @@
+<apex:page standardController="Training_Participants__c" extensions="TrainingParticipantExt" showHeader="true" sidebar="true" tabStyle="Training_Participants__c">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+     <script type="text/javascript">
+     	  $ = jQuery.noConflict();
+     	   $(document).ready(function() {
+     	   //	alert('hi');
+     	   //	alert($('[id$="trainee"]'));
+
+var checked_radio = $('[id$="radio"]:checked').val();
+//alert(checked_radio);
+
+			//alert($('input[id$=radio]').val());
+     	   	//alert($('[id$="trainee"]').val());
+     	  // alert($('[id$="radio"]:checked').val());
+     	   //alert($('[id$="radio"]').attr('checked').val());
+     	   // alert($("input[type=radio][name='radio']:checked").val());
+     	   //$('[name="lifestyle"] [name="Question0"]:checked').val();
+
+     	    //radioValue($('input[name=myradiobutton]:radio:checked')); //check for value on page load
+     	    //radioValue($('[id$="radio"]:checked'));
+
+
+     	   	if($('[id$="trainee"]').val()=='Trainee'){
+     	   //	alert('Trainee');
+     	   }else{
+     	   		
+     	   }
+
+                $('[id$="trainee"]').show();
+                $('[id$="traineeRow"]').show();
+                $('[id$="trainer"]').hide();
+                $('[id$="trainerRow"]').hide();
+     	  });     
+
+        function displayParticipant(t){
+              
+                if ( $(t).val() == 'Trainee' ){                     
+                    $('[id$="trainee"]').show();
+                    $('[id$="traineeRow"]').show();
+                    $('[id$="trainer"]').hide();
+                    $('[id$="trainerRow"]').hide();
+                }else{
+                     
+                    $('[id$="trainee"]').hide();
+                    $('[id$="traineeRow"]').hide();
+                    $('[id$="trainer"]').show();
+                    $('[id$="trainerRow"]').show();
+                }
+              
+              }
+
+        function radioValue(jqRadioButton){
+        //	alert('radioValue');
+        	//alert(jqRadioButton.val());
+
+ 		    if (jqRadioButton.length) {
+
+   			    myRadioValue = jqRadioButton.val();
+
+  		    }else {
+    		    myRadioValue = 0;
+  		   }
+	    }
+     </script>
+
+
+      <style>
+        table{             
+            
+            font-family: helvetica, arial, serif;
+        }
+
+        tr{
+            
+             font-family: helvetica, arial, serif;
+             line-height: 25px;
+             vertical-align: text-bottom;
+             font-weight:bolder;           
+        }
+
+        .underline{
+            border-left: 0px;
+            border-top: 0px;
+            border-right: 0px;
+            border-bottom: 1px;
+           border-color: #001A33 !important;
+            border-style: solid;
+            vertical-align: text-bottom;
+        }
+
+        .command{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: #001A33 !important;
+            border-style: solid;
+        }
+
+        .button{
+            color:#001A33 !important;
+            background: #B2C2D1  !important;
+            font-weight: normal;
+        }
+
+        .title{
+            color:#001A33 !important;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .pass{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: green !important;
+            border-style: solid;
+            vertical-align: middle;
+        }
+
+        .fail{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: red !important;
+            border-style: solid;
+            vertical-align: middle;
+        }
+
+   
+
+    </style>
+
+<apex:form id="output" title="Training Participant">
+<apex:pageBlock >
+<table width="100%">
+    <tr>
+        <td class="command">
+            <apex:commandButton styleClass="button" action="{!edit}" value="Edit" id="editButton"/>&nbsp;              
+        </td>
+    </tr>
+</table>
+
+<p class="title" >Training Participant Detail</p>
+<br>
+<table width="100%">
+    <tr>
+    	<td class="underline" width="100%" colspan="4">Training Class: 
+            <apex:outputField value="{!Training_Participants__c.Training_Class__c}" id="trainingClass"/>
+        </td>    	
+    </tr>
+    <tr>
+		<td width="25%" class="underline">Training Role:</td>
+        <td class="underline" colpan="3">
+            <apex:outputField value="{!Training_Participants__c.Training_Role__c}"/> 
+        </td>
+	</tr>
+	
+	<tr id="traineeRow">
+		<td width="25%" class="underline">
+			<apex:outputLabel rendered="{!Training_Participants__c.Training_Role__c!='Trainee'}"  value="Training Instructor:" />
+			<apex:outputLabel rendered="{!Training_Participants__c.Training_Role__c='Trainee'}"  value="Training Participant:" />
+			
+			</td>
+        <td class="underline">            
+             <apex:outputField rendered="{!Training_Participants__c.Training_Role__c='Trainee'}" style="width:200px;" value="{!Training_Participants__c.Participant__c}" />
+             <apex:outputField rendered="{!Training_Participants__c.Training_Role__c!='Trainee'}" value="{!Training_Participants__c.Trainer__c}" />        
+        </td>	
+
+        <td>
+        	<apex:outputLabel rendered="{!Training_Participants__c.Training_Role__c='Trainee'}"  value="Pass" />        
+            <apex:outputField styleClass="pass" value="{!Training_Participants__c.Pass__c}" rendered="{!Training_Participants__c.Training_Role__c='Trainee'}"  />           
+        </td>
+        
+        <td>
+        	<apex:outputLabel rendered="{!Training_Participants__c.Training_Role__c='Trainee'}"  value="Fail" />   
+            <apex:outputField styleClass="fail" rendered="{!Training_Participants__c.Training_Role__c='Trainee'}" value="{!Training_Participants__c.Fail__c}"/>
+        </td>   	
+	</tr>
+	
+</table>
+</br>
+<table width="100%">
+    <tr>
+        <td class="command">
+            <apex:commandButton styleClass="button" action="{!edit}" value="Edit" id="editButtonBottom"/>&nbsp;
+        </td>
+    </tr>
+</table>
+</apex:pageBlock>
+
+</apex:form>
+<apex:relatedList list="NotesAndAttachments" rendered="true" />
+	
+</apex:page>

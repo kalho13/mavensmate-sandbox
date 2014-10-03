@@ -1,0 +1,112 @@
+{
+    "name": "TestSetTrainingDateTrigger", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "accts", 
+            "location": {
+                "column": 19, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "oppsOne", 
+            "location": {
+                "column": 24, 
+                "line": 18
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "o", 
+            "location": {
+                "column": 22, 
+                "line": 19
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "contacts", 
+            "location": {
+                "column": 19, 
+                "line": 33
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "opps", 
+            "location": {
+                "column": 20, 
+                "line": 53
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "o", 
+            "location": {
+                "column": 19, 
+                "line": 55
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "c", 
+            "location": {
+                "column": 16, 
+                "line": 72
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [
+            "TEST"
+        ], 
+        "type": "TestSetTrainingDateTrigger", 
+        "name": "TestSetTrainingDateTrigger", 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }
+    }, 
+    "key": "01pS000000065H2", 
+    "id": "01pS000000065H2", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "myUnitTest", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 6
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

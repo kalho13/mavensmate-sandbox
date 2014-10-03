@@ -1,0 +1,77 @@
+{
+    "name": "opportunityProductRedirectExtension", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "controller", 
+            "location": {
+                "column": 77, 
+                "line": 6
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "opportunityProductRedirectExtension", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "controller"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 6
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "oppId", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 8, 
+                "line": 3
+            }, 
+            "type": "Id"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "opportunityProductRedirectExtension", 
+        "name": "opportunityProductRedirectExtension", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006BjF", 
+    "id": "01pS00000006BjF", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "redirect", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 11
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }
+    ]
+}

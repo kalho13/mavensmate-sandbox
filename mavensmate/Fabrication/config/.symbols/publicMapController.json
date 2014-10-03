@@ -1,0 +1,85 @@
+{
+    "name": "publicMapController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "control", 
+            "location": {
+                "column": 28, 
+                "line": 27
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Account", 
+            "name": "account", 
+            "location": {
+                "column": 13, 
+                "line": 28
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "actual", 
+            "location": {
+                "column": 28, 
+                "line": 33
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "publicMapController", 
+        "name": "publicMapController", 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006BVQ", 
+    "id": "01pS00000006BVQ", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getOpenCourses", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 5
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testGetOpenCourses", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 24, 
+                "line": 26
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

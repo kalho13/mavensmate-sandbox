@@ -1,0 +1,59 @@
+<apex:page standardController="Account" standardstylesheets="true" extensions="CertificationStatusController"  showHeader="false" sidebar="false">
+    
+     <img src="{!URLFOR($Resource.Logo)}" width="220" height="95"/>
+       
+    <apex:pageBlock title="Course Inspection Status">
+    <apex:pageBlockTable columns="5" value="{!inspections}" var="i">
+  	  <apex:column headerValue="Account" value="{!i.Course__r.Account__r.Name}"/>
+  	  <apex:column headerValue="Model"><apex:outputLink value="/{!i.Course__r.Id}" target="_blank">{!i.Course__r.Model__c}</apex:outputLink></apex:column>
+  	  <apex:column headerValue="Compliance" value="{!i.Course__r.Compliancy__c}"/>          
+      <apex:column headerValue="Expiration Date"  value="{!i.Inspection_Expiration__c}"/>   
+    </apex:pageBlockTable>
+    
+   </apex:pageBlock> 
+   
+    <apex:pageBlock title="Certified Customer Trainers">  
+     <apex:pageBlockTable width="100%" columns="5"  value="{!certifications}" var="e">      
+     <apex:column headerValue="Contact"><apex:outputLink value="/{!e.Contact__r.Id}" target="_blank"> {!e.Contact__r.Name}</apex:outputLink></apex:column>
+     <apex:column headerValue="Certification Type"><apex:outputLink value="/{!e.Id}" target="_blank">{!e.Certification_Type__c}</apex:outputLink></apex:column>
+     <apex:column headerValue="Certification Date"  value="{!e.Certification_Date__c}"/>
+     <apex:column headerValue="Expiration Date"     value="{!e.Expiration_Date__c}"/>  
+     <apex:column headerValue="Last Training Performed"  value="{!e.Contact__r.Last_Training_Performed__c}"/>        
+    </apex:pageBlockTable>
+   </apex:pageBlock> 
+   
+    <apex:pageBlock title="Completed Training Opportunities">
+    <apex:pageBlockTable width="100%" columns="8" value="{!opportunities}" var="o"> 
+    <apex:column headerValue="Course"><apex:outputLink value="/{!o.Id}" target="_blank">{!o.Type_of_Training__c}</apex:outputLink></apex:column>           
+     <apex:column headerValue="Training Date"  value="{!o.Certificate_Training__c}"/>
+     <apex:column headerValue="Trained By"     value="{!o.Trained_By_Old_Computed__c}"/>
+     <apex:column headerValue="Trainer 1"     value="{!o.Trainer_1__c}"/>
+     <apex:column headerValue="Trainer 2"     value="{!o.Trainer_2__c}"/>
+     <apex:column headerValue="Trainer 3"     value="{!o.Trainer_3__c}"/>
+     <apex:column headerValue="Trainer 4"     value="{!o.Trainer_4__c}"/>
+    
+    </apex:pageBlockTable>
+   </apex:pageBlock>
+   
+   <apex:pageblock title="Certification Status Notes" >
+       <apex:pageBlockTable Value="{!Account.Notes}" var="item" columns="4" >                                                                 
+          <apex:column width="20%" HeaderValue="Title"  rendered="{!Contains(item.Title,'Certification Status') || Contains(item.Title,'certification status')}">    
+            <apex:outputLink value="/{!item.id}" id="the_link" >
+	            <apex:outputField value="{!item.Title}" /> 
+            </apex:outputLink>
+          </apex:column>
+          
+          <apex:column width="20%" HeaderValue="Created By" rendered="{!Contains(item.Title,'Certification Status') || Contains(item.Title,'certification status')}">
+            <apex:outputField value="{!item.Createdbyid }" /> 
+          </apex:column>
+          
+          <apex:column width="60%" HeaderValue="Note" rendered="{!Contains(item.Title,'Certification Status') || Contains(item.Title,'certification status')}">
+             <apex:outputField value="{!item.Body}" /> 
+          </apex:column>
+      </apex:pageBlockTable>
+  </apex:pageblock>
+  
+   
+  
+    
+</apex:page>

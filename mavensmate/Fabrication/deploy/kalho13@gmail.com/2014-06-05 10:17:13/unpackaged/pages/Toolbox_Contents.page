@@ -1,0 +1,169 @@
+<apex:page renderAs="pdf"  applyhtmltag="false" controller="ToolboxContents" showHeader="false" sidebar="false" >
+    <html>
+ <head>
+  <style> 
+  
+  @page {
+		size: Letter; 	 
+	 	margin: 15mm; 
+	 	margin-top:45mm; 		 	
+	    @top-center {		  	
+		   	content: element(header);		   
+	   }
+		   
+		 @bottom-center {
+		 	font-family:Sans-Serif;
+		 	content: "Page " counter(page) " of " counter(pages);
+		 }
+	}
+	
+	  div.header {
+		  margin:5mm;
+		  position:running(header);	
+		 page-break-before: always;
+		 
+	 }
+	 
+	 .headerSubTable{
+	 	width:100%; 
+	 	border:2; 
+	 	border-color:black;
+	 	cellpadding:2px; 
+	 	cellspacing:2px;	 
+	 }
+	 
+	 .headerMainTable{
+	 	width:100%; 
+	 	border:2; 
+	 	border-color:black;
+	 	cellpadding:1px; 
+	 	cellspacing:2px;	 
+	 }
+	 
+	 .toolAssignment{
+	 	text-align:center;
+	 	background-color:#FF8C00;
+	 	border-radius:25px;
+	 	font-family:Sans-Serif; 
+	 	font-size:24px; 
+	 	border:2px;	 
+	 }
+	 
+	 div.main {
+		  margin-top:1mm;
+		  position:relative	  		 
+	 }
+	 
+	  table { page-break-inside:auto }
+       tr{ page-break-inside:avoid; page-break-after:auto }
+	
+     body {
+     font-family:Sans-Serif;
+     }      
+ 
+     .page-break {
+            display:block;
+            page-break-after:always;
+        }
+        
+     .panel{
+     	background-color:blue;
+     }
+    
+  
+  </style>
+ </head>
+ <body>
+ 
+ <div class="header">
+ 
+	 <table class="headerMainTable" >
+	 	<tr>
+	 		<td width="40%">
+		 		<table class="headerSubTable">
+		 			<tr>
+		 				<td>
+		 				<img src="{!URLFOR($Resource.Logo)}" width="220" height="95"/>
+		 				</td>
+		 			</tr>
+		 		</table>
+		 	</td>
+		 	<td width="60%">
+		 		<table class="headerSubTable">
+		 			<tr>
+		 				<td colspan="4" class="toolAssignment"> 		
+	 						<b>Tool Assignment</b> 		
+	 					</td>
+	 				</tr>
+	 			</table>
+	 		</td>
+		 </tr>
+	 </table>
+	 	
+  </div> 
+
+
+<div>
+
+		<br/>
+		<br/>
+   <table style="text-align:left;border-color:blue;border-radius:25px;font-family:Sans-Serif;font-size:16px; border:2px;width:100%">
+	 	<tr>
+	 		<td width="25%"><b>Tool Box Owner:</b></td>
+	 		<td width="75%"><apex:outputText value="{!toolbox.name}"/> </td>
+	 	</tr>
+	 	<tr>
+	 		<td><b>Tool Box Cost:</b> </td>
+	 		<td>
+		 		<apex:outputText value="${0, number, ###,###,###,##0.00}">  
+		      		<apex:param value="{!toolbox.Tool_Box_Value__c}"/>  
+		 		</apex:outputText>
+	 		</td>
+	 	</tr>  	
+ 	</table>
+</div>
+
+		<br/>
+		<br/>
+		<div class="main">
+    <apex:dataTable value="{!assignedTools}"  var="tool" id="theTools"  style="text-align:center;border-color:blue;background-color:#FF8C00;border-radius:25px;font-family:Sans-Serif;font-size:14px; border:2px;" cellpadding="2" cellspacing="2" width="100%">
+      	<apex:column style="background-color:#F5F5F5; text-align:left;" >
+    		<apex:facet name="header">Tool</apex:facet>	
+    		<apex:outputText value="{!tool.Tool_Entry__r.Name}" />
+    	</apex:column>
+    	<apex:column style="background-color:#F5F5F5; text-align:center;" >
+    		<apex:facet name="header">Qty</apex:facet>    		
+    		<apex:outputText value="{!tool.Quantity__c}"/>
+    	</apex:column> 
+    	<apex:column style="background-color:#F5F5F5;">
+    		<apex:facet name="header">Serial Number</apex:facet>    		
+    		<apex:outputText value="{!tool.Serial_Number__c}"/>
+    	</apex:column>
+     	<apex:column style="background-color:#F5F5F5;" >
+    		<apex:facet name="header">Date Assigned</apex:facet>    		
+    		<apex:outputText value="{0,date,MM/dd/yyyy}">
+				<apex:param value="{!tool.Date_Assigned__c}"/>
+			</apex:outputText>
+    	</apex:column>
+    	<apex:column style="background-color:#F5F5F5;" >
+    		<apex:facet name="header">Cost</apex:facet>  
+    		<apex:outputText value="${0, number, ###,###,###,##0.00}">  
+      			<apex:param value="{!tool.Calculated_Tool_Cost__c}"/>  
+ 			</apex:outputText>   				
+    		
+    	</apex:column>
+    </apex:dataTable>
+  </div>
+    <br/>
+     <br/>
+      <br/>
+    <table style="font-family:Sans-Serif;border:3px solid black; width:100%;">
+    	<tr>
+    		<td style="font-family:Sans-Serif;border:1px solid black; width:65%"><b>Signature:</b></td><td style="font-family:Sans-Serif;border:1px solid black; width:35%"><b>Date:</b></td>
+    	</tr>
+    </table>
+    
+    <p style="font-family:Sans-Serif;font-size:14px;">I understand and acknowledge responsibility for all assigned tools.</p>
+ </body>
+ </html>
+</apex:page>

@@ -1,0 +1,36 @@
+<apex:page controller="newOpportunityController" tabStyle="Opportunity">
+<script>
+    function confirmCancel(){
+        var is Cancel = confirm("Are you sure you want to cancel?");
+        if(isCancel) return true;
+        
+        return false;
+    }
+</script>
+
+    <apex:sectionHeader title="New Customer Opportunity" subtitle="Step 1 of 3" />
+        <apex:form >
+            <apex:pageBlock title="Customer Information" mode="edit" >
+                <!-- The pageBlockButton tag defines the buttons that appear at the top and bottom of the pageBlock.  Like a facet, it can appear anywhere
+                in a pageBlock, but always defines the button areas -->
+                
+                <!-- The Next button contained in this pageBlockButton area calls the step 2 controller method, which returns a PageReference
+                to the next step of the wizard. -->
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!step2}" value="Next" />
+                    <apex:commandButton action="{!cancel}" value="Cancel" onclick="return confirmCancel()" immediate="true"/>
+                </apex:pageBlockButtons>
+                
+            <apex:pageBlockSection title="Account Information" columns="1">
+                <!-- Within a pageBlockSection, input fields always display with their corresponding output label. -->
+                <apex:inputField id="accountName" value="{!account.name}" />
+                <apex:inputField id="accountSite" value="{!account.site}"/> 
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Contact Information" columns="1">
+                	<apex:inputField id="contactFirstName" value="{!contact.firstName}" />
+                	<apex:inputField id="contactLastName" value="{!contact.lastName}" />
+                	<apex:inputField id="contactPhone" value="{!contact.phone}" />                	
+                </apex:pageBlockSection>        
+            </apex:pageBlock>
+        </apex:form>
+</apex:page>

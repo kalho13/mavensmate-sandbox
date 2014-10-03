@@ -1,0 +1,15 @@
+<apex:page controller="MyPageController">
+  <apex:form >
+      <apex:pageBlock title="Sample Code">
+          <apex:pageBlockButtons >
+              <apex:commandButton action="{!doSomething}" value="Do Something!" />
+          </apex:pageBlockButtons>
+          
+          <apex:pageBlockTable value="{!resources}" var="resources">
+              <apex:column headerValue="Selected"/>
+                
+          </apex:pageBlockTable>
+          
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

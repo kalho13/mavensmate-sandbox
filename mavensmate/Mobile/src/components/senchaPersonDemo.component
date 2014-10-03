@@ -1,0 +1,172 @@
+<apex:component>
+
+ <script type='text/javascript'>
+    Ext.Loader.setConfig({
+            enabled : true,
+         });
+
+        Ext.application({
+        	 name: "MyApp",
+         	// containers:["MainContainer"],
+         	 models: ["PersonModel"],
+    		 stores: ["PersonStore"],
+    		 views: ["PersonList", "PersonDetail"],
+            launch : function () {
+               //Instantiate your main list view for Leads.
+		        var personListView = {
+		            xtype: "personlist"
+		        };
+
+		        var personEditorView = {
+		            xtype: "persondetail"
+		        };
+
+		        console.log("Application Launch for PocketCRM");
+
+		        //Launch the primary fullscreen view and pass in the list view.
+		        Ext.Viewport.add([personListView, personEditorView]);
+            }
+        });
+
+    Ext.define('MyApp.container.MainContainer', {
+    extend   : 'Ext.Container',
+    config : {
+        layout : {
+            type  : 'hbox',
+            align : 'stretch'
+        },
+        items : [
+            {
+                xtype  : 'personlist',
+                itemId : 'list',
+                width  : 200,
+                style  : 'border-right: 1px solid #999'
+            },
+            {
+                xtype  : 'persondetail',
+                itemId : 'detail',
+                flex   : 1
+            }
+        ],
+        listeners : {
+            select : {
+                fn       : 'onListSelect',
+                delegate : '> #list'
+            }
+        }
+    },
+    onListSelect : function(list, record) {
+        this.down('#detail').setRecord(record);
+    }
+});
+
+
+Ext.define('MyApp.view.PersonDetail', {
+    extend : 'Ext.form.Panel',
+    xtype  : 'persondetail',
+    config : {
+        items: [
+            {
+                xtype       : 'fieldset',
+                defaultType : 'textfield',
+                defaults  : {
+                    labelWidth : 100
+                },
+                items       : [
+                    {
+                        label : 'First',
+                        name  : 'firstname'
+                    },
+                    {
+                        label : 'Last',
+                        name  : 'lastname'
+                    },
+                    {
+                        label : 'Street',
+                        name  : 'street'
+                    },
+                    {
+                        label : 'City',
+                        name  : 'city'
+                    },
+                    {
+                        label : 'State',
+                        name  : 'state'
+                    },
+                    {
+                        label : 'Zip',
+                        name  : 'zip'
+                    }
+                ]
+            },
+            {
+                xtype  : 'toolbar',
+                title  : 'Person Details',
+                docked : 'top'
+            }
+        ]
+    }
+});
+
+Ext.define('MyApp.view.PersonList', {
+    extend   : 'Ext.List',
+    xtype    : 'personlist',
+    alias: "store.personlist",
+    config   : {
+        allowDeselect : false,
+        itemTpl       : '{lastname}, {firstname}',
+        store         : {
+            type     : 'personstore',
+            autoLoad : true
+        },
+        items         : [
+            {
+                xtype  : 'toolbar',
+                title  : 'People',
+                docked : 'top'
+            }
+        ],
+        listeners     : {
+            painted : function () {
+                this.getStore().load();
+            }
+        }
+    }
+});
+
+Ext.define('MyApp.model.PersonModel', {
+    extend : 'Ext.data.Model',
+    config : {
+        fields : [
+            'city',
+            'firstname',
+            'lastname',
+            'middle',
+            'state',
+            'street',
+            'zip'
+        ]
+    }
+});
+
+
+Ext.define('MyApp.store.PersonStore', {
+    extend   : 'Ext.data.Store',
+    alias    : 'store.personstore',
+    config   : {
+    		model: "MyApp.model.PersonModel",
+        proxy    : {
+            type   : 'jsonp',
+            url    : 'http://extjsinaction.com/dataQuery.php',
+            limit  : 20,
+            reader : {
+                type         : 'json',
+                rootProperty : 'records'
+            }
+        }
+    }
+});
+    </script>
+
+
+</apex:component>

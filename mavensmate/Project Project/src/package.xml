@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>ProjectModuleExt</members>
+		<members>TestConfiguration</members>
+		<members>Utility</members>
+		<members>productCatalogExtension</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Project_Module</members>
+		<members>Project_Module_Image</members>
+		<members>Project_Module_Read</members>
+		<members>htmlFields</members>
+		<name>ApexPage</name>
+	</types>
+	<types>
+		<members>GenerateHTML</members>
+		<members>opportunityScheduled</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>Project_Module__c</members>
+		<members>Project__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>TableSorterCSS</members>
+		<members>jQuery_TableSorter</members>
+		<name>StaticResource</name>
+	</types>
+	<version>28.0</version>
+</Package>

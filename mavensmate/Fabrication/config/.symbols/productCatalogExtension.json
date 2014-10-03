@@ -1,0 +1,365 @@
+{
+    "name": "productCatalogExtension", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "controller", 
+            "location": {
+                "column": 65, 
+                "line": 23
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "qString", 
+            "location": {
+                "column": 16, 
+                "line": 108
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Set", 
+            "name": "selectedEntries", 
+            "location": {
+                "column": 17, 
+                "line": 120
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "OpportunityLineItem", 
+            "name": "d", 
+            "location": {
+                "column": 33, 
+                "line": 121
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "tempFilter", 
+            "location": {
+                "column": 20, 
+                "line": 126
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Id", 
+            "name": "i", 
+            "location": {
+                "column": 20, 
+                "line": 127
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "extraFilter", 
+            "location": {
+                "column": 20, 
+                "line": 130
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PricebookEntry", 
+            "name": "d", 
+            "location": {
+                "column": 28, 
+                "line": 156
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "count", 
+            "location": {
+                "column": 17, 
+                "line": 171
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "OpportunityLineItem", 
+            "name": "d", 
+            "location": {
+                "column": 33, 
+                "line": 173
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "ref", 
+            "location": {
+                "column": 23, 
+                "line": 221
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "productCatalogExtension", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "controller"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 23
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "theProject", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 30, 
+                "line": 4
+            }, 
+            "type": "Project_Module__c"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "searchString", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 6
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "shoppingCart", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 7
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "AvailableProducts", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 8
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "theBook", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 9
+            }, 
+            "type": "Pricebook2"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "toSelect", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 11
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "toUnselect", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 12
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "Total", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 13
+            }, 
+            "type": "Decimal"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "overLimit", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 15
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "forcePricebookSelection", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 18
+            }, 
+            "type": "Boolean"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "forDeletion", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 35, 
+                "line": 20
+            }, 
+            "type": "LIST"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "productCatalogExtension", 
+        "name": "productCatalogExtension", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006BjN", 
+    "id": "01pS00000006BjN", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "priceBookCheck", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 70
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "updateAvailableList", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 105
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "addToShoppingCart", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 152
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "removeFromShoppingCart", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 167
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "onSave", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 190
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "onCancel", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 210
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "changePricebook", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 216
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }
+    ]
+}

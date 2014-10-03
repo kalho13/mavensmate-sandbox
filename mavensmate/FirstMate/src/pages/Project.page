@@ -1,0 +1,127 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="true" StandardController="Customer_Project__c" extensions="ProjectController">
+
+	<head>
+	  <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
+	  <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"/>
+	  <apex:stylesheet value="http://ajax.googleapis.com/css/ui-lightness/jquery-ui-1.7.2.custom.css"/> 
+	  
+	  <meta charset="utf-8">
+	    <meta name="description" content=""/>	    
+	    <!-- Placeholder for Inline Styles -->
+	    <apex:insert name="css" />
+	    <style type="text/css">
+        	
+        	table{
+        	
+        		background:pink;
+        	}
+        	.col1{
+        			width: 25%;
+        			background:yellow;
+        	}			
+			.col2{
+					width: 25%;
+					background:red;
+			}
+			.col3{width: 25%;}
+			.col3{width: 25%;}
+			.pageBlock{
+				background:white;
+			}
+    	</style>
+	    <apex:insert name="javascript"/>
+		</meta>
+	</head>	 
+	<body>
+	  <!--  Create A Section for each subform with javaScript switching between the sections based on project type 	 -->
+	   <!-- the location of the common fields -->
+	  <!-- <apex:pageBlock title="Edit Project" id="thePageBlock" mode="edit"> -->
+	     
+	       <apex:form id="editForm">
+	       	 <apex:sectionHeader title="Edit Project x" subtitle="{!Customer_Project__c.Name}">	</apex:sectionHeader>
+	     <apex:pageBlock title="Edit Project" tabStyle="Account"  id="thePageBlock" mode="edit">
+		     
+            <apex:pageMessages />
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}"/>                
+            </apex:pageBlockButtons>
+           <apex:pageBlockSection >
+           </apex:pageBlockSection>
+			  <section>
+					<table border="1" width="100%" background="blue">
+			  			<tr>
+			  				<td width="5%"></td>
+			  				<td>
+					  			<table border="1" width="95%">
+							  		<tr>
+							  			<td class="col1">
+						  					<label for="revenue"><strong>Revenue:&nbsp;</strong></label><apex:inputField id="revenue" label="Revenue" value="{!Customer_Project__c.Revenue__c}"/>
+						  					<script>document.getElementById('{!$Component.revenue}').value = '{!revenue}';</script>
+						  				</td>
+							  			<td class="col2">&nbsp;</td>
+						  				<td class="col3">&nbsp;</td>
+						  				<td class="col4">&nbsp;</td>
+							  		</tr>
+							 		<tr>
+							 			<td class="col1">			
+								  			<label for="account">Account</label><apex:inputField id="account" value="{!Customer_Project__c.Account__c}" label="Account"/>			     
+											 <script>
+										          document.getElementById('{!$Component.account}_lkid').value = '{!accountId}';
+										          document.getElementById('{!$Component.account}').value = '{!accountName}';
+										      </script>
+								   		</td>
+								   		<td class="col2">
+										      <label for="opportunity">Opportunity</label><apex:inputField id="opp" value="{!Customer_Project__c.Opportunity__c}" label="Opportunity"/>
+										      <script>
+										          document.getElementById('{!$Component.opp}_lkid').value = '{!oppId}';
+										          document.getElementById('{!$Component.opp}').value = '{!oppName}';
+										      </script>
+										</td>
+										<td class="col3">&nbsp;</td>
+							 			<td class="col4">&nbsp;</td>
+							  		</tr>
+							</table>
+			  			</td>
+	  				</tr>
+	  			</table>
+			  	
+			  	</section>
+			  	<section><!-- The section for course construction --></section>	  	
+			  	<section><!-- The section for a training project --></section>
+			    <section><!--  the section for an installation project --></section>
+			    
+			   
+			       <apex:actionRegion >
+		               <apex:pageBlockSection title="Basic Information" columns="4">
+					   <label for="account">Account</label><apex:inputField id="account" value="{!Customer_Project__c.Account__c}" label="Account"/>	
+		            
+	                        <apex:outputLabel value="Project Type"/>
+	                        <apex:outputPanel >
+	                            <apex:inputField value="{!Customer_Project__c.Project_Type__c}">
+	                                <apex:actionSupport event="onchange" rerender="thePageBlock" status="status"/>
+	                            </apex:inputField>
+	                            <apex:actionStatus startText="applying value..." id="status"/>
+	                        </apex:outputPanel>
+			     
+			     
+			     
+			     
+			     	</apex:pageBlockSection>
+        		 </apex:actionRegion>
+          
+       
+          
+         </apex:pageBlock>  
+          
+          	 </apex:form> 
+			 
+	  
+	 
+
+	 
+	  
+	   </body>	
+	  
+	
+</apex:page>

@@ -1,0 +1,15 @@
+{
+    "ProjectUmbrella.trigger": {
+        "createdById": "00530000006L19VAAS", 
+        "createdByName": "Kal Howell", 
+        "createdDate": "2013-08-27 08:27:16", 
+        "fileName": "unpackaged/triggers/ProjectUmbrella.trigger", 
+        "fullName": "ProjectUmbrella", 
+        "id": "01qS00000004ls1IAA", 
+        "lastModifiedById": "00530000006L19VAAS", 
+        "lastModifiedByName": "Kal Howell", 
+        "lastModifiedDate": "2014-01-22 10:57:54", 
+        "manageableState": "unmanaged", 
+        "type": "ApexTrigger"
+    }
+}

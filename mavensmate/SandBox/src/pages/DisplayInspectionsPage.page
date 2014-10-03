@@ -1,0 +1,35 @@
+<apex:page controller="InspectionSelectController">
+ <apex:form >
+ <script type="text/javascript">
+      function checkAll(cb,filter)   {
+            var inputElem = document.getElementsByTagName("input");  
+            for(var i=0; i<inputElem.length; i++)  {
+                if(inputElem[i].id.indexOf(filter)!=-1)  {   
+                inputElem[i].checked = cb.checked;
+                }
+            }
+        }
+</script>
+    <apex:pageBlock title="Paging through the list of Inspections">
+ 
+    
+      <apex:pageMessages />
+      <apex:pageBlockSection title="Course Results " columns="1" id="baseList">
+   
+         <apex:pageBlockTable value="{!inspections}" var="ca">
+        
+		<apex:column width="8px"><apex:facet name="header">
+				<input type="checkbox" onclick="checkAll(this,'check')" />
+			</apex:facet>        
+            <apex:inputCheckbox value="{!ca.checked}" id="check"/>
+          </apex:column>
+          <apex:column value="{!ca.inspection.Name}" headerValue="Name"/>
+           <apex:column value="{!ca.inspection.Course__c}" headerValue="Course"/>
+           <apex:column value="{!ca.inspection.Id}" headerValue="Id"/>
+        </apex:pageBlockTable>
+      </apex:pageBlockSection>
+ 
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

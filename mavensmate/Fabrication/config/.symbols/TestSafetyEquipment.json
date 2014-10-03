@@ -1,0 +1,136 @@
+{
+    "name": "TestSafetyEquipment", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "accounts", 
+            "location": {
+                "column": 21, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "sc", 
+            "location": {
+                "column": 32, 
+                "line": 14
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "SafetyEquipmentController", 
+            "name": "cont", 
+            "location": {
+                "column": 29, 
+                "line": 15
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pref", 
+            "location": {
+                "column": 19, 
+                "line": 17
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pref2", 
+            "location": {
+                "column": 22, 
+                "line": 21
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pref3", 
+            "location": {
+                "column": 22, 
+                "line": 26
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pref4", 
+            "location": {
+                "column": 22, 
+                "line": 29
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pref5", 
+            "location": {
+                "column": 22, 
+                "line": 32
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "equipment", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 4
+            }, 
+            "type": "Safety_Equipment__c"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [
+            "TEST"
+        ], 
+        "type": "TestSafetyEquipment", 
+        "name": "TestSafetyEquipment", 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }
+    }, 
+    "key": "01pS00000006AiT", 
+    "id": "01pS00000006AiT", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "init", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 7
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

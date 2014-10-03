@@ -1,0 +1,99 @@
+
+<apex:component controller="MobileJobsController" >
+<script type="text/javascript">
+
+Ext.application({
+    name: "JobLoad",
+    models: ["Job"],
+    stores: ["Jobs"],
+    controllers: ["Jobs"],
+    views: ["jobList"],
+    launch: function () {
+        console.log('######### launching now ###########');
+        var jobListView = {
+            xtype: "jobListview"
+       	};
+    	Ext.Viewport.add([jobListView]);
+    } 
+});
+
+//=========================================STORES=====================================================
+Ext.define("JobLoad.store.Jobs", {
+    extend: "Ext.data.Store",
+    requires: "Ext.data.proxy.LocalStorage",
+
+    config: {
+        model: "JobLoad.model.Job",
+        data: {!Jobs}, 
+        groupField: "Status",
+        groupDir: "ASC",
+        sorters: [{
+            property: 'Name',
+            direction: 'ASC'
+        }]
+    }
+});
+
+//=========================================MODEL=====================================================
+Ext.define("JobLoad.model.Job", {
+    extend: "Ext.data.Model",
+    config: {
+        idProperty: 'id',
+        fields: [
+                    {name: 'id', type: 'string'},
+                    {name: 'Name', type: 'string', required: true},          
+                    {name: 'Status', type: 'string', required: true}, 
+                ],
+            },
+});
+
+//========================================CONTROLLERS======================================================
+
+Ext.define("JobLoad.controller.Jobs", {
+    extend: "Ext.app.Controller",
+    config: {},
+    launch: function () {
+        console.log("launch");
+        this.callParent(arguments);
+        console.log("load Jobs");
+        var jobStore = Ext.getStore("Jobs");
+        jobStore.load();
+    },
+    init: function () {
+        this.callParent(arguments);
+        console.log("init");
+    }
+});
+//=========================================VIEWS====================================================
+
+
+Ext.define("JobLoad.view.JobList", {
+    extend: "Ext.Container",
+    requires: "Ext.dataview.List",
+    alias: "widget.jobListview",
+
+    config: {
+        layout: {
+            type: 'fit'
+        },
+        items: [
+            {
+            xtype: "titlebar",
+            title: "JobLoad: Jobs",
+            docked: "top",
+        },
+            {
+            xtype: "list",
+            store: "Jobs",
+            itemId: "jobList",
+            onItemDisclosure: false,
+            grouped: true,
+            disableSelection: false,
+            loadingText: "Loading Jobs...",
+            emptyText: '<div class="leads-list-empty-text">No jobs found.</div>',
+            itemTpl: '<div class="list-item-line-main">{Name}</div>'
+        }],
+    }
+});
+</script>
+</apex:component>

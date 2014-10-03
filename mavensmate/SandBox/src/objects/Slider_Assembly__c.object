@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Assigned_Customer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned Customer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Slider Assemblies</relationshipLabel>
+        <relationshipName>Slider_Assemblies</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Assigned_Date__c</fullName>
+        <description>The date the safety equipment was assigned to the customer</description>
+        <externalId>false</externalId>
+        <label>Assigned Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Ball_Shank_Batch__c</fullName>
+        <externalId>false</externalId>
+        <label>Ball Shank Batch</label>
+        <length>12</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ball_Shank_Die__c</fullName>
+        <externalId>false</externalId>
+        <label>Ball Shank Die</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Die 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Die 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <description>Anything that cannot be captured with the existing fields</description>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Complete_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Complete Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Ferule_Batch__c</fullName>
+        <externalId>false</externalId>
+        <label>Ferule Batch</label>
+        <length>12</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ferule_Die__c</fullName>
+        <externalId>false</externalId>
+        <label>Ferule Die</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Die 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Die 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Die 3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Model__c</fullName>
+        <externalId>false</externalId>
+        <label>Model</label>
+        <picklist>
+            <picklistValues>
+                <fullName>RSA2 Dual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RSA2 Adjustable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RSA2 Sky Tykes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Reason_Returned__c</fullName>
+        <externalId>false</externalId>
+        <label>Reason Returned</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Warranty</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Repair</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Return_Date__c</fullName>
+        <description>The date the safety equipment was returned for any reason</description>
+        <externalId>false</externalId>
+        <label>Return Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Serial_Number__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <length>24</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Assigned</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Destroyed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Returned</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Test_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Test Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Test_Results__c</fullName>
+        <externalId>false</externalId>
+        <label>Test Results</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pass</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Tested_By__c</fullName>
+        <externalId>false</externalId>
+        <label>Tested By</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Snap</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Senior</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <label>Slider Assembly</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Serial_Number__c</columns>
+        <columns>Model__c</columns>
+        <columns>Status__c</columns>
+        <columns>Complete_Date__c</columns>
+        <columns>Test_Date__c</columns>
+        <columns>Tested_By__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Model__c</field>
+            <operation>equals</operation>
+            <value>RSA2 Dual</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Unassigned</value>
+        </filters>
+        <label>Inventory RSA2 Dual Sling Lines</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>AssignedRSA2DualSlingLines</fullName>
+        <columns>NAME</columns>
+        <columns>Serial_Number__c</columns>
+        <columns>Model__c</columns>
+        <columns>Status__c</columns>
+        <columns>Complete_Date__c</columns>
+        <columns>Test_Date__c</columns>
+        <columns>Tested_By__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Model__c</field>
+            <operation>equals</operation>
+            <value>RSA2 Dual</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Assigned</value>
+        </filters>
+        <label>Assigned RSA2 Dual Sling Lines</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>InventoryRSA2AdjustableSlingLines</fullName>
+        <columns>NAME</columns>
+        <columns>Serial_Number__c</columns>
+        <columns>Model__c</columns>
+        <columns>Status__c</columns>
+        <columns>Complete_Date__c</columns>
+        <columns>Test_Date__c</columns>
+        <columns>Tested_By__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Model__c</field>
+            <operation>equals</operation>
+            <value>RSA2 Adjustable</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Unassigned</value>
+        </filters>
+        <label>Inventory RSA2 Adjustable Sling Lines</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Record Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Slider Assemblies</pluralLabel>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>Serial_Number__c</lookupDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Serial_Number__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

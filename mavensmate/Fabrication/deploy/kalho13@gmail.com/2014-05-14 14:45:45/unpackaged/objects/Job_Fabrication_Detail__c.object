@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Calculated_Fit_Minutes_Per_Part__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(ISPICKVAL(Type_Work__c, &apos;F&apos;),Work_Entry_Minutes__c / Work_Entry_Quantity__c,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Fit Minutes Per Part</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculated_Fit_Pounds_Per_Hour__c</fullName>
+        <externalId>false</externalId>
+        <formula>If(ISPICKVAL(Type_Work__c, &apos;F&apos;), (Work_Entry_Quantity__c * Inherited_Unit_Weight__c)/ (Work_Entry_Minutes__c /60), 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Fit Pounds Per Hour</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculated_Minutes_Per_Part__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Type_Work__c, &apos;W&apos;), Work_Entry_Minutes__c / Work_Entry_Quantity__c,0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Minutes Per Part</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculated_Pounds_Per_Hour__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Type_Work__c, &apos;W&apos;),(Work_Entry_Quantity__c * Inherited_Unit_Weight__c)/  (Work_Entry_Minutes__c /60), 0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Pounds Per Hour</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Calculated_Weight__c</fullName>
+        <externalId>false</externalId>
+        <formula>Work_Entry_Quantity__c  * Inherited_Unit_Weight__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated_Weight</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inherited_Unit_Weight__c</fullName>
+        <externalId>false</externalId>
+        <formula>Job_Part__r.Weight_Single_Part__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Inherited Unit Weight</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>4</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Job_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Job_Part__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Job Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Job_Part__c</fullName>
+        <externalId>false</externalId>
+        <label>Job Part</label>
+        <referenceTo>Job_Part__c</referenceTo>
+        <relationshipName>Job_Part_Details</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Type_Work__c</fullName>
+        <description>Distinguished between fit and weld to avoid double counting hours and pounds</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Distinguished between fit and weld to avoid double counting hours and pounds</inlineHelpText>
+        <label>Type Work</label>
+        <picklist>
+            <picklistValues>
+                <fullName>F</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>W</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Work_Entry_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Entry Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Work_Entry_Employee__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Entry Employee</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Jake Shelton</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Jim Belka</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Steve McLeod</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Work_Entry_Minutes__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Entry Minutes</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Work_Entry_Quantity__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Entry Quantity</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Job Fabrication Detail</label>
+    <nameField>
+        <displayFormat>{000000}</displayFormat>
+        <label>Job Fabrication Detail Id</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Job Fabrication Details</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

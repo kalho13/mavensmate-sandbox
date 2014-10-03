@@ -1,0 +1,174 @@
+<apex:page controller="mapController" showHeader="false">
+    <!-- <apex:composition template="iuivf" /> -->
+    <script src="{!myKey}" type="text/javascript"> </script>
+   <!-- <apex:includeScript value="{!$Resource.MobileListView}"/>-->
+   <head>
+   <script type="text/javascript">
+   function addLoadEvent(func) { 
+       var oldonload = window.onload;
+       if (typeof window.onload != 'function') {
+          window.onload = func;
+       } else {
+          window.onload = function() {
+             oldonload();
+             func();
+            }
+        } //close if
+     }//close addLoadEvent(function)
+     
+      addLoadEvent(
+	     function() {
+	     	 if (GBrowserIsCompatible()) {
+	     	 	var my_geocoder = new GClientGeocoder();
+           		var map = new GMap2(document.getElementById("map"));
+           		var TC = new GMapTypeControl();
+          		var bottomRight = new GControlPosition(G_ANCHOR_BOTTOM_RIGHT, new GSize(10,10));
+          		var mCount =0;
+	     	 
+	     	 	map.addControl(new GSmallMapControl()); // Small arrows     
+				map.addControl(TC, bottomRight);  // Map type buttons 
+	     	 
+	     	 	function LTrim( value ) {
+              		var re = /\s*((\S+\s*)*)/;
+              		return value.replace(re, "$1");
+           		}
+           		
+           		function RTrim( value ) {
+              		var re = /((\s*\S+)*)\s*/;
+              		return value.replace(re, "$1");
+           		}
+           		
+           		// Remove leading and ending whitespaces     
+          		 function trim( value ) {
+              		return LTrim(RTrim(value));
+           		 }
+           		 
+           		 function doAddLocationToMap(SiteName, Street, City, State, Zip, typ) {
+           		 	var addr = Street + ", " + City + ", " + State + " " + Zip;
+           		 	
+           		 	 my_geocoder.getLatLng (addr, 
+           		 	 function(point){
+           		 	 	if(point){
+           		 	 		var mTag = '';
+                    		var myIcon = new GIcon(G_DEFAULT_ICON);
+                    		
+                    		if(typ == 'self') {
+                    			mTag = "<b>" + SiteName + "</b>" + "<br>" + City ;
+                       			myIcon.image = "http://maps.google.com/mapfiles/arrow.png";
+                       			myIcon.iconSize=new GSize(32,32);
+                    		}else{
+                    			if(typ == 'acct') {
+                    				mCount ++;
+                          			var priAr = SiteName.split(":"); 
+                          			var compName = priAr[0];  // company name                           			    
+                          			var pri = trim(priAr[1]); // priority 
+                                    var acctId = priAr[2]; //account id 
+                                    var index = "";
+                          			var imgName = "marker"; // default marker image     
+                          			var color = ""; 
+                          			
+                          			mTag = "<b>" + compName + "</b>" + "<br>" + "Priority: " +  pri  + "<br>" + City ;
+                          			
+                          			// Set up marker colors based on priority    			
+                          			if (pri == 'Medium'){ 
+                          				color="purple"; 
+                         			} else if (pri == 'High'){
+                         				color="red"; 
+                         			}else if (pri == 'Low'){ 
+                         				color="blue";
+                         			} else{
+                         				color="orange";
+                         			} //close priority if
+                         			
+                         			if(mCount>10){
+                         				myIcon.image = "http://maps.google.com/mapfiles/marker.png";                           				
+                         				 console.log('imgName ' + imgName);
+                         				 console.log('color ' + color);
+                         				 console.log('index ' + String(mCount));                       			
+                         			}else{  //else there are less than 10 records
+                         				index = String(mCount);
+                         				 imgName = imgName + color + index + ".png";
+                         				 console.log('imgName: ' + imgName);
+                         				 console.log('color: ' + color);
+                         				 console.log('index: ' + String(mCount));  
+                         				 myIcon.image = "{!URLFOR($Resource.markers, 'markers/" + imgName + "')}";                         				                         				
+                         			}
+                         			
+                         			document.getElementById(acctId).src = myIcon.image;
+                          			myIcon.iconSize=new GSize(20,34);
+                    			
+                    			} //close if(typ == 'acct')                     		
+                    		
+                    		}//close if(typ == 'self')
+                    		
+                    		
+                    		myIcon.shadowSize=new GSize(56,32);
+                    		myIcon.iconAnchor=new GPoint(16,32);
+                    		myIcon.infoWindowAnchor=new GPoint(16,0);
+                    		markerOptions2 = { icon:myIcon };
+                    		var marker = new GMarker(point, markerOptions2);
+                    		map.setCenter(point, 8);
+                    		map.addOverlay(marker);
+                    		
+                    		// Set up listener action to show info on click event    
+                    		GEvent.addListener(marker, "click", function() { 
+                          		marker.openInfoWindowHtml(mTag); 
+                       		}) ;
+           		 	 	
+           		 	 	}  //close if(point)
+           		 	 
+           		 	 });//end of my_geocoder           		 
+           		 
+           		 }  //end function doAddLocation
+           		 
+           		 
+           		var arAllStr = '';
+           		arAllStr ='{!AddrArStr}'; // Get all address recs 
+           		var arLi = arAllStr.split("~::~"); // Split on line break delim 
+           		
+           		//parse out the string and pass each address to the map as a location
+           		for (var i = 0; i < arLi.length-1; i++) {  
+              		var arLiStr =arLi[i];
+              		var arCols =arLiStr.split("~:~"); //Split  to get columns     
+
+             		if(arCols[1].length >0)
+                 		doAddLocationToMap(arCols[0],arCols[1],arCols[2],arCols[3],arCols[4],'acct');     
+          		 }
+           		
+           		doAddLocationToMap('{!$User.FirstName} {!$User.LastName}'+' (Me)','{!$User.Street}','{!$User.City}','{!$User.State}','{!$User.PostalCode}','self');
+	     	 
+	     	 } //close if (GBrowserIsCompatible()) {     
+	     } //close function argument to addLoadEvent    
+     );//close call to addLoadEvent
+     
+     
+   </script>
+  </head>
+
+    <ul title="Accounts" selected="true" id="home" >
+      <!-- Draw user name at top of panel --> 
+    
+        <li class="group">User: {!$User.FirstName} {!$User.LastName} </li>
+
+        <!-- Create panel for Google Maps object -->     
+        <div class="panel" style="padding: 10px;"  >
+              <div id="map" style="width: 300px; height: 300px;"> </div>
+        </div>
+
+        <!-- Create group sub-panel to display list --> 
+    
+        <li class="group">Accounts</li>
+
+        <!-- Draw accounts, one per row --> 
+    
+        <apex:repeat value="{!MyAccts}" var="p" >
+           <li>
+              <a href="accountDetail?id={!p.Id}" >
+                 <img id="{!p.Id}"  src="http://maps.google.com/mapfiles/marker.png"/>
+                 {!p.Name} </a>
+           </li>
+        </apex:repeat>
+     
+    </ul>
+
+</apex:page>

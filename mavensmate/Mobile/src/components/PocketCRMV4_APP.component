@@ -1,0 +1,643 @@
+<!-- 
+========================================================
+ Name: PocketCRM_APP
+ Type: Visualforce Component 
+ Purpose: For Sencha Touch PocketCRM App
+ Created by: Don Robins - www.ForceMentor.com
+ Created on: August 1, 2012
+ Copyright 2012 Outformations, Inc. 
+
+ Rev #  Revised on  Revised by     Revision Description
+  1.0   08/01/2012  Don Robins      Initial Release
+=========================================================
+-->
+
+<apex:component controller="PocketCRMLeadController" >
+<script type="text/javascript">
+
+//================================================================================================================
+//APPLICATION
+//The Application class is the entry point into your Sencha Touch application.
+//================================================================================================================
+Ext.application({
+    name: "PocketCRM",
+
+    //Load the various MVC components into memory.
+    models: ["Lead"],
+    stores: ["Leads"],
+    controllers: ["Leads"],
+    views: ["LeadsList", "LeadEditor"],
+
+    //The application's startup routine once all components are loaded.
+    launch: function () {
+
+        //Instantiate your main list view for Leads.
+        var leadsListView = {
+            xtype: "leadslistview"
+        };
+
+        var leadEditorView = {
+            xtype:"leadeditorview"
+        };
+
+        //Launch the primary fullscreen view and pass in the list view.
+        Ext.Viewport.add([leadsListView, leadEditorView]);
+
+    }
+
+});
+
+
+//==============================================================================================
+//VIEWS
+//Views display data to your users and gather input from them; 
+//they also emit events about your user interaction.
+//==============================================================================================
+//The Lead list view.
+Ext.define("PocketCRM.view.LeadsList", {
+    extend: "Ext.Container",
+
+    //It uses the base list class.
+    requires: "Ext.dataview.List",
+    alias: "widget.leadslistview",
+
+    config: {
+
+        //Take up the full space available in the parent container.
+        layout: {
+            type: 'fit'
+        },
+
+        //Add the components to include within the list view. 
+        items: [
+            {
+            //A simple top title bar. 
+            xtype: "titlebar",
+            title: "PocketCRM",
+            docked: "top",
+            //on the title bar add a spacer
+            items:[
+            {
+                xtype:'spacer'
+            },
+            //then on the titlebar add a button
+            {
+                xtype:"button",
+                text:"New",
+                ui:'action',
+                itemId:"newButton"
+            }
+            ]
+        },
+
+        {
+            xtype:"toolbar",
+            docked:"bottom",
+            items:[
+            {  
+                xtype:"button",
+                iconCls:"refresh",
+                iconMask:true,
+                itemId:"syncButton"
+            }
+            ]
+        },
+            {
+            //The main list and its properties. 
+            xtype: "list",
+            store: "Leads",
+            itemId: "leadsList",
+            onItemDisclosure: true,
+            indexBar:true,
+            grouped: true,
+            disableSelection: false,
+
+            //The template for display if the Store is empty of records.
+            //Note the style to control visual presentation.
+            loadingText: "Loading Leads...",
+            emptyText: '<div class="leads-list-empty-text">No leads found.</div>',
+
+            //The template for the display of each list item representing one record.
+            //One row will display for each record in the data Store.
+            //The fields referenced are from the entity's Model. 
+            itemTpl: '<div class="list-item-line-main">{Id}:{LastName}, {FirstName}</div>' + '<div class="list-item-line-detail">{Company}</div>' + '<div class="list-item-line-detail">{Title} - Phone: {Phone} </div>' + '<div class="list-item-line-detail">{Email}</div>',
+        }],
+
+        //after the items add the listeners
+        listeners:[{
+            delegate:"#newButton",
+            event:"tap",
+            fn:"onNewButtonTap"
+        },
+        {
+            delegate:"#syncButton",
+            event:"tap",
+            fn:"onSyncButtonTap"
+        },
+        {
+            delegate:"#leadsList",
+            event:"disclose",
+            fn:"onLeadsListDisclose"
+        }]//end of listeners
+
+    },//close the config
+
+    onSyncButtonTap:function(){
+        console.log("syncLeadButtonTapped");
+        this.fireEvent("syncLeadCommand", this);
+    },
+    onNewButtonTap:function(){
+        console.log("New Button Tapped");
+        this.fireEvent("newLeadCommand", this);
+    },
+    onLeadsListDisclose:function(list, record, target, index, evt, options){
+        console.log("editLeadCommand", this);
+        this.fireEvent('editLeadCommand', this, record);
+    }
+
+});
+
+// =================================== Leads Form ==========================================
+
+Ext.define("PocketCRM.view.LeadEditor", {
+    extend:"Ext.form.Panel",
+    requires: "Ext.form.FieldSet",
+    alias: "widget.leadeditorview",
+    config:{
+        scrollable:'vertical',
+        items:[
+        //top toolbar
+            { 
+             xtype:"toolbar",
+             docked:"top",
+             title:"Edit Lead",
+             items:[
+                    { //top of page toolbar
+                        xtype:"button",
+                        ui:"back",
+                        text:"Home",
+                        itemId:"backButton"
+                    },
+                    {
+                        xtype:"spacer"
+                    },
+                    {
+                        xtype:"button",
+                        ui:"action",
+                        text:"Save",
+                        itemId:"saveButton"
+                    }
+                ]
+            },//end top of page toolbar
+              //bottom toolbar
+            {
+                xtype:"toolbar",
+                docked:"bottom",
+                items:[
+                      {
+                        xtype:"button",
+                        iconCls:"trash",
+                        iconMask:true,
+                        itemId:"deleteButton"
+                       }
+                ]
+            },//end bottom toolbar
+            {  //fieldset
+                xtype:"fieldset",
+                title:'Lead Info',
+                items:[
+                    {
+                        xtype:'textfield',
+                        name:'FirstName',
+                        label:'First Name'
+                    },
+                    {
+                        xtype:'textfield',
+                        name:'LastName',
+                        label:'Last Name'
+                    },
+                    {
+                        xtype:'textfield',
+                        name:'Company',
+                        label:'Company',
+                        required:true
+                    },
+                    {
+                        xtype:'textfield',
+                        name:'Title',
+                        label:'Title'
+                    },
+                    {
+                        xtype:'selectfield',
+                        name:'Status',
+                        label:'Status',
+                        required:true,
+                        value:'Open-Not Contacted',
+                        options:[
+                                {
+                                    text:'Open - Not Contacted',
+                                    value:'Open - Not Contacted'
+                                },
+                                {
+                                    text:'Working - Contacted',
+                                    value:'Working - Contacted'
+                                },
+                                {
+                                    text:'Closed-Converted',
+                                    value:'Closed-Converted'
+                                },
+                                {
+                                    text:'Closed - Not Converted',
+                                    value:'Closed - Not Converted'
+                                }
+                            ], //end of select field options
+                        },//end of selectfield
+                    ]//end of field set items
+                }, //end of fieldset ?
+                 // a 2ND FIELDSET
+                {
+                    xtype:"fieldset",
+                    title:'Contact Info',
+                    items:[
+                        {
+                            xtype:'textfield',
+                            name:'Phone',
+                            label:'Phone',
+                            component:{
+                                type:'tel'
+                            }
+                        },
+                        {
+                            xtype:'textfield',
+                            name:'Mobile',
+                            label:'Mobile',
+                            component:{
+                                type:'tel'
+                            }
+                        },
+                        {
+                            xtype:'emailfield',
+                            name:'Email',
+                            label:'Email Address'
+                        },
+                    ]//close 2nd fieldset items
+                }, //CLOSE 2ND FIELDSET
+        ],
+        //now for the listeners
+        listeners:[
+            {
+                delegate:"#backButton",
+                event:"tap",
+                fn:"onBackButtonTap"
+            },
+            {
+                delegate:"#saveButton",
+                event:"tap",
+                fn:"onSaveButtonTap"
+            },
+            {
+                delegate:"#deleteButton",
+                event:"tap",
+                fn:"onDeleteButtonTap"
+            }
+        ]//end of listeners
+    },//end of config
+
+    onSaveButtonTap: function(){
+        console.log('Save Button Tapped');
+         this.fireEvent("saveLeadCommand", this);
+    },
+
+    onBackButtonTap: function(){
+        console.log('Back Button Tapped');
+         this.fireEvent("backToHomeCommand", this);
+    },
+
+    onDeleteButtonTap: function(){
+        console.log('Delete Button Tapped');
+         this.fireEvent("deleteLeadCommand", this);
+    }
+
+});
+
+//==============================================================================================
+//CONTROLLERS
+//Controllers manage the communication of your application and the coordination between the
+//views and the model; they listen for the events emitted by the views and react accordingly.
+//==============================================================================================    
+//The controller for the Leads list view
+Ext.define("PocketCRM.controller.Leads", {
+    extend: "Ext.app.Controller",
+
+    config: {
+        refs:{
+            leadsListView:"leadslistview",
+            leadEditorView:"leadeditorview",
+            leadsList:"#leadsList"
+        },
+
+        control:{
+            leadsListView:{
+                //The commands fired by the list container
+                syncLeadCommand:"onSyncLeadCommand",
+                newLeadCommand:"onNewLeadCommand",
+                editLeadCommand:"onEditLeadCommand"
+            },
+            leadEditorView:{
+                //the command fired by the lead editor
+                saveLeadCommand:"onSaveLeadCommand",
+                deleteLeadCommand:"onDeleteLeadCommand",
+                backToHomeCommand:"onBackToHomeCommand"
+            }
+        }
+    },
+
+    slideLeftTransition:{
+        type:'slide',
+        direction:'left'
+    },
+    slideRightTransition:{
+        type:'slide',
+        direction:'right'
+    },
+
+    activateLeadEditor: function(record){
+        var leadEditorView = this.getLeadEditorView();
+        leadEditorView.setRecord(record);
+        Ext.Viewport.animateActiveItem(leadEditorView, this.slideLeftTransition);
+    },
+    activateLeadsList: function(){
+        Ext.Viewport.animateActiveItem(this.getLeadsListView(), this.slideRightTransition);
+    },
+    onSyncLeadCommand:function(){
+        console.log("onSyncLeadCommand");
+        //get a ref to the store and remove it
+        var leadStore = Ext.getStore("Leads");
+        //Resync the proxy, reload and activate the list
+        leadStore.sync();  //must be a built in command
+        leadStore.load();
+        this.activateLeadsList();
+    },
+    onNewLeadCommand:function(){
+        console.log("onNewLeadCommand");
+        //set the default for the status select field
+        var newLead = Ext.create("PocketCRM.model.Lead",{
+            Status: "Open - Not Contacted"
+        });
+        this.activateLeadEditor(newLead);
+    },
+    onEditLeadCommand:function(list, record){
+        console.log("onEditLeadCommand");
+        this.activateLeadEditor(record);
+
+    },
+    onSaveLeadCommand:function(){
+        console.log("onSaveLeadCommand");
+
+        //update the field values in the record
+        var leadEditorView = this.getLeadEditorView();
+        var currentLead = leadEditorView.getRecord();  //why am I going here to get the record.  It is already open?
+        var newValues = leadEditorView.getValues();  //what values does the leadEditorView have?
+        this.getLeadEditorView().updateRecord(currentLead); //where is the updateRecord function?
+
+         //check for validation errors
+        var errors = currentLead.validate();  //must be based on the required fields in the configuration
+        if(!errors.isValid()){
+            var msg = '';
+
+             errors.each(function(error){
+                msg+=error.getMessage() + '<br/>';
+            }); //close errors each
+
+            console.log('Errors: ' + msg);
+            Ext.Msg.alert('Please correct errors!', msg, Ext.emptyFn);
+           
+            currentLead.reject();
+            return;
+        }
+
+        //now if there are no errors
+        //get a reference to the store
+        var leadStore = Ext.getStore("Leads");
+
+        //add a new record to the store
+        if(null==leadStore.findRecord('id', currentLead.data.id)){
+            leadStore.add(currentLead);  //where is it saved back to salesforce?  This is adding to the store
+            //how to create a child record?
+        }
+
+        //resync the proxy and activate the list
+        leadStore.sync();
+        this.activateLeadsList();
+
+    },
+    onDeleteLeadCommand:function(){
+        console.log("onDeleteCommand");
+
+        //get a reference to the form and its record
+        var leadEditorView = this.getLeadEditorView();
+        var currentLead = leadEditorView.getRecord();
+
+        //get a reference to the store and remove it
+        var leadsStore = Ext.getStore("Leads");
+        leadsStore.remove(currentLead);
+
+        //resync the proxy and activate the list
+        leadsStore.sync();
+        this.activateLeadsList();
+    },
+    onBackToHomeCommand:function(){
+        console.log("onBackToHomeCommand");
+        this.activateLeadsList();
+    },
+
+    // Base Class functions.
+    launch: function () {
+        console.log("launch");
+        this.callParent(arguments);
+
+        //Load up the Store associated with the controller and its views. 
+        console.log("load Leads");
+        var leadsStore = Ext.getStore("Leads");
+        leadsStore.load();
+
+    },
+
+    init: function () {
+        this.callParent(arguments);
+        console.log("init");
+
+        //Listen for exceptions observed by the proxy so we can report then and clean up
+        Ext.getStore("Leads").getProxy().addListener('exception', function(proxy, response, operation, options){
+            if(response){
+                if(response.errorMessage){
+                    Ext.Msg.alert('Error', response.errorMessage);
+                }else{
+                    Ext.Msg.alert('Error', operation.config.action + ' failed: ' + response.errorMessage);
+                }
+            }else{
+                Ext.Msg.alert('Error', operation.config.action + ' failed for unknown reason: proxy= ' + proxy );
+            }
+
+        });
+    }
+
+});
+
+PocketCRMLeadController.Query.directCfg.method.getArgs = function (params, paramOrder, paramsAsHash) {
+    console.log('getArgs: ' + params.data);
+    return [params];
+}
+ 
+// The DirectProxy gets properly formatted data from the API calls, but then discards it.
+// This may simply be a difference between ExtJS 3 (used by Remoting) and 4...
+Ext.data.proxy.Direct.prototype.createRequestCallback = function (request, operation, callback, scope) {
+    var me = this;
+    return function (data, event) {
+        console.log('createRequestCallback: ' + operation);
+        me.processResponse(event.status, operation, request, data, callback, scope);
+    };
+};
+
+//==============================================================================================  
+//MODELS
+//Models are the objects on your application.
+//==============================================================================================  
+//The Lead model will include whatever fields are necssary to manage.
+Ext.define("PocketCRM.model.Lead", {
+    extend: "Ext.data.Model",
+
+    config: {
+
+        idProperty: 'Id',
+        fields: [
+            {
+            name: 'Id',
+            type: 'string',
+            persist: false
+        },
+            {
+            name: 'FirstName',
+            type: 'string',
+            required: true
+        },
+            {
+            name: 'LastName',
+            type: 'string',
+            required: true
+        },
+            {
+            name: 'Company',
+            type: 'string'
+        },
+            {
+            name: 'Title',
+            type: 'string'
+        },
+            {
+            name: 'Phone',
+            type: 'string',
+            required: true
+        },
+            {
+            name: 'Email',
+            type: 'string',
+            required: true
+        }, 
+        {
+            name: 'Status',
+            type: 'string',
+            required: true
+        }, //This is a derived field using an anonymous 'convert' 
+           //anonymous function to calculate a string value.
+        // {
+        //     name: 'FullName',
+        //     convert: function (value, record) {
+        //         var fn = record.get('FirstName');
+        //         var ln = record.get('LastName');
+        //         return fn + " " + ln;
+        //     }
+        // },
+        ],
+
+        validations:[
+            {
+                type:'presence',
+                field:'LastName',
+                message:'Enter a Last Name'
+            },
+            {
+                type:'presence',
+                field:'Company',
+                message:'Enter a Company'
+            },
+            {
+                type:'presence',
+                field:'Status',
+                message:'Select a Status'
+            }
+        ],
+
+        proxy:{
+           type:'direct',
+           api:{
+            read:PocketCRMLeadController.Query,
+            create:PocketCRMLeadController.Add,
+            update:PocketCRMLeadController.Edit,
+            destroy:PocketCRMLeadController.Destroy
+           },
+           limitParam:'recordCount', //"limit" is an apex keyword 
+           sortParam:'sortParams', //because "sort is a keyword too"
+           pageParam:false, //not used in the controller so do not send it
+           reader:{
+            type:'json',
+            rootProperty:'records',
+            messageProperty:'errorMessage'
+           },
+           writer:{
+            type:'json',
+            root:'records',
+            writeAllFields:false,//otherwise empty field will transmit
+            allowSingle:false,//need to always be an array for code simplication
+            encode:false  //docs say set to "false" when using directProxy
+           }
+        }
+    },
+});
+
+//==============================================================================================
+//STORES
+//Stored serve as the client-side cache of your data; they loading data into your app's views. 
+//==============================================================================================
+
+//The Lead Store, this version will simply load with mock JSON data.
+Ext.define("PocketCRM.store.Leads", {
+    extend: "Ext.data.Store",
+    requires: "Ext.data.proxy.LocalStorage",
+
+    config: {
+
+        model: "PocketCRM.model.Lead",
+
+        //Fetch the data from the custom Apex controller method 
+        //which will return a simple list of Leads as JSON on load.  
+      
+
+        //Create a grouping; be certain to use a field with content or you'll get errors!
+        groupField: "Status",
+        groupDir: "ASC",
+
+        //Create additional sorts for within the Group.
+        sorters: [{
+            property: 'LastName',
+            direction: 'ASC'
+        }, {
+            property: 'FirstName',
+            direction: 'ASC'
+        }]
+    }
+
+});
+
+</script>
+</apex:component>

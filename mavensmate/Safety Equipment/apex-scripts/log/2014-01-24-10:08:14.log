@@ -1,0 +1,40 @@
+Execute Anonymous
+
+================================
+
+List<Safety_Equipment__c> s = [Select id FROM Safety_Equipment__c Limit 5000];
+delete s;
+
+================================
+
+28.0 APEX_CODE,DEBUG;APEX_PROFILING,DEBUG;CALLOUT,INFO;DB,INFO;VALIDATION,INFO;WORKFLOW,INFO
+Execute Anonymous: List<Safety_Equipment__c> s = [Select id FROM Safety_Equipment__c Limit 5000];
+Execute Anonymous: delete s;
+10:08:13.090 (90747000)|EXECUTION_STARTED
+10:08:13.090 (90758000)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+10:08:13.091 (91620000)|SOQL_EXECUTE_BEGIN|[1]|Aggregations:0|select id from Safety_Equipment__c limit 5000
+10:08:13.094 (94228000)|SOQL_EXECUTE_END|[1]|Rows:20
+10:08:13.094 (94360000)|DML_BEGIN|[2]|Op:Delete|Type:Safety_Equipment__c|Rows:20
+10:08:13.746 (746045000)|DML_END|[2]
+10:08:14.291 (759237000)|CUMULATIVE_LIMIT_USAGE
+10:08:14.291|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 100
+  Number of query rows: 20 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 1 out of 150
+  Number of DML rows: 20 out of 10000
+  Number of code statements: 2 out of 200000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+10:08:14.291|CUMULATIVE_LIMIT_USAGE_END
+
+10:08:13.759 (759277000)|CODE_UNIT_FINISHED|execute_anonymous_apex
+10:08:13.759 (759289000)|EXECUTION_FINISHED

@@ -1,0 +1,99 @@
+Execute Anonymous
+
+================================
+
+List<Lead> leadList = [SELECT FirstName, LastName, Company, Title,Phone,Email, Status FROM Lead Limit 5];
+system.debug(JSON.serializePretty(leadList));
+
+================================
+
+28.0 APEX_CODE,DEBUG;APEX_PROFILING,DEBUG;CALLOUT,INFO;DB,INFO;VALIDATION,INFO;WORKFLOW,INFO
+Execute Anonymous: List<Lead> leadList = [SELECT FirstName, LastName, Company, Title,Phone,Email, Status FROM Lead Limit 5];
+Execute Anonymous: system.debug(JSON.serializePretty(leadList));
+15:58:49.054 (54314270)|EXECUTION_STARTED
+15:58:49.054 (54322981)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+15:58:49.054 (54849767)|SOQL_EXECUTE_BEGIN|[1]|Aggregations:0|select FirstName, LastName, Company, Title, Phone, Email, Status from Lead limit 5
+15:58:49.060 (60987902)|SOQL_EXECUTE_END|[1]|Rows:5
+15:58:49.061 (61811405)|USER_DEBUG|[2]|DEBUG|[ {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd000000LlsOBEAZ"
+  },
+  "Status" : "Open - Not Contacted",
+  "Id" : "00Qd000000LlsOBEAZ",
+  "Company" : "Home",
+  "LastName" : "Larry"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntEEAS"
+  },
+  "Status" : "Closed - Converted",
+  "Phone" : "(336) 222-7000",
+  "Email" : "jrogers@btca.com",
+  "FirstName" : "Jack",
+  "Id" : "00Qd0000005UntEEAS",
+  "Company" : "Burlington Textiles Corp of America",
+  "LastName" : "Rogers",
+  "Title" : "VP, Facilities"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntFEAS"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(614) 431-5000",
+  "Email" : "bill_dadio@zenith.com",
+  "FirstName" : "Bill",
+  "Id" : "00Qd0000005UntFEAS",
+  "Company" : "Zenith Industrial Partners",
+  "LastName" : "Dadio Jr",
+  "Title" : "CFO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntGEAS"
+  },
+  "Status" : "Closed - Not Converted",
+  "Phone" : "(781) 270-6500",
+  "Email" : "eluce@pacificretail.com",
+  "FirstName" : "Eugena",
+  "Id" : "00Qd0000005UntGEAS",
+  "Company" : "Pacific Retail Group",
+  "LastName" : "Luce",
+  "Title" : "CEO"
+}, {
+  "attributes" : {
+    "type" : "Lead",
+    "url" : "/services/data/v30.0/sobjects/Lead/00Qd0000005UntHEAS"
+  },
+  "Status" : "Working - Contacted",
+  "Phone" : "(626) 440-0700",
+  "Email" : "sandra_e@highland.net",
+  "FirstName" : "Sandra",
+  "Id" : "00Qd0000005UntHEAS",
+  "Company" : "Highland Manufacturing Ltd.",
+  "LastName" : "Eberhard",
+  "Title" : "VP, Production"
+} ]
+15:58:49.552 (61856991)|CUMULATIVE_LIMIT_USAGE
+15:58:49.552|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 100
+  Number of query rows: 5 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+15:58:49.552|CUMULATIVE_LIMIT_USAGE_END
+
+15:58:49.061 (61896998)|CODE_UNIT_FINISHED|execute_anonymous_apex
+15:58:49.061 (61903260)|EXECUTION_FINISHED

@@ -1,0 +1,25 @@
+<apex:page controller="v8MapController" cache="true" showHeader="false" contentType="application/vnd.google-earth.kml+xml"  standardStylesheets="false">
+	<kml xmlns="http://earth.google.com/kml/2.x">
+	<Document>
+			<name>RCI Courses</name>
+			<LookAt>
+	      		<longitude>-85.828858</longitude>
+	      		<latitude>42.512884</latitude>
+	      		<range>5000000</range><tilt>0</tilt><heading>0</heading>
+   			</LookAt>
+			<apex:repeat value="{!courseList}" var="c">
+				<Placemark>
+					<name>{!c.Account__r.Name}</name>
+					<address>{!c.Account__r.Location__Latitude__s} {!c.Account__r.Location__Longitude__s}</address>
+					<description>
+						<![CDATA[
+							<p><b>Location:</b>{!c.Account__r.ShippingCity}, {!c.Account__r.ShippingState}							
+							<p><b>Model:</b>{!c.Model__c}
+							<p><b>Year Built:</b>{!c.Year_Built__c}					
+						]]>
+					</description>
+				</Placemark>
+			</apex:repeat>					
+		</Document>
+	</kml>
+</apex:page>

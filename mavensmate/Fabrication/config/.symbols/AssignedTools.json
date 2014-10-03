@@ -1,0 +1,225 @@
+{
+    "name": "AssignedTools", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "stdController", 
+            "location": {
+                "column": 52, 
+                "line": 10
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "counter", 
+            "location": {
+                "column": 11, 
+                "line": 28
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Boolean", 
+            "name": "firstBreakFound", 
+            "location": {
+                "column": 11, 
+                "line": 29
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Boolean", 
+            "name": "setSubSeqBreak", 
+            "location": {
+                "column": 11, 
+                "line": 30
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "breakPoint", 
+            "location": {
+                "column": 11, 
+                "line": 31
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Assigned_Tool__c", 
+            "name": "tool", 
+            "location": {
+                "column": 24, 
+                "line": 35
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "AssignedTools", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 10
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "toolLineItems", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 33, 
+                "line": 5
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "toolbox", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 6
+            }, 
+            "type": "Tool_Box__c"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "toolList", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 38, 
+                "line": 7
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "toolPage", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 8
+            }, 
+            "type": "LIST"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "FIRST_BREAK", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 2
+            }, 
+            "type": "Integer"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "SUBSEQ_BREAKS", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 3
+            }, 
+            "type": "Integer"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "AssignedTools", 
+        "name": "AssignedTools", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000065tV", 
+    "id": "01pS000000065tV", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getAssignedTools", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 15
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getTools", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 19
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getToolBox", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 23
+            }, 
+            "returnType": "Tool_Box__c", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "prepareQuoteLinesforPrinting", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 27
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

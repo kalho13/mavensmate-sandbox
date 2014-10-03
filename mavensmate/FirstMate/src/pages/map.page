@@ -1,0 +1,45 @@
+<apex:page controller="AccountController">
+<head>
+
+<style type="text/css">
+ td.tableCell{
+   padding: 5px;
+ }
+ </style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	
+
+	AccountController.getAccounts(
+		function(records, e){
+		
+			$.each(records,function(index, account){
+				console.log(account.Name);
+				console.log(account.BillingCity);
+				console.log(account.Location__Latitude__s);
+				console.log(account.Location__Longitude__s);
+				console.log(records.length);
+				$('#myTable > tbody:last').append('<tr><td>'+ 
+													account.Name +'</td><td>' +
+													account.BillingCity + '</td><td>' +
+													account.Location__Latitude__s + '</td><td>' + 
+													account.Location__Longitude__s + '</td></tr>');
+			});
+			
+		});
+});
+
+</script>
+
+</head>
+
+<body>
+	 <table id="myTable" border="1">
+	 	<tbody>
+	 	</tbody>
+	</table>
+</body>
+
+</apex:page>

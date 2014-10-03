@@ -1,0 +1,329 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "encodingMap", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 36, 
+                "line": 10
+            }, 
+            "type": "Map"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "encodingMax", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 14
+            }, 
+            "type": "Integer"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "encodingMin", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 18
+            }, 
+            "type": "Integer"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "min", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 26
+            }, 
+            "type": "Integer"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "max", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 30
+            }, 
+            "type": "Integer"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "eType", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 33
+            }, 
+            "type": "EncodingType"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "dataSet", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 36
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "graph", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 39
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "chartURL", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 42
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "displayChart", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 45
+            }, 
+            "type": "Boolean"
+        }
+    ], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "create", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 55
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "getEncode", 
+            "parameters": [
+                {
+                    "type": "Integer", 
+                    "name": "d"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 103
+            }, 
+            "returnType": "String", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "init", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 117
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getEncodingDescriptor", 
+            "parameters": [
+                {
+                    "type": "EncodingType", 
+                    "name": "t"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 92
+            }, 
+            "returnType": "String", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [
+        {
+            "properties": [], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [], 
+            "constructors": [], 
+            "namespace": null, 
+            "name": "EncodingException", 
+            "tableDeclaration": {
+                "type": "EncodingException", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 18, 
+                    "line": 4
+                }, 
+                "name": "EncodingException"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }, 
+        {
+            "properties": [], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [], 
+            "constructors": [], 
+            "namespace": null, 
+            "name": "UnsupportedEncodingTypeException", 
+            "tableDeclaration": {
+                "type": "UnsupportedEncodingTypeException", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 18, 
+                    "line": 5
+                }, 
+                "name": "UnsupportedEncodingTypeException"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }, 
+        {
+            "properties": [], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [], 
+            "constructors": [], 
+            "namespace": null, 
+            "name": "EncodingType", 
+            "tableDeclaration": {
+                "type": "EncodingType", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 17, 
+                    "line": 22
+                }, 
+                "name": "EncodingType"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }
+    ], 
+    "variables": [
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 56
+            }, 
+            "name": "dataSetList"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 57
+            }, 
+            "name": "mappedValue"
+        }, 
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 20, 
+                "line": 78
+            }, 
+            "name": "dataPoint"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 37, 
+                "line": 103
+            }, 
+            "name": "d"
+        }, 
+        {
+            "type": "EncodingType", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 60, 
+                "line": 92
+            }, 
+            "name": "t"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "GoogleDataEncoding", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 47
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "GoogleDataEncoding", 
+    "tableDeclaration": {
+        "type": "GoogleDataEncoding", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }, 
+        "name": "GoogleDataEncoding"
+    }, 
+    "key": "01pS00000006ZJV", 
+    "id": "01pS00000006ZJV", 
+    "externalReferences": []
+}

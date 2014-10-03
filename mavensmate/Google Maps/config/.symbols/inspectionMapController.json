@@ -1,0 +1,49 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getCourseInspections", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 47, 
+                "line": 6
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 7
+            }, 
+            "name": "statuses"
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "inspectionMapController", 
+    "tableDeclaration": {
+        "type": "inspectionMapController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }, 
+        "name": "inspectionMapController"
+    }, 
+    "key": "01pS00000006Z3D", 
+    "id": "01pS00000006Z3D", 
+    "externalReferences": []
+}

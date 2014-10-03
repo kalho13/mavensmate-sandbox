@@ -1,0 +1,59 @@
+<apex:page standardController="Job_Part__c" showHeader="true" sidebar="true">
+
+<apex:form id="jobPart">
+<head>
+<style type="text/css">
+
+.topTable{	
+	font-family:arial; 
+	font-weight:bold; 
+	font-size:12pt;
+	color:#5E82A3;
+}
+
+.bodyTable{
+	
+    background-image: none !important; //This is needed if you want to overwrite the header background
+    color: #CC0000 !important; 
+    font-size:100% !important; 
+   
+}
+
+/*h3 { color: red;
+ font-size: 10px;
+ }*/
+
+.bPageBlockwithoutlines {
+
+    border-top:0px;
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
+
+.Custom64Tab .pageTitleIcon, .individualPalette .Custom64Block{
+  background-image: url("/img/icon/custom51_100/gears64.png");
+  background-position: 0px 0px;
+  width: 64px;
+  height: 64px;
+}
+
+</style> 
+</head>
+
+<!-- section of each of the job types -->
+<!-- Bring in parent job type to control the rendering of the document -->
+
+
+
+	
+		<apex:outputpanel layout="block" style="text-align:center;">		
+		 	<apex:commandButton action="{!save}" value="Save Project Record" id="saveButton"/> &nbsp;&nbsp;
+		 	<apex:commandButton action="{!cancel}" value="Close Project Record" id="closeButton"/>			
+		</apex:outputpanel>
+
+		
+
+
+	</apex:form>
+
+</apex:page>

@@ -1,0 +1,130 @@
+{
+    "name": "ProjectModuleExt", 
+    "externalReferences": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "stdController", 
+            "location": {
+                "column": 58, 
+                "line": 6
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Project_Module__c", 
+            "name": "m", 
+            "location": {
+                "column": 27, 
+                "line": 12
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pageRef", 
+            "location": {
+                "column": 23, 
+                "line": 13
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Project_Module__c", 
+            "name": "m", 
+            "location": {
+                "column": 27, 
+                "line": 20
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pageRef", 
+            "location": {
+                "column": 23, 
+                "line": 21
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "ProjectModuleExt", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 6
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "stdController", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 4
+            }, 
+            "type": "StandardController"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "ProjectModuleExt", 
+        "name": "ProjectModuleExt", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "innerClasses": [], 
+    "key": "01pS00000006BrC", 
+    "id": "01pS00000006BrC", 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "doCancel", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 11
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "doSave", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 19
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }
+    ]
+}

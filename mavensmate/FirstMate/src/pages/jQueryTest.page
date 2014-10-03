@@ -1,0 +1,55 @@
+<apex:page standardController="Case">
+
+ <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
+ <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"/>
+  <apex:stylesheet value="http://ajax.googleapis.com/css/ui-lightness/jquery-ui-1.7.2.custom.css"/>
+ 
+    <script>
+
+        function displaydiv(val){
+             if(val=='value3'){
+                document.getElementById('chk').style.display='block';
+                document.getElementById('detail').style.display='none';
+            }else if(val=='value2'){
+                document.getElementById('detail').style.display='block';
+            }else{
+              document.getElementById('chk').style.display='none';
+              document.getElementById('detail').style.display='none';
+            }
+        }
+    </script>
+ 
+ <apex:form >
+ 	
+ 
+      <div id="detail" style="display:none">
+          <apex:pageBlock >
+                <apex:pageBlockSection title="Installation and Warranty Documentation" columns="2"  >
+                    <apex:inputField value="{!case.manHours__c}"/>
+                    <apex:inputField value="{!case.materialCost__c}"/> 
+                    <apex:inputField value="{!case.shippingExpenses__c}"/> 
+                    <apex:inputField value="{!case.otherExpenses__c}"/>
+                    <apex:inputField value="{!case.department__c}"/>
+                    <apex:inputTextarea value="{!case.solution__c}" cols="230" rows="12"/>                    
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+      </div>
+
+        <apex:selectList id="chooseColor"  onchange="displaydiv(this.value)" size="1">
+
+            <apex:selectOption itemValue="value1" itemLabel="value 1"/>
+
+            <apex:selectOption itemValue="value2" itemLabel="value 2"/>
+
+            <apex:selectOption itemValue="value3" itemLabel="value 3"/>
+
+        </apex:selectList>
+
+    </apex:form>
+
+    <div id="chk" style="display:none;">
+
+    hello
+
+    </div>
+</apex:page>

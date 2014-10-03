@@ -1,0 +1,470 @@
+{
+    "name": "SafetyEquipmentController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "StandardController", 
+            "name": "stdController", 
+            "location": {
+                "column": 64, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "p", 
+            "location": {
+                "column": 25, 
+                "line": 14
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "safetyList", 
+            "location": {
+                "column": 37, 
+                "line": 15
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Safety_Equipment__c", 
+            "name": "item", 
+            "location": {
+                "column": 31, 
+                "line": 16
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "a", 
+            "location": {
+                "column": 21, 
+                "line": 17
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "commaSeparatedList", 
+            "location": {
+                "column": 25, 
+                "line": 36
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "z", 
+            "location": {
+                "column": 25, 
+                "line": 38
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "safetyList", 
+            "location": {
+                "column": 39, 
+                "line": 67
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Safety_Equipment__c", 
+            "name": "item", 
+            "location": {
+                "column": 33, 
+                "line": 68
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "a", 
+            "location": {
+                "column": 20, 
+                "line": 69
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "commaSeparatedList", 
+            "location": {
+                "column": 25, 
+                "line": 87
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "z", 
+            "location": {
+                "column": 25, 
+                "line": 89
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "p", 
+            "location": {
+                "column": 23, 
+                "line": 111
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "DescribeSObjectResult", 
+            "name": "anySObjectSchema", 
+            "location": {
+                "column": 38, 
+                "line": 116
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "objectIdPrefix", 
+            "location": {
+                "column": 16, 
+                "line": 117
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pageReference", 
+            "location": {
+                "column": 23, 
+                "line": 118
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "p", 
+            "location": {
+                "column": 23, 
+                "line": 124
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "commaSeparatedList", 
+            "location": {
+                "column": 37, 
+                "line": 138
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "aa", 
+            "location": {
+                "column": 24, 
+                "line": 139
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "n", 
+            "location": {
+                "column": 25, 
+                "line": 140
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "i", 
+            "location": {
+                "column": 26, 
+                "line": 144
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "aName", 
+            "location": {
+                "column": 18, 
+                "line": 160
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "a", 
+            "location": {
+                "column": 25, 
+                "line": 161
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Safety_Equipment__c", 
+            "name": "c", 
+            "location": {
+                "column": 38, 
+                "line": 166
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "p", 
+            "location": {
+                "column": 23, 
+                "line": 183
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "commaSeparatedList", 
+            "location": {
+                "column": 37, 
+                "line": 199
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "aa", 
+            "location": {
+                "column": 24, 
+                "line": 200
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "n", 
+            "location": {
+                "column": 25, 
+                "line": 201
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "i", 
+            "location": {
+                "column": 24, 
+                "line": 206
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Safety_Equipment__c", 
+            "name": "c", 
+            "location": {
+                "column": 37, 
+                "line": 226
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "DescribeSObjectResult", 
+            "name": "anySObjectSchema", 
+            "location": {
+                "column": 42, 
+                "line": 238
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "objectIdPrefix", 
+            "location": {
+                "column": 20, 
+                "line": 239
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pageReference", 
+            "location": {
+                "column": 27, 
+                "line": 240
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "SafetyEquipmentController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 3
+            }, 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "SafetyEquipmentController", 
+            "parameters": [
+                {
+                    "type": "StandardController", 
+                    "name": "stdController"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 9
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "assign", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 4
+            }, 
+            "type": "Safety_Equipment__c"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "errorMessage", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 16, 
+                "line": 5
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "safetyList", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 6
+            }, 
+            "type": "LIST"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "SafetyEquipmentController", 
+        "name": "SafetyEquipmentController", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS00000006A8f", 
+    "id": "01pS00000006A8f", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "AssignInventory", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 13
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "AssignInventoryClose", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 66
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "AssignAccount", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 123
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "AssignAccountClose", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 27, 
+                "line": 182
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }
+    ]
+}

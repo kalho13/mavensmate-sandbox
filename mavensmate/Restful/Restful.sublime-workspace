@@ -1,0 +1,703 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"op",
+				"operation"
+			],
+			[
+				"Poc",
+				"PocketCRMLeadController"
+			],
+			[
+				"Po",
+				"PocketCRMLeadController"
+			],
+			[
+				"get",
+				"PUBLIC getMessage() 	String"
+			],
+			[
+				"si",
+				"PUBLIC size() 	Integer"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"backgroud-c",
+				"background-color"
+			],
+			[
+				"inc",
+				"apex:includeScript"
+			],
+			[
+				"Mo",
+				"Mobile-Design-Templates-master"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"b",
+				"border"
+			],
+			[
+				"bord",
+				"border-color"
+			],
+			[
+				"diff",
+				"diffDays"
+			],
+			[
+				"inspect",
+				"inspectionList"
+			],
+			[
+				"inspectio",
+				"inspectionRecord"
+			],
+			[
+				"Cour",
+				"Course__r"
+			],
+			[
+				"Cours",
+				"Course_Inspection__c"
+			],
+			[
+				"stat",
+				"statuses"
+			],
+			[
+				"page",
+				"apex:message"
+			],
+			[
+				"m",
+				"Module_Type__c"
+			],
+			[
+				"Project_",
+				"Project_Module__c	[Sobject Name]"
+			],
+			[
+				"output",
+				"apex:outputField"
+			],
+			[
+				"pageBl",
+				"apex:pageBlockButtons"
+			],
+			[
+				"pageBlockSec",
+				"apex:pageBlockSection"
+			],
+			[
+				"pageB",
+				"apex:pageBlockSection"
+			],
+			[
+				"pageBlock",
+				"apex:pageBlockSectionItem"
+			],
+			[
+				"pageBlockSe",
+				"apex:pageBlockSectionItem"
+			],
+			[
+				"pa",
+				"apex:pageBlockSection"
+			],
+			[
+				"select",
+				"apex:selectOptions"
+			],
+			[
+				"o",
+				"apex:outputText"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
+				"sta",
+				"standardStylesheets	(Boolean)"
+			],
+			[
+				"out",
+				"apex:outputPanel"
+			],
+			[
+				"pageBlo",
+				"apex:pageBlockButtons"
+			],
+			[
+				"assign",
+				"assignSerialNumberEnd"
+			],
+			[
+				"ass",
+				"assignSerialNumberStart"
+			],
+			[
+				"parse",
+				"parseString"
+			],
+			[
+				"ser",
+				"serialNumberStart"
+			],
+			[
+				"start",
+				"serialNumberStart"
+			],
+			[
+				"field",
+				"fieldName"
+			],
+			[
+				"globa",
+				"globalAddressExtend"
+			],
+			[
+				"country",
+				"countrySelect"
+			],
+			[
+				"_",
+				"_fields"
+			],
+			[
+				"Sa",
+				"Safety_Equipment__c"
+			],
+			[
+				"add",
+				"addMessage"
+			],
+			[
+				"a",
+				"assertEquals()"
+			],
+			[
+				"cre",
+				"createAccounts"
+			],
+			[
+				"as",
+				"PUBLIC AssignInventory() 	PageReference"
+			],
+			[
+				"Safety",
+				"SafetyEquipmentController"
+			],
+			[
+				"SafetyEquipment",
+				"SafetyEquipmentController"
+			],
+			[
+				"Test",
+				"TestConfiguration"
+			],
+			[
+				"Safe",
+				"Safety_Equipment__c"
+			],
+			[
+				"Error",
+				"errorPage"
+			],
+			[
+				"Page",
+				"PageReference"
+			],
+			[
+				"Assign",
+				"Assign_Safety_Equipment__c"
+			],
+			[
+				"comma",
+				"commaSeparatedList"
+			],
+			[
+				"comm",
+				"Comma_Separated_Serial_Numbers__c"
+			],
+			[
+				"serial",
+				"serialNumberEnd"
+			],
+			[
+				"sec",
+				"sectionInventory"
+			],
+			[
+				"inv",
+				"inventoryBlock"
+			],
+			[
+				"Err",
+				"ERROR"
+			],
+			[
+				"set",
+				"setRedirect(Boolean redirect) 	System.PageReference"
+			],
+			[
+				"Seria",
+				"Serial_Number__c"
+			],
+			[
+				"t",
+				"Test_Results__c 	Picklist"
+			],
+			[
+				"f",
+				"Ferule_Die__c"
+			],
+			[
+				"ba",
+				"Ball_Shank_Die__c"
+			],
+			[
+				"inpu",
+				"apex:inputField"
+			],
+			[
+				"com",
+				"apex:commandButton"
+			],
+			[
+				"W",
+				"Workspaces"
+			],
+			[
+				"D",
+				"Documents"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/classes/ApexRest.cls",
+			"settings":
+			{
+				"buffer_size": 194,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"cont",
+				"Package Control: Install Package"
+			],
+			[
+				"contr",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"MavensMate: New Project..."
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"mm -o list_connections"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Kal/Documents/Workspaces/mavensmate/Restful/src/classes/Restful.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Sandbox Mobile/src/pages/mobileJobs.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Sandbox Mobile/src/pages/mobileQA.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Sandbox Mobile/src/pages/mobileQATabs.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Sandbox Mobile/src/pages/mobileTabs.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/jQueryJobsController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/SenchaJobsController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/PocketCRM_App.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/JobPartController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/JobParts.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/SenchaJobs.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/SenchaJobs.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/MobileJobsController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/SenchaPartsController.cls",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/MobileJobs_APP.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/MobileJobsV3_APP.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/PocketCRMLeadController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/PocketCRM_CSS.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/MobileJobsPage.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/JobPartsPage.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/PocketCRM.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/JobPartspage.page",
+		"/Users/kal/Documents/BackupPockCRMLeadController",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/PocketCRMCLeaderControllerV4.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/PocketCRMLeadControllerV4.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/PocketCRMV4_APP.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/MobileJobs_CSS.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/MobileJobsV1.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/MobileJobsPage.page-meta.xml",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/MobileJobsV1.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/components/PocketCRM_InitalAPP.component",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes/Contacts_Ext.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/Contact_List.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/inspectionMap.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/inspectionMapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/InspectionMapController_Test.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v6Map.page",
+		"/Users/kal/Documents/Private Sub sPageSetup()",
+		"/Users/kal/Documents/ApplicationScreenUpdating False",
+		"/Users/kal/Documents/Private Sub CalculateArea()",
+		"/Applications/Sublime Text.app/Contents/MacOS/changelog.txt",
+		"/Users/kal/Documents/home.html",
+		"/Users/kal/Dropbox/Code Library/KMLController",
+		"/Users/kal/Dropbox/Code Library/googleEarthKML",
+		"/Users/kal/Dropbox/editCasePage",
+		"/Users/kal/Dropbox/UnauthorizedPage",
+		"/Users/kal/Dropbox/loginComponent",
+		"/Users/kal/Dropbox/ForgotPasswordPage",
+		"/Users/kal/Dropbox/ForgotPasswordController",
+		"/Users/kal/Dropbox/ForgotPasswordConfirm",
+		"/Users/kal/Dropbox/SiteLoginPage",
+		"/Users/kal/Dropbox/SiteLoginController",
+		"/Users/kal/Dropbox/SafetyEquipmentTest_NotUsed",
+		"/Users/kal/Dropbox/certificationStatusSortedPage_NotUsed",
+		"/Users/kal/Dropbox/CertificationStatusSortedController_NotUsed",
+		"/Users/kal/Dropbox/coursesPendingInspectionTestClass_NotUsed",
+		"/Users/kal/Dropbox/TestCourseListClass_NotUsed",
+		"/Users/kal/Dropbox/v9MapController",
+		"/Users/kal/Dropbox/v8MapController",
+		"/Users/kal/Dropbox/displayInspectionsPage_NotUsed",
+		"/Users/kal/Dropbox/inspectionSelectController_NotUsed",
+		"/Users/kal/Dropbox/InspectionWrapper_NotUsed",
+		"/Users/kal/Dropbox/courseController_NotUsed",
+		"/Users/kal/Dropbox/courseSelectController_UsedWithCourseWrapper",
+		"/Users/kal/Dropbox/googleMaps_UsingGeoCoder",
+		"/Users/kal/Dropbox/googleMaps_RCIPartners_UsingGeoCoder",
+		"/Users/kal/Dropbox/googleMaps_RCIPartners",
+		"/Users/kal/Documents/workspaces/mavensmate/Google Maps/src/pages/googleMaps_VisualForce_VeryCool_UsesInfoBox",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v4Map.page",
+		"/Users/kal/Dropbox/googleMaps_Fully Functional",
+		"/Users/kal/Dropbox/googleEarthPage_MuchMoreProgress",
+		"/Users/kal/Dropbox/googleEarthPage",
+		"/Users/kal/Documents/ContactUs/ContactUS_jQuery.html",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestConfiguration.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/publicMapController.cls",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/User/mavensmate.sublime-settings",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestMapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestConfiguration.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/mapV4Controller.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v10Map.page",
+		"/Users/kal/Documents/ContactUs/jquery.stateselect.js",
+		"/Users/kal/Documents/ContactUs/dynamicAddress.js",
+		"/Users/kal/Documents/ContactUs/dynamicAddress.html",
+		"/Users/kal/Documents/ContactUs/globalAdress.js",
+		"/Users/kal/Documents/Projects/Web Contact Us/jquery-state-select/example.html",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/SafetyEquipment.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestSafetyEquipment.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/SafetyEquipmentController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestSendEmail.cls",
+		"/Users/kal/Documents/Current_WebLeadHTML That Fails.html",
+		"/Users/kal/Documents/NewWebLeadCodeGenerated and Unusable.html",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/objects/Safety_Equipment__c.object",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestScheduledOpportunity.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestCourseList.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/SafetyAssignmentTest.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/SafetyEquipmentAssign.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/ErrorPage.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/SafetyAssignmentTest.cls-meta.xml",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/SafetyAssignmentController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/Exception.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestSafetyAssignmentController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/AssignedTools.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CourseSelectController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestSetTrainingDateTrigger.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/ToolboxContents.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/triggers/toolDetail.trigger",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CoursesPendingInspectionTestClass.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CertificationStatusController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/AssignedTools.cls",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/User/BufferScroll.sublime-settings",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/BufferScroll/BufferScroll.sublime-settings",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/MyProfilePageController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/FileUploadController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/SiteTemplate.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CoursesPendingInspectionController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CertificationStatusSortedController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/InspectionSelectController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/SafetyEquipment.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/certificationStatus.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/CertificationStatusController.cls-meta.xml",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/pages/FileNotFound.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/SandBox/src/classes/SiteLoginController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/SandBox/src/classes/SafetyItems.cls",
+		"/Users/kal/Documents/openCTI.html",
+		"/Users/kal/Documents/callCenter.xml"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"changePage",
+			"console",
+			"	 // $j('#radio-choice-7').click(function() {\n				 // 	if($j('#radio-choice-7').prop('checked')){\n				 // 		$j(\"#divCommments\").show();\n				 // 	}else{\n				 // 		$j(\"#divCommments\").hide();\n				 // 	}\n\n				 // 	});",
+			"listPage",
+			"findRecordById",
+			"find",
+			"Parts",
+			"UpdateContact",
+			"cList",
+			"contactId",
+			"button",
+			"Store",
+			"JobPart",
+			"getStore",
+			"local",
+			"sync",
+			"syncLeadCommand",
+			"syncLead",
+			"sync",
+			"leadsList",
+			"jobPartsListView",
+			"LeadsListView",
+			"this.get",
+			"animate",
+			"Store",
+			"launch",
+			"proxy.direct",
+			"Query",
+			"console",
+			"destroy",
+			"delete",
+			"controller",
+			"Model",
+			"getMessage",
+			"launch",
+			"LeadEditor",
+			"leadeditorview",
+			"leadEditorView",
+			"leadEditor",
+			"sync",
+			"#leadsList",
+			"leadsList",
+			"<",
+			"city",
+			"ById",
+			"getdocumentById",
+			"initialize",
+			"overhead",
+			"input",
+			"sectionHeader",
+			"inputField",
+			"Module",
+			"outputField",
+			"outputText",
+			"inputField",
+			"installationSection",
+			"data",
+			"settings",
+			"fields",
+			"errorPage",
+			"error",
+			"}\"/>-->\n",
+			"Start_Serial_Number__c",
+			"   ",
+			"\n		",
+			"serial number",
+			"safety",
+			"render"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"output",
+			"outputField",
+			"outputText",
+			"outputField",
+			"outputText"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/classes/ApexRest.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 194,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								0
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "apex",
+							"buffer_scroll_name": "ef865701",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.MavensMate-OutputPanel":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "Restful.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 524.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

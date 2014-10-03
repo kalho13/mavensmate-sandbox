@@ -1,0 +1,118 @@
+{
+    "name": "SendEmail", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "oppId", 
+            "location": {
+                "column": 47, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "templateId", 
+            "location": {
+                "column": 61, 
+                "line": 4
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "contacts", 
+            "location": {
+                "column": 18, 
+                "line": 6
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Contact", 
+            "name": "c", 
+            "location": {
+                "column": 15, 
+                "line": 10
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "SingleEmailMessage", 
+            "name": "mail", 
+            "location": {
+                "column": 33, 
+                "line": 11
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "toAddresses", 
+            "location": {
+                "column": 13, 
+                "line": 12
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "bccAddresses", 
+            "location": {
+                "column": 13, 
+                "line": 13
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "SendEmail", 
+        "name": "SendEmail", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000061VP", 
+    "id": "01pS000000061VP", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "SendScheduledEmail", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "oppId"
+                }, 
+                {
+                    "type": "String", 
+                    "name": "templateId"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 4
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

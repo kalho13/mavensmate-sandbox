@@ -1,0 +1,175 @@
+<apex:page sidebar="false"  showHeader="true" StandardController="Course__c" extensions="CourseController" tabStyle="account">
+
+  <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"/>
+  <apex:includeScript value="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"/>
+  <apex:stylesheet value="http://ajax.googleapis.com/css/ui-lightness/jquery-ui-1.7.2.custom.css"/> 
+
+ <script>
+  
+        function init(){
+        
+        var val = '{!Course__c.Model__c}';
+         
+    	 if(val == 'Zip Line'){
+                document.getElementById('zip').style.display='block';
+                document.getElementById('zipsafety').style.display='block';
+                document.getElementById('zippaint').style.display='block';
+                document.getElementById('course').style.display='none';
+                document.getElementById('paint').style.display='none';
+                document.getElementById('safety').style.display='none';
+               
+            }else if (val =='Zip Track'){
+                document.getElementById('zip').style.display='block';
+                document.getElementById('zipsafety').style.display='block';
+                document.getElementById('zippaint').style.display='block';
+                document.getElementById('course').style.display='none';
+                document.getElementById('paint').style.display='none';
+                document.getElementById('safety').style.display='none';
+                
+            }else{
+                document.getElementById('zip').style.display='none';
+                document.getElementById('zipsafety').style.display='none';
+                document.getElementById('zippaint').style.display='none';
+                document.getElementById('course').style.display='block';
+                document.getElementById('safety').style.display='block';
+                document.getElementById('paint').style.display='block';               
+            }
+        }
+        
+        parent.onload = init; //window.onload;
+    </script>
+    
+    <BODY onLoad="init()"/>
+    
+     <table width="98%" border="0" cellpadding="0" cellspacing="0">
+    <tr><td></td>
+    <td align="left"><img src="{!URLFOR($Resource.RCIIMages, 'RCLogo.png')}" width="120" height="60"/></td>
+    <td align="right"><a href="javascript:window.print();">Print</a></td>
+    
+    </tr>
+    </table>
+<apex:form >
+	<apex:pageBlock >
+		<apex:pageBlockButtons >
+        	<apex:commandButton action="{!edit}" value="Edit"/>
+            <apex:commandButton action="{!cancel}" value="Cancel"/>
+        </apex:pageBlockButtons>
+               
+        <div id="header">
+			<apex:pageBlockSection title="Course Header Information" columns="2">
+				<apex:outputText value="{!Course__c.Account__r.Name}"/>
+				<apex:outputText value="{!Course__c.Parent__c}"/>
+				<apex:outputText value="{!Course__c.Job_Number__c}"/>
+				<apex:outputText value="{!Course__c.Course_Installation__c}"/>
+				<apex:outputText value="{!Course__c.Year_Built__c}"/>
+				<apex:outputText value="{!Course__c.Person_Responsible__c}"/>
+                <apex:outputText value="{!Course__c.Model__c}"/>                     
+                <apex:outputText value="{!Course__c.Serial_Number__c}"/>
+                <apex:outputText value="{!Course__c.Configuration__c}"/>
+                <apex:outputText value="{!Course__c.Opportunity__c}"/>	
+                <apex:outputText value="{!Course__c.Status__c}"/>                    
+                <apex:outputText value="{!Course__c.Entrance_Barrier__c}"/>
+                <apex:outputtext value="{!Course__c.Primary_Engineer__c}"/>
+                <apex:outputText value="{!Course__c.Galvanized__c}" id="course_Galvanized__c"/> 
+			</apex:pageBlockSection>
+		</div>	
+			
+        <div id="course">
+			<apex:pageBlockSection title="Course Design Detail" columns="2">
+				<apex:outputText value="{!Course__c.Number_of_Poles__c}"/>
+				<apex:outputText value="{!Course__c.Number_Of_Inclines__c}"/>
+				<apex:outputText value="{!Course__c.Number_of_Levels__c}"/>
+				<apex:outputText value="{!Course__c.Entrances_Per_Level__c}"/>
+				<apex:outputText value="{!Course__c.Location__c}"/>			
+				<apex:outputText value="{!Course__c.Number_of_Elements__c}"/>			
+			</apex:pageBlockSection>
+		</div>
+				
+		<div id="paint">			
+			<apex:pageBlockSection title="Paint & Theming" columns="2">
+				<apex:outputText value="{!Course__c.Paint_Type__c}"/>
+				<apex:outputText value="{!Course__c.Theming__c}"/>
+				<apex:outputText value="{!Course__c.Column_Color__c}"/>
+				<apex:outputText value="{!Course__c.Plumber_Color__c}"/>
+				<apex:outputText value="{!Course__c.Overhead_Color__c}"/>
+				<apex:outputText value="{!Course__c.Custom_Colors__c}"/>						
+				<apex:outputText value="{!Course__c.Platform_Color__c}"/>
+				<apex:outputText value="{!Course__c.Rope_Color__c}"/>								
+			</apex:pageBlockSection>
+		</div>	
+			
+		<div  id="safety">		
+			<apex:pageBlockSection title="Ropes Course Safety Equipment" columns="2">
+				<apex:outputText value="{!Course__c.Lanyard_Type__c}"/>
+				<apex:outputText value="{!Course__c.Harness_Type__c}"/>
+				<apex:outputText value="{!Course__c.Lanyard_Color__c}"/>
+				<apex:outputText value="{!Course__c.XSmall_Harnesses__c}"/>
+				<apex:outputText value="{!Course__c.Lanyard_Quantity__c}"/>
+				<apex:outputText value="{!Course__c.Small_Harnesses__c}"/>
+				<apex:outputText value="{!Course__c.Operator_Lanyard_Quantity__c}"/>			
+				<apex:outputText value="{!Course__c.Medium_Harnesses__c}"/>
+				<apex:outputText value="{!Course__c.ETKs__c}"/>
+				<apex:outputText value="{!Course__c.Large_Harnesses__c}"/>
+				<apex:outputText value="{!Course__c.Course_Height__c}"/>
+				<apex:outputText value="{!Course__c.XLarge_Harnesses__c}"/>	
+				<apex:outputText value="{!Course__c.Course_Orange_Rope_Length__c}"/>
+				<apex:outputText value="{!Course__c.Course_Tan_Rope_Length__c}"/>	
+			</apex:pageBlockSection>			
+		</div>	
+						
+		<div id="zip">				
+			<apex:pageBlockSection title="Zip Line Information" columns="2">
+				<apex:outputText value="{!Course__c.Zip_Line_Type__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Line_Distance__c}"/>
+				<apex:outputText value="{!Course__c.Trolley_Type__c}"/>
+				<apex:outputText value="{!Course__c.Number_Of_Towers__c}"/>
+				<apex:outputText value="{!Course__c.Wire_Rope_Diameter__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Tower_Height__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Runs__c}"/>								
+				<apex:outputText value="{!Course__c.Transfer_Box__c}"/>				
+						
+			</apex:pageBlockSection>		
+		</div>				
+			
+		<div id="zippaint">			
+			<apex:pageBlockSection title="Paint & Theming" columns="2">
+				<apex:outputText value="{!Course__c.Zip_Paint_Type__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Theming__c}"/>	
+				<apex:outputText value="{!Course__c.Zip_Line_Tower_Color__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Custom_Color__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Line_Ramp_Color__c}"/>
+				<apex:outputText value="{!Course__c.Plumber_Color__c}"/>	
+				<apex:outputText value="{!Course__c.Zip_Line_Stairs_Color__c}"/>													
+			</apex:pageBlockSection>
+		</div>	
+			
+		<div id="zipsafety">
+			<apex:pageBlockSection title="Zip Line Safety Equipment" columns="2">
+				<apex:outputText value="{!Course__c.Zip_Lanyard_Type__c}"/>
+				<apex:outputText value="{!Course__c.Zip_X_Small_Harness__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Lanyard_Quantity__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Small_Harness__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Lanyard_Color__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Medium_Harness__c}"/>				
+				<apex:outputText value="{!Course__c.Zip_Harness_Type__c}"/>				
+				<apex:outputText value="{!Course__c.Zip_Large_Harness__c}"/>				
+				<apex:outputText value="{!Course__c.Zip_Line_Operator_Lanyard_Quantity__c}"/>
+				<apex:outputText value="{!Course__c.Zip_X_Large_Harness__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Line_Operator_Lanyard_Style__c}"/>				
+				<apex:outputText value="{!Course__c.Rescue_Rope_Length__c}"/>
+				<apex:outputText value="{!Course__c.Zip_Line_ETKs__c}"/>
+				<apex:outputText value="{!Course__c.ETK_Rope_Length__c}"/>
+								
+			</apex:pageBlockSection>
+		</div>				
+				
+		<div id="comments">
+			<apex:pageBlockSection title="Comments" columns="1"> 
+				<apex:outputText value="{!Course__c.Comments__c}" style="width:75%;"/>	
+			</apex:pageBlockSection>
+		</div>				
+	</apex:pageBlock>	
+</apex:form>
+<br></br>
+<apex:relatedList id="attachment" list="NotesAndAttachments"/>
+</apex:page>

@@ -1,0 +1,98 @@
+<apex:component controller="MobileJobsController" >
+
+<script type="text/javascript">
+
+Ext.application({
+    name: "JobLoad",
+    models: ["Job"],
+    stores: ["Jobs"],
+    controllers: ["Jobs"],
+    views: ["JobList"],
+
+    launch: function () {
+        var jobListView = {
+            xtype: "jobListView"
+       	};
+    	Ext.Viewport.add([jobListView]);
+
+    } 
+});
+
+Ext.define("JobLoad.store.Jobs", {
+    extend: "Ext.data.Store",
+    requires: "Ext.data.proxy.LocalStorage",
+
+    config: {
+        model: "JobLoad.model.Job",
+        data: {!Jobs},
+        groupField: "Status__c",
+        groupDir: "ASC",
+        sorters: [{
+            property: 'Name',
+            direction: 'ASC'
+        }]
+    }
+});
+
+Ext.define("JobLoad.model.Job", {
+    extend: "Ext.data.Model",
+    config: {
+        idProperty: 'id',
+        fields: [
+                    {name: 'id', type: 'string'},
+                    {name: 'Name', type: 'string'},          
+                    {name: 'Status__c', type: 'string'}, 
+                ],
+            },
+});
+
+Ext.define("JobLoad.controller.Jobs", {
+    extend: "Ext.app.Controller",
+    config: {},
+    launch: function () {
+        this.callParent(arguments);
+        var jobStore = Ext.getStore("Jobs");
+        jobStore.load();
+    },
+    init: function () {
+        this.callParent(arguments);
+        console.log("init");
+    }
+});
+
+Ext.define("JobLoad.view.JobList", {
+    extend: "Ext.Container",
+    requires: "Ext.dataview.List",
+    alias: "widget.jobListView",
+
+    config: {
+       layout: {
+            type: 'fit'
+       },
+       
+        items: [
+            {
+            xtype: "titlebar",
+            title: "JobLoad: Jobs",
+            docked: "top",
+        },
+       
+            {
+            xtype: "list",
+            store: "Jobs",
+            itemId: "jobList",
+            onItemDisclosure: false,
+            grouped: true,
+            disableSelection: false,
+           loadingText: "Loading Jobs...",
+            emptyText: '<div class="leads-list-empty-text">No jobs found.</div>',
+            itemTpl: '<div class="list-item-line-main">{Name}</div>'
+        }],
+   
+    }
+    
+});
+
+</script>
+
+</apex:component>

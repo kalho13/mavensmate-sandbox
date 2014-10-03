@@ -1,0 +1,15 @@
+{
+    "SafetyItems.cls": {
+        "createdById": "00530000006L19VAAS", 
+        "createdByName": "Kal Howell", 
+        "createdDate": "2013-10-28 14:40:47", 
+        "fileName": "unpackaged/classes/SafetyItems.cls", 
+        "fullName": "SafetyItems", 
+        "id": "01pS00000006A73IAE", 
+        "lastModifiedById": "00530000006L19VAAS", 
+        "lastModifiedByName": "Kal Howell", 
+        "lastModifiedDate": "2013-10-28 14:40:47", 
+        "manageableState": "unmanaged", 
+        "type": "ApexClass"
+    }
+}

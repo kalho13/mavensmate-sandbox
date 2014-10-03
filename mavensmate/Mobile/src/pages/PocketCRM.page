@@ -1,0 +1,23 @@
+<apex:page docType="html-5.0" showHeader="false" sidebar="false" standardStylesheets="false" cache="false">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Pocket CRM</title>
+
+		<apex:includeScript value="https://extjs.cachefly.net/touch/sencha-touch-2.0.1/sencha-touch-all.js"/>
+		<apex:stylesheet value="https://extjs.cachefly.net/touch/sencha-touch-2.0.1/resources/css/sencha-touch.css"/>
+
+		<c:PocketCRM_App/>
+		<c:PocketCRM_CSS/>
+	
+	</head>
+
+	<body>
+		<div id="appLoadingIndicator">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+
+	</body>
+	
+</apex:page>

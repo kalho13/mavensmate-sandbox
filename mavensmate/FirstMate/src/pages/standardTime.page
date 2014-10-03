@@ -1,0 +1,21 @@
+<apex:page standardController="Account">
+<apex:stylesheet value="{!$Resource.Sandbox}" />
+
+<style type="text/css">
+ p {font-weight: bolder }
+ .italicText { font-style:italic; }
+</style>
+<apex:form >
+        <apex:panelGrid columns="8">
+            <apex:outputLabel value="First Cell"/>
+            <apex:outputText value="First" id="theFirst"/>
+            <apex:outputLabel value="Second Cell"/>
+            <apex:outputText value="Second" id="theSecond" />
+            <apex:outputLabel value="Third Cell"/>            
+            <apex:outputText value="Third" id="theThird"/>
+            <apex:outputLabel value="Fourth Cell"/>
+            <apex:outputText value="Fourth" id="theFourth"/>
+                
+        </apex:panelGrid>
+    </apex:form>
+ </apex:page>

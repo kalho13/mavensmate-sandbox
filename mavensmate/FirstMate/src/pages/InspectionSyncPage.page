@@ -1,0 +1,6 @@
+<apex:page standardController="Course_Inspection__c" extensions="InspectionCalendarSync" showHeader="false"  standardStylesheets="false">
+<apex:form >
+
+<apex:actionFunction action="{!addEvents}" name="sync" />
+</apex:form>
+</apex:page>

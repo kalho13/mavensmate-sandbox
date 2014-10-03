@@ -1,0 +1,514 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "Query", 
+            "parameters": [
+                {
+                    "type": "QueryRequest", 
+                    "name": "qr"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 55
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "Edit", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 77
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "Add", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 82
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "Destroy", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 87
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getAllLeads", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 96
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "insertLeadList", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 103
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "updateLeadList", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 116
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "deleteLeadList", 
+            "parameters": [
+                {
+                    "type": "LIST", 
+                    "name": "LeadData"
+                }
+            ], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 130
+            }, 
+            "returnType": "Response", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [
+        {
+            "properties": [
+                {
+                    "modifiers": [], 
+                    "name": "start", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 24
+                    }, 
+                    "type": "Integer"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "recordCount", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 17, 
+                        "line": 25
+                    }, 
+                    "type": "Integer"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "sortParams", 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 40, 
+                        "line": 26
+                    }, 
+                    "type": "LIST"
+                }
+            ], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [
+                {
+                    "type": "Integer", 
+                    "modifiers": [], 
+                    "references": [], 
+                    "location": {
+                        "column": 37, 
+                        "line": 33
+                    }, 
+                    "name": "pStart"
+                }, 
+                {
+                    "type": "Integer", 
+                    "modifiers": [], 
+                    "references": [], 
+                    "location": {
+                        "column": 53, 
+                        "line": 33
+                    }, 
+                    "name": "pRecordCount"
+                }
+            ], 
+            "constructors": [
+                {
+                    "modifiers": [], 
+                    "name": "QueryRequest", 
+                    "parameters": [], 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 16, 
+                        "line": 28
+                    }, 
+                    "type": null
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "QueryRequest", 
+                    "parameters": [
+                        {
+                            "type": "Integer", 
+                            "name": "pStart"
+                        }, 
+                        {
+                            "type": "Integer", 
+                            "name": "pRecordCount"
+                        }
+                    ], 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 16, 
+                        "line": 33
+                    }, 
+                    "type": null
+                }
+            ], 
+            "namespace": null, 
+            "name": "QueryRequest", 
+            "tableDeclaration": {
+                "type": "QueryRequest", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 18, 
+                    "line": 23
+                }, 
+                "name": "QueryRequest"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }, 
+        {
+            "properties": [
+                {
+                    "modifiers": [], 
+                    "name": "success", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 24, 
+                        "line": 41
+                    }, 
+                    "type": "Boolean"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "errorMessage", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 23, 
+                        "line": 42
+                    }, 
+                    "type": "String"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "records", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 33, 
+                        "line": 43
+                    }, 
+                    "type": "LIST"
+                }, 
+                {
+                    "modifiers": [], 
+                    "name": "total", 
+                    "visibility": "PUBLIC", 
+                    "references": [], 
+                    "location": {
+                        "column": 24, 
+                        "line": 44
+                    }, 
+                    "type": "Integer"
+                }
+            ], 
+            "methods": [], 
+            "innerClasses": [], 
+            "variables": [], 
+            "constructors": [
+                {
+                    "modifiers": [], 
+                    "name": "Response", 
+                    "parameters": [], 
+                    "visibility": "PRIVATE", 
+                    "references": [], 
+                    "location": {
+                        "column": 9, 
+                        "line": 45
+                    }, 
+                    "type": null
+                }
+            ], 
+            "namespace": null, 
+            "name": "Response", 
+            "tableDeclaration": {
+                "type": "Response", 
+                "modifiers": [], 
+                "references": [], 
+                "location": {
+                    "column": 18, 
+                    "line": 40
+                }, 
+                "name": "Response"
+            }, 
+            "key": null, 
+            "id": null, 
+            "externalReferences": []
+        }
+    ], 
+    "variables": [
+        {
+            "type": "QueryRequest", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 47, 
+                "line": 55
+            }, 
+            "name": "qr"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 56
+            }, 
+            "name": "resp"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 57
+            }, 
+            "name": "LeadList"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 66
+            }, 
+            "name": "recno"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 47, 
+                "line": 77
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 46, 
+                "line": 82
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 50, 
+                "line": 87
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 58, 
+                "line": 103
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 104
+            }, 
+            "name": "resp"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 58, 
+                "line": 116
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 118
+            }, 
+            "name": "resp"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 58, 
+                "line": 130
+            }, 
+            "name": "LeadData"
+        }, 
+        {
+            "type": "Response", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 18, 
+                "line": 133
+            }, 
+            "name": "resp"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "PocketCRMLeadController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 15
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "PocketCRMLeadController", 
+    "tableDeclaration": {
+        "type": "PocketCRMLeadController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 13
+        }, 
+        "name": "PocketCRMLeadController"
+    }, 
+    "key": "01pd0000002uU6e", 
+    "id": "01pd0000002uU6e", 
+    "externalReferences": []
+}

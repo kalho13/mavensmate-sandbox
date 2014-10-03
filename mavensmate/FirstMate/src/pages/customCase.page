@@ -1,0 +1,52 @@
+<apex:page standardController="Case" sidebar="false" standardStylesheets="true" readOnly="false" >
+    <apex:sectionHeader title="Edit Case" subtitle=""/>
+    <apex:form >
+    <apex:pageBlock id="thePageBlock" mode="edit">
+        <apex:pageblockButtons >
+           <apex:commandButton value="Save" action="{!save}"/>
+           <apex:commandButton value="Edit" action="{!edit}"/>
+           <apex:commandButton value="Cancel" action="{!cancel}"/>    
+       </apex:pageblockButtons>
+            
+       <apex:actionRegion >
+         <apex:pageBlockSection title="Case Information" columns="2">
+           <tr>
+                 <td class="labelCol first ">Case Owner</td>
+                <td class="dataCol  first ">{!$User.FirstName} {!$User.LastName}</td> 
+                </tr>
+          <!--  <apex:outputLabel style="class=labelCol">Case Owner</apex:outputLabel> 
+            <apex:outputLabel style="class=dataCol">{!$User.FirstName} {!$User.LastName}</apex:outputLabel>  -->
+         </apex:pageBlockSection>
+             
+            <apex:pageBlockSection columns="2">   
+            <apex:inputField style="width:250px" value="{!Case.Contact.Name}"/> 
+             <apex:inputField value="{!case.status}"/>        
+            <apex:inputField style="width:250px" value="{!Case.Account.Name}"/>           
+            <apex:inputField value="{!case.priority}"/>
+            <apex:inputField value="{!case.contact.phone}"/>
+            <apex:inputField value="{!case.contact.email}"/>
+            <apex:inputField style="width:250px" value="{!case.type}"/>                               
+            <apex:inputField value="{!case.origin}"/>
+            <apex:inputField style="width:250px" value="{!case.reason}">
+               <apex:actionSupport event="onchange" rerender="thePageBlock" status="status"/>
+            </apex:inputField>
+            <apex:actionStatus startText="case condition...." id="status"/>
+         </apex:pageBlockSection>
+         <apex:pageBlockSection title="Description Information" columns="1">
+            <apex:inputField style="width:25%" value="{!case.subject}"/>
+            <apex:inputField style="width:25%; height:150px" value="{!case.description}"/>
+         </apex:pageBlockSection>
+      </apex:actionRegion>
+
+        <apex:pageBlockSection title="Installation and Warranty Documentation" columns="2" collapsible="true"  showHeader="true" rendered="{!case.reason=='Installation'}" >
+             <apex:inputField value="{!case.manHours__c}"/>
+             <apex:inputField value="{!case.materialCost__c}"/> 
+             <apex:inputField value="{!case.shippingExpenses__c}"/> 
+             <apex:inputField value="{!case.otherExpenses__c}"/>
+             <apex:inputField value="{!case.department__c}"/>
+             <apex:inputTextarea value="{!case.solution__c}" cols="230" rows="12"/>
+       </apex:pageBlockSection>
+  
+    </apex:pageBlock>  
+    </apex:form>
+</apex:page>

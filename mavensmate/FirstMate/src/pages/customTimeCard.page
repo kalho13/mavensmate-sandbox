@@ -1,0 +1,200 @@
+<apex:page showHeader="false" docType="html-5.0" standardStylesheets="false" cache="true" controller="CustomTimeCardController" >
+<html>
+<head>
+<title>Mobile Time Cards</title>
+<!--  
+<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>
+<script src="http://debug.phonegap.com/target/target-script-min.js#anonymous"></script>
+-->
+
+<link rel="stylesheet" href="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.css')}" />
+<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.min.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.cloudtunes_jQuery, 'jquery.mobile-1.0.1.min.js')}"/>
+<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+<meta name="viewport"  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;"/>
+<script type = "text/javascript">
+
+var $j = jQuery.noConflict();
+var currentTimeBooks = new Array();
+var currentTimeEntries = new Array();
+var currentTimeSheets = new Array();
+
+$j(document).ready(init);
+
+function init(){
+	if(window.location.href.indexOf('#')>0){
+		window.location.href=window.location.href.split("#")[0];
+	}
+
+	$j.mobile.showPageLoadingMsg();	
+	getTimeBooks(function(){});
+}
+
+function getTimeBooks(callback){
+	$j('#timeBookList').empty();
+	CustomTimeCardController.queryTimeBooks(function(records, e) {showTimeBooks(records, callback)}, {escape:true});
+}
+
+function getTimeSheets(bookId, callback){
+	$j('#timeSheetList').empty();
+	//pass in the TimeBook Id and the callback function which loads the queried records into the jQuery list in the html
+	CustomTimeCardController.queryTimeSheets(bookId, function(records, e) {showTimeSheets(records, callback)}, {escape:true});
+	return true;	
+}
+
+function getTimeEntries(sheetId, callback){
+	$j('#timeEntryList').empty();
+	CustomTimeCardController.queryTimeEntries(sheetId, function(records, e) {showTimeEntries(records, callback)}, {escape:true});
+	return true;
+}
+
+function showTimeBooks(records, callback){
+	$j.mobile.hidePageLoadingMsg();
+	currentTimeBooks.length=0;
+	
+	for(var i=0; i < records.length; i++){
+		//add the return objects as an array of TimeBooks using the Salesforce document Id
+		currentTimeBooks[records[i].Id] = records[i];
+		}
+		
+		$j.each(records, 
+			function(){
+				$j('<li></li>')
+				.attr('id', this.Id)
+				.hide()
+				.append('<h2>' + this.Name + '</h2>')
+				.click(function(e){
+					e.preventDefault();
+					$j.mobile.showPageLoadingMsg();
+					$j('#timeBookName').html(currentTimeBooks[this.id].Name);
+					$j('#timeBookId').val(currentTimeBooks[this.id].Id);
+					var onTimeSheetsLoaded = function(){
+						$j.mobile.hidePageLoadingMsg();
+						$j.mobile.changePage('#sheetpage',{changeHash:true});
+					}
+					getTimeSheets(currentTimeBooks[this.id].Id, onTimeSheetsLoaded);					
+				})
+				.appendTo('#timeBookList')
+				.show();
+			}
+		); //end if $.j.each
+		
+		$j('timeBookList').listview('refresh');
+		if(callback!=null){callback();}		
+}
+
+function showTimeSheets(records, callback){
+	//$j.mobile.hidePageLoadingMsg();
+	currentTimeSheets.length=0;
+	
+	//iterate through the list of time sheets for the selected time book
+	for(var i=0; i<records.length; i++){
+		currentTimeSheets[records[i].Id]=records[i];
+	}
+	
+	$j.each(records,
+		function(){
+			$j('<li></li>')
+			.attr('id', this.Id)
+			.hide()
+			.append('<h2>'+this.Name + '</h2>')
+			.click(function(e){
+				e.preventDefault();
+				$j.mobile.showPageLoadingMsg();
+				//$j('#timeEntryId')val(currentTimeSheets[this.id].Id);
+				var onTimeEntriesLoaded = function(){
+					$j.mobile.hidePageLoadingMsg();
+					$j.mobile.changePage('entrypage', {changeHash:true});
+				}				
+				getTimeEntries(currentTimeSheets[this.id].Id, onTimeEntriesLoaded);
+			})
+			.appendTo('#timeSheetList')
+			.show();
+		} //end of nested function
+	); //end of j.each
+	
+	if(callback!=null){
+		callback();
+		$j('#timeSheetList').listview('refresh');
+	}	
+}
+	
+	function showTimeEntries(records, callback){
+		//alert('How Many Entries: ' + records.length);
+		currentTimeEntries.length=0;
+		$j.mobile.hidePageLoadingMsg();
+		
+		for( var i = 0; i < records.length; i++){
+			currentTimeEntries[records[i].Id]=records[i];
+		}
+		
+		$j.each(records,
+			function(){
+				$j('<li></li>')
+				.hide()
+				.attr('id', this.Id)				
+				.append('<h2>' + this.Name + '</h2>')				
+				.appendTo('#timeEntryList')
+				.show();
+			});//end of $j.each
+			
+			//$j('#timeSheetName')html(currentTimeEntries[this.id].Time_Sheet__r.Name);  //how to collect this outside of a click event?
+			$j.mobile.changePage('#entrypage',{changeHash:true});
+			$j.mobile.hidePageLoadingMsg();
+		console.log('Done');
+		if(callback!=null){
+			$j.mobile.hidePageLoadingMsg();
+			console.log('callback');
+			//callback(); //If I call the callback the loading icon remains
+			//I need another level to show the entries for the day
+		}
+	}
+
+</script>
+</head>
+<body>
+	<div data-role="page" data-theme="b" id="mainpage">
+		<div data-role="header">
+			<a href='#mainpage' id="logout" class='ui-btn-left' data-con='home'>Home</a>
+			<h1>Time Cards</h1>		
+		</div>
+		<div data-role="content">
+			<ul id="timeBookList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="b">
+			</ul>
+		</div>		
+	</div>
+	
+	<div data-role="page" data-theme="b" id="sheetpage">
+		<div data-role="header">
+			<a href='#mainpage' id="backTimeBooks" class='ui-btn-left' data-icon='arrow-l'>Time Cards</a>
+			<h1>TimeCards</h1>
+		</div>
+		<div data-role="content">
+			<h1 id="timeBookName"></h1>
+			<table>
+				<tr><td>Hours Worked:</td><td id="hoursWorked"></td></tr>
+			</table>
+			<input type="hidden" id="timeBookId"/>
+			<ol id="timeSheetList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="c"></ol>
+		</div>
+	</div>
+	<div data-role="page" data-theme="b" id="entrypage">	
+		
+		<div data-role="header">
+		<a href='#sheetpage' id="backEntry" class='ui-btn-left' data-con='home'>Time Sheets</a>
+			<h1>Time Entries</h1>
+			<table>
+				<tr><td>Time Sheet:</td><td id="timeSheetName"></td></tr>
+			</table>
+			
+		</div>
+		<div data-role="content">
+			<ul id="timeEntryList" data-inset="true" data-role="listview" data-theme="c" data-dividertheme="b">
+			</ul>
+		</div>	
+	</div>
+	
+</body>
+<p>Mobile Time Cards</p>
+</html>  
+</apex:page>

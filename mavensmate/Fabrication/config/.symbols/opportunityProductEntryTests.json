@@ -1,0 +1,122 @@
+{
+    "name": "opportunityProductEntryTests", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "OpportunityLineItem", 
+            "name": "oli", 
+            "location": {
+                "column": 29, 
+                "line": 11
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "pageRef", 
+            "location": {
+                "column": 23, 
+                "line": 19
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "opportunityProductEntryExtension", 
+            "name": "oPEE", 
+            "location": {
+                "column": 42, 
+                "line": 24
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Integer", 
+            "name": "startCount", 
+            "location": {
+                "column": 17, 
+                "line": 33
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "OpportunityLineItem", 
+            "name": "o", 
+            "location": {
+                "column": 33, 
+                "line": 66
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "oli2", 
+            "location": {
+                "column": 31, 
+                "line": 73
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Opportunity", 
+            "name": "newOpp", 
+            "location": {
+                "column": 21, 
+                "line": 77
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "opportunityProductRedirectExtension", 
+            "name": "oPRE", 
+            "location": {
+                "column": 45, 
+                "line": 96
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [
+            "TEST"
+        ], 
+        "type": "opportunityProductEntryTests", 
+        "name": "opportunityProductEntryTests", 
+        "location": {
+            "column": 15, 
+            "line": 2
+        }
+    }, 
+    "key": "01pS00000006BjE", 
+    "id": "01pS00000006BjE", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "theTests", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 28, 
+                "line": 4
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

@@ -1,0 +1,185 @@
+<apex:page standardController="Training_Participants__c" extensions="TrainingParticipantExt" showHeader="true" sidebar="true" tabStyle="Training_Participants__c">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  
+     <script type="text/javascript">
+     	  $ = jQuery.noConflict();
+     	   $(document).ready(function() {
+
+                $('[id$="trainee"]').show();
+                $('[id$="traineeRow"]').show();
+                $('[id$="trainer"]').hide();
+                $('[id$="trainerRow"]').hide();
+     	  });     
+
+           function displayParticipant(t){
+              
+                if ( $(t).val() == 'Trainee' ){                     
+                    $('[id$="trainee"]').show();
+                    $('[id$="traineeRow"]').show();
+                    $('[id$="trainer"]').hide();
+                    $('[id$="trainerRow"]').hide();
+                }else{
+                     
+                    $('[id$="trainee"]').hide();
+                    $('[id$="traineeRow"]').hide();
+                    $('[id$="trainer"]').show();
+                    $('[id$="trainerRow"]').show();
+                }
+              
+              }
+     </script>
+      <style>
+        table{             
+            
+            font-family: helvetica, arial, serif;
+        }
+
+        tr{
+            
+             font-family: helvetica, arial, serif;
+             line-height: 25px;
+             vertical-align: text-bottom;
+             font-weight:bolder;           
+        }
+
+        .underline{
+            border-left: 0px;
+            border-top: 0px;
+            border-right: 0px;
+            border-bottom: 1px;
+           border-color: #001A33 !important;
+            border-style: solid;
+            vertical-align: text-bottom;
+        }
+
+        .command{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: #001A33 !important;
+            border-style: solid;
+        }
+
+        .button{
+            color:#001A33 !important;
+            background: #B2C2D1  !important;
+            font-weight: normal;
+        }
+
+        .title{
+            color:#001A33 !important;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .pass{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: green !important;
+            border-style: solid;
+            vertical-align: middle;
+        }
+
+        .fail{
+            background-color:#E6EBF0;
+            color:#E6EBF0;
+            text-align: center;
+            border-left: 1px;
+            border-right: 1px;
+            border-radius: 5px;
+            border-top: 1px;
+            border-bottom: 1px;
+            border-color: red !important;
+            border-style: solid;
+            vertical-align: middle;
+        }
+
+   
+
+    </style>
+
+<apex:form id="input" title="Training Participant">
+<apex:pageBlock >
+<table width="100%">
+    <tr>
+        <td class="command">
+            <apex:commandButton styleClass="button" action="{!save}" value="Save" id="saveButton"/>&nbsp;            
+            <apex:commandButton styleClass="button" action="{!doSaveAndNew}" value="Save & New"/>
+            <apex:commandButton styleClass="button" action="{!cancel}" value="Close" id="closeButton"/>&nbsp;
+        </td>
+    </tr>
+</table>
+
+
+<p class="title" >Training Participant Detail</p>
+<br>
+<table width="100%">
+    <tr>
+    	<td class="underline" width="100%" colspan="4">Training Class: 
+            <apex:inputField value="{!Training_Participants__c.Training_Class__c}" id="trainingClass"/>
+        </td>    	
+    </tr>
+	<tr>
+		<td width="25%" class="underline">Training Role:</td>
+        <td class="underline" colspan="3">
+            <apex:selectRadio value="{!participant}" onChange="displayParticipant(this)">
+                <apex:selectOptions value="{!items}"/>
+            </apex:selectRadio>
+        </td>
+			
+	</tr>
+    
+	<tr class="underline" id="trainerRow">
+    	<td width="25%" class="underline" id="trainerLabel">Trainer:</td>
+        <td class="underline" colspan="3">
+            <apex:outputPanel id="trainer">
+                <apex:inputField value="{!Training_Participants__c.Trainer__c}" />
+             </apex:outputPanel>
+        </td>	   
+	</tr>
+
+	<tr id="traineeRow">
+		<td width="25%" class="underline">Training Participant:</td>
+        <td class="underline">
+            <apex:outputPanel id="trainee">
+                <apex:inputField style="width:200px;" value="{!Training_Participants__c.Participant__c}" />
+            </apex:outputPanel>
+        </td>	
+
+        <td class="pass" >Pass &nbsp;        
+            <apex:inputField value="{!Training_Participants__c.Pass__c}"/>           
+        </td>
+        
+        <td class="fail">Fail &nbsp;
+            <apex:inputField value="{!Training_Participants__c.Fail__c}"/>
+        </td>   	
+	</tr>
+
+</table>
+</br>
+<table width="100%">
+    <tr>
+        <td class="command">
+            <apex:commandButton styleClass="button" action="{!save}" value="Save" id="saveButtonBottom"/>&nbsp;
+            <apex:commandButton styleClass="button" action="{!cancel}" value="Close" id="closeButtonBottom"/>&nbsp;
+            <apex:commandButton styleClass="button" action="{!doSaveAndNew}" value="Save & New"/>
+        </td>
+    </tr>
+</table>
+</apex:pageBlock>
+
+</apex:form>
+<apex:relatedList list="NotesAndAttachments" rendered="true" />
+	
+</apex:page>

@@ -1,0 +1,41 @@
+Execute Anonymous
+
+================================
+
+Safety_Equipment__c safetyEquipment = [SELECT ID, MODEL__C, Status__c, Serial_Number__c FROM Safety_Equipment__c WHERE Serial_Number__c =20];
+
+System.debug(safetyEquipment.Status__c);
+
+================================
+
+28.0 APEX_CODE,DEBUG;APEX_PROFILING,DEBUG;CALLOUT,INFO;DB,INFO;VALIDATION,INFO;WORKFLOW,INFO
+Execute Anonymous: Safety_Equipment__c safetyEquipment = [SELECT ID, MODEL__C, Status__c, Serial_Number__c FROM Safety_Equipment__c WHERE Serial_Number__c =20];
+Execute Anonymous: 
+Execute Anonymous: System.debug(safetyEquipment.Status__c);
+14:26:21.033 (33905000)|EXECUTION_STARTED
+14:26:21.033 (33918000)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+14:26:21.035 (35121000)|SOQL_EXECUTE_BEGIN|[1]|Aggregations:0|select ID, MODEL__C, Status__c, Serial_Number__c from Safety_Equipment__c where Serial_Number__c = 20
+14:26:21.046 (46128000)|SOQL_EXECUTE_END|[1]|Rows:1
+14:26:21.046 (46654000)|USER_DEBUG|[3]|DEBUG|Inventory
+14:26:21.382 (46732000)|CUMULATIVE_LIMIT_USAGE
+14:26:21.382|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 1 out of 100
+  Number of query rows: 1 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Number of code statements: 2 out of 200000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of fields describes: 0 out of 100
+  Number of record type describes: 0 out of 100
+  Number of child relationships describes: 0 out of 100
+  Number of picklist describes: 0 out of 100
+  Number of future calls: 0 out of 10
+
+14:26:21.382|CUMULATIVE_LIMIT_USAGE_END
+
+14:26:21.046 (46813000)|CODE_UNIT_FINISHED|execute_anonymous_apex
+14:26:21.046 (46823000)|EXECUTION_FINISHED

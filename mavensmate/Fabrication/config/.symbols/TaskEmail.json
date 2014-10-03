@@ -1,0 +1,114 @@
+{
+    "name": "TaskEmail", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "taskId", 
+            "location": {
+                "column": 48, 
+                "line": 3
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "tasks", 
+            "location": {
+                "column": 16, 
+                "line": 5
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Task", 
+            "name": "t", 
+            "location": {
+                "column": 14, 
+                "line": 8
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "SingleEmailMessage", 
+            "name": "mail", 
+            "location": {
+                "column": 35, 
+                "line": 9
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "toAddresses", 
+            "location": {
+                "column": 15, 
+                "line": 10
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "LIST", 
+            "name": "bccAddresses", 
+            "location": {
+                "column": 15, 
+                "line": 11
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "content", 
+            "location": {
+                "column": 13, 
+                "line": 14
+            }
+        }
+    ], 
+    "constructors": [], 
+    "namespace": null, 
+    "properties": [], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "TaskEmail", 
+        "name": "TaskEmail", 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }
+    }, 
+    "key": "01pS000000063bA", 
+    "id": "01pS000000063bA", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "SendScheduledEmail", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "taskId"
+                }
+            ], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 3
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+<apex:page showHeader="true" standardController="Shipping_Load_Project__c" extensions="ShippingLoadProjectExtension"  sidebar="true">
+
+<!--First list the open projects -->
+
+<apex:dataTable align="center"  width="400px" border="2" value="{!openProjects}" var="jobs" id="jobsdataTable">
+<apex:column >
+<apex:outputText value="{!jobs.Job__c}"/>
+</apex:column>
+<apex:column >
+<apex:outputLink value="{!$Page.ProjectShipItems}">Open Job
+<apex:param name="job" value="{!jobs.Job__c}"/>
+</apex:outputLink>
+</apex:column>
+
+</apex:dataTable>
+
+	
+</apex:page>

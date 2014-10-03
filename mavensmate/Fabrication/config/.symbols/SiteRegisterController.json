@@ -1,0 +1,208 @@
+{
+    "name": "SiteRegisterController", 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "Message", 
+            "name": "msg", 
+            "location": {
+                "column": 28, 
+                "line": 25
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "User", 
+            "name": "u", 
+            "location": {
+                "column": 14, 
+                "line": 29
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "accountId", 
+            "location": {
+                "column": 16, 
+                "line": 34
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "String", 
+            "name": "userId", 
+            "location": {
+                "column": 16, 
+                "line": 37
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "PageReference", 
+            "name": "page", 
+            "location": {
+                "column": 31, 
+                "line": 43
+            }
+        }, 
+        {
+            "references": [], 
+            "modifiers": [], 
+            "type": "SiteRegisterController", 
+            "name": "controller", 
+            "location": {
+                "column": 32, 
+                "line": 53
+            }
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "SiteRegisterController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 12, 
+                "line": 9
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "username", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 12
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "email", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 13
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "password", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 14
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "confirmPassword", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 15
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "communityNickname", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 19, 
+                "line": 16
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "PORTAL_ACCOUNT_ID", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 23, 
+                "line": 7
+            }, 
+            "type": "Id"
+        }
+    ], 
+    "tableDeclaration": {
+        "references": [], 
+        "modifiers": [], 
+        "type": "SiteRegisterController", 
+        "name": "SiteRegisterController", 
+        "location": {
+            "column": 27, 
+            "line": 4
+        }
+    }, 
+    "key": "01pS00000005zfY", 
+    "id": "01pS00000005zfY", 
+    "externalReferences": [], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "isValidPassword", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 21, 
+                "line": 18
+            }, 
+            "returnType": "Boolean", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "registerUser", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 26, 
+                "line": 22
+            }, 
+            "returnType": "PageReference", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "TEST", 
+                "STATIC"
+            ], 
+            "name": "testRegistration", 
+            "parameters": [], 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 52
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ]
+}
