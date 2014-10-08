@@ -3,21 +3,6 @@
     "methods": [
         {
             "modifiers": [
-                "STATIC"
-            ], 
-            "name": "getOpenCourses", 
-            "parameters": [], 
-            "visibility": "GLOBAL", 
-            "references": [], 
-            "location": {
-                "column": 41, 
-                "line": 4
-            }, 
-            "returnType": "LIST", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
                 "TEST", 
                 "STATIC"
             ], 
@@ -27,7 +12,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 26
+                "line": 5
             }, 
             "returnType": "void", 
             "type": null
@@ -41,7 +26,7 @@
             "references": [], 
             "location": {
                 "column": 28, 
-                "line": 27
+                "line": 6
             }, 
             "name": "control"
         }, 
@@ -51,7 +36,7 @@
             "references": [], 
             "location": {
                 "column": 13, 
-                "line": 28
+                "line": 7
             }, 
             "name": "account"
         }, 
@@ -61,25 +46,27 @@
             "references": [], 
             "location": {
                 "column": 28, 
-                "line": 33
+                "line": 12
             }, 
             "name": "actual"
         }
     ], 
     "constructors": [], 
     "namespace": null, 
-    "name": "mapV4Controller", 
+    "name": "publicMapControllerTest", 
     "tableDeclaration": {
-        "type": "mapV4Controller", 
-        "modifiers": [], 
+        "type": "publicMapControllerTest", 
+        "modifiers": [
+            "TEST"
+        ], 
         "references": [], 
         "location": {
-            "column": 14, 
-            "line": 1
+            "column": 15, 
+            "line": 2
         }, 
-        "name": "mapV4Controller"
+        "name": "publicMapControllerTest"
     }, 
-    "key": "01pS00000005zfhIAA", 
-    "id": "01pS00000005zfhIAA", 
+    "key": "01pS00000006rswIAA", 
+    "id": "01pS00000006rswIAA", 
     "externalReferences": []
 }

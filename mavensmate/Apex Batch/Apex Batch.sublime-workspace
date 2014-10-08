@@ -4,184 +4,40 @@
 		"selected_items":
 		[
 			[
-				"Date",
-				"Date_Of_Last_Inspection__c"
-			],
-			[
-				"Ins",
-				"Inspection_Complete__c"
-			],
-			[
-				"si",
-				"PUBLIC size() 	Integer"
-			],
-			[
-				"Da",
-				"Date	[Standard Apex Class]"
-			],
-			[
-				"Inspe",
-				"Inspection_Expiration__c"
-			],
-			[
-				"as",
-				"assertEquals()"
-			],
-			[
-				"Course_",
-				"Course_Inspection__c	[Sobject Name]"
-			],
-			[
-				"d",
-				"Date_of_Next_Inspection__c"
-			],
-			[
-				"Stat",
-				"Status__c"
-			],
-			[
-				"Inspec",
-				"Inspection_Complete__c"
-			],
-			[
-				"che",
-				"PUBLIC checkPaint	Boolean"
-			],
-			[
-				"Selec",
-				"SelectedPartsController	[Custom Apex Class]"
-			],
-			[
-				"Select",
-				"SelectPartsController"
-			],
-			[
-				"cre",
-				"PUBLIC createJobParts(Integer count, LIST jobs) 	LIST"
-			],
-			[
-				"pageBl",
-				"apex:pageBlock"
-			],
-			[
-				"o",
-				"onclick	(String)"
-			],
-			[
-				"Job_",
-				"Job_Part__c	[Sobject Name]"
-			],
-			[
-				"output",
-				"apex:outputLabel"
-			],
-			[
-				"ta",
+				"te",
 				"text-align"
 			],
 			[
-				"border-bo",
-				"border-bottom-color"
+				"b",
+				"border"
 			],
 			[
-				"spacing",
-				"border-spacing"
+				"bord",
+				"border-color"
 			],
 			[
-				"bor",
-				"border-width"
+				"diff",
+				"diffDays"
 			],
 			[
-				"sp",
-				"border-spacing"
+				"inspect",
+				"inspectionList"
 			],
 			[
-				"bac",
-				"background-color"
+				"inspectio",
+				"inspectionRecord"
 			],
 			[
-				"out",
-				"apex:outputPanel"
+				"Cour",
+				"Course__r"
 			],
 			[
-				"ou",
-				"apex:outputPanel"
+				"Cours",
+				"Course_Inspection__c"
 			],
 			[
-				"e",
-				"Entrance_Barrier__c 	Checkbox"
-			],
-			[
-				"listE",
-				"listEntranceBarriers"
-			],
-			[
-				"n",
-				"Number_of_Zip_Towers__c 	Number"
-			],
-			[
-				"op",
-				"Operator_Sling_Lines__c 	Number"
-			],
-			[
-				"element",
-				"elementCount"
-			],
-			[
-				"listSky",
-				"listSkyTykesOverview"
-			],
-			[
-				"Course",
-				"Course_Model__c 	Picklist"
-			],
-			[
-				"listS",
-				"listSkyRailOverview"
-			],
-			[
-				"pageB",
-				"apex:pageBlock"
-			],
-			[
-				"Number",
-				"Number_Two_Way_Inclines__c 	Number"
-			],
-			[
-				"Nu",
-				"Number_of_Elements__c 	Number"
-			],
-			[
-				"Tr",
-				"Training_Date_Start__c 	Date"
-			],
-			[
-				"start",
-				"startDate"
-			],
-			[
-				"pro",
-				"projectTypes"
-			],
-			[
-				"st",
-				"StandAlone__c 	Checkbox"
-			],
-			[
-				"u",
-				"PUBLIC urlEncode(String s, String enc) 	String"
-			],
-			[
-				"base",
-				"PUBLIC base64Encode(Blob s) 	String"
-			],
-			[
-				"cour",
-				"Course_Model__c 	Picklist"
-			],
-			[
-				"h",
-				"htmlCourseModel__c"
+				"stat",
+				"statuses"
 			],
 			[
 				"page",
@@ -196,7 +52,19 @@
 				"Project_Module__c	[Sobject Name]"
 			],
 			[
+				"output",
+				"apex:outputField"
+			],
+			[
+				"pageBl",
+				"apex:pageBlockButtons"
+			],
+			[
 				"pageBlockSec",
+				"apex:pageBlockSection"
+			],
+			[
+				"pageB",
 				"apex:pageBlockSection"
 			],
 			[
@@ -216,8 +84,20 @@
 				"apex:selectOptions"
 			],
 			[
+				"o",
+				"apex:outputText"
+			],
+			[
+				"st",
+				"style	Tag"
+			],
+			[
 				"sta",
 				"standardStylesheets	(Boolean)"
+			],
+			[
+				"out",
+				"apex:outputPanel"
 			],
 			[
 				"pageBlo",
@@ -240,6 +120,10 @@
 				"serialNumberStart"
 			],
 			[
+				"start",
+				"serialNumberStart"
+			],
+			[
 				"field",
 				"fieldName"
 			],
@@ -256,10 +140,6 @@
 				"_fields"
 			],
 			[
-				"stat",
-				"state_select_id"
-			],
-			[
 				"Sa",
 				"Safety_Equipment__c"
 			],
@@ -272,8 +152,16 @@
 				"assertEquals()"
 			],
 			[
+				"cre",
+				"createAccounts"
+			],
+			[
 				"get",
 				"getRecord() 	SObject"
+			],
+			[
+				"as",
+				"PUBLIC AssignInventory() 	PageReference"
 			],
 			[
 				"Safety",
@@ -336,10 +224,6 @@
 				"Serial_Number__c"
 			],
 			[
-				"te",
-				"Tested_By__c"
-			],
-			[
 				"t",
 				"Test_Results__c 	Picklist"
 			],
@@ -371,6 +255,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/classes/MergeJobParts.cls",
+			"settings":
+			{
+				"buffer_size": 3078,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/BatchManager.cls",
+			"settings":
+			{
+				"buffer_size": 370,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/SelectedPartsController.cls",
+			"settings":
+			{
+				"buffer_size": 3810,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/pages/Duplicate_Job_Batch.page",
+			"settings":
+			{
+				"buffer_size": 189,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -412,30 +328,31 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/Kal/Documents/Workspaces/mavensmate/CourseInspection"
+		"/Users/Kal/Documents/Workspaces/mavensmate/Apex Batch",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Apex Batch/src",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Apex Batch/src/classes",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Apex Batch/src/pages"
 	],
 	"file_history":
 	[
-		"/Users/Kal/Documents/Workspaces/mavensmate/CourseInspection/src/triggers/CourseInspectionComplete.trigger",
-		"/Users/Kal/Documents/Workspaces/mavensmate/CourseInspection/src/classes/CourseInspectionComplete_Trigger_Test.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/CourseInspection/src/triggers/toolDetail.trigger",
-		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/MavensMate/mavensmate.sublime-settings",
-		"/Users/Kal/Documents/Workspaces/mavensmate/CourseInspection/CourseInspection.sublime-settings",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/Job.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/classes/SelectedPartsControllerV2.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/classes/TestCertificationStatus.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/JobParts.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/JobDisplay.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/DepartmentItems.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/JobPartsV2.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/config/.describe",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/objects/Job_Part__c.object",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/classes/SelectPartsControllerV2.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/classes/SelectedPartsController.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/JobPart.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/classes/filteredJobs.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Fabrication/src/pages/JobPartRD.page",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Project Project/src/pages/Project_Module.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Apex Batch/src/classes/ExecuteBatch.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/InspectionMapController_Test.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/inspectionMapControllerTest.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/mapV4Controller.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestConfiguration.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapControllerTest.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v8MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v8MapControllerTest.cls",
+		"/Users/kal/Documents/workspaces/mavensmate/Google Maps/src/classes/v8MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/chartMap.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/googleDataEncoding.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/GoogleDataEncoding.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/googleChartPage.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/GoogleChartController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/inspectionMap.page",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/inspectionMapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v6Map.page",
 		"/Users/kal/Documents/Private Sub sPageSetup()",
 		"/Users/kal/Documents/ApplicationScreenUpdating False",
 		"/Users/kal/Documents/Private Sub CalculateArea()",
@@ -472,17 +389,13 @@
 		"/Users/kal/Dropbox/googleEarthPage_MuchMoreProgress",
 		"/Users/kal/Dropbox/googleEarthPage",
 		"/Users/kal/Documents/ContactUs/ContactUS_jQuery.html",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestConfiguration.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/publicMapController.cls",
 		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/User/mavensmate.sublime-settings",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestMapController.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestConfiguration.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapController.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/mapV4Controller.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v10Map.page",
 		"/Users/kal/Documents/ContactUs/jquery.stateselect.js",
 		"/Users/kal/Documents/ContactUs/dynamicAddress.js",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v6Map.page",
 		"/Users/kal/Documents/ContactUs/dynamicAddress.html",
 		"/Users/kal/Documents/ContactUs/globalAdress.js",
 		"/Users/kal/Documents/Projects/Web Contact Us/jquery-state-select/example.html",
@@ -530,11 +443,12 @@
 		"/Users/kal/Dropbox/WeldInspectionMacro_10_08_2013.vbs",
 		"/Users/kal/Dropbox/javaScripttoWebServices_Salesforc e.txt",
 		"/Users/kal/Documents/InspectionMacroCode.vbs",
-		"/Users/Kal/Documents/Workspaces/mavensmate/FirstMate/src/classes/AccountController.cls"
+		"/Users/Kal/Documents/Workspaces/mavensmate/FirstMate/src/classes/AccountController.cls",
+		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/MavensMate/mavensmate.sublime-settings"
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -548,31 +462,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"last",
-			"filteredJobs",
-			"input",
-			"column",
-			"Stand",
-			"skyrail",
-			"attach",
-			"stand",
-			"attach",
-			"stand-alone",
-			"place",
-			"zip",
-			"beach",
-			"sandblast",
-			"cap",
-			"plank",
-			"inclin",
-			"Sling Line",
-			"htmlRacks__c",
-			"incline",
-			"'';\n",
-			"Place",
-			"Zip",
-			"place holder",
-			"placeholder",
+			"city",
+			"ById",
+			"getdocumentById",
+			"initialize",
 			"overhead",
 			"input",
 			"sectionHeader",
@@ -616,8 +509,132 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/classes/MergeJobParts.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								849,
+								849
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "apex",
+							"buffer_scroll_name": "ba2113e1",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/classes/BatchManager.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "apex",
+							"buffer_scroll_name": "ff212c52",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/classes/SelectedPartsController.cls",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3810,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								908,
+								1070
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "apex",
+							"buffer_scroll_name": "8f807e8b",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/pages/Duplicate_Job_Batch.page",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								189,
+								189
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "html",
+							"buffer_scroll_name": "02ec0299",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -654,13 +671,13 @@
 	"menu_visible": true,
 	"output.MavensMate-OutputPanel":
 	{
-		"height": 239.0
+		"height": 100.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"project": "CourseInspection.sublime-project",
+	"project": "Apex Batch.sublime-project",
 	"replace":
 	{
 		"height": 42.0
@@ -698,7 +715,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": false,
-	"side_bar_width": 318.0,
+	"side_bar_width": 201.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -171,32 +171,10 @@
     </fields>
     <fields>
         <fullName>Distributor__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Parent</label>
-        <picklist>
-            <picklistValues>
-                <fullName>RCI</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Innovative Leisure</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Faszinatour</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Ride Entertainment</fullName>
-                <default>false</default>
-            </picklistValues>
-            <picklistValues>
-                <fullName>Prime Play</fullName>
-                <default>false</default>
-            </picklistValues>
-            <sorted>false</sorted>
-        </picklist>
-        <type>Picklist</type>
+        <label>Distributor</label>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Faux_Painted__c</fullName>

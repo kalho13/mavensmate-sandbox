@@ -1,0 +1,30 @@
+Execute Anonymous
+
+================================
+
+List<String> operators = new List<String> {'AND','OR'};
+
+================================
+
+28.0 APEX_CODE,DEBUG;APEX_PROFILING,DEBUG;CALLOUT,INFO;DB,INFO;VALIDATION,INFO;WORKFLOW,INFO
+Execute Anonymous: List<String> operators = new List<String> {'AND','OR'};
+12:11:39.024 (24388450)|EXECUTION_STARTED
+12:11:39.024 (24401880)|CODE_UNIT_STARTED|[EXTERNAL]|execute_anonymous_apex
+12:11:39.054 (25060584)|CUMULATIVE_LIMIT_USAGE
+12:11:39.054|LIMIT_USAGE_FOR_NS|(default)|
+  Number of SOQL queries: 0 out of 100
+  Number of query rows: 0 out of 50000
+  Number of SOSL queries: 0 out of 20
+  Number of DML statements: 0 out of 150
+  Number of DML rows: 0 out of 10000
+  Maximum CPU time: 0 out of 10000
+  Maximum heap size: 0 out of 6000000
+  Number of callouts: 0 out of 10
+  Number of Email Invocations: 0 out of 10
+  Number of future calls: 0 out of 10
+  Number of Mobile Apex push calls: 0 out of 10
+
+12:11:39.054|CUMULATIVE_LIMIT_USAGE_END
+
+12:11:39.025 (25093036)|CODE_UNIT_FINISHED|execute_anonymous_apex
+12:11:39.026 (26696590)|EXECUTION_FINISHED

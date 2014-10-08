@@ -1,7 +1,8 @@
-global class mapV4Controller {
-           
-   @RemoteAction
-   global static List<Course_Detail__c> getOpenCourses(){
+public class publicMapController {
+
+
+ @RemoteAction
+   public static List<Course_Detail__c> getOpenCourses(){
     return [SELECT 
                 Id, 
                 Name, 
@@ -18,10 +19,9 @@ global class mapV4Controller {
                 Year_Built__c, 
                 Status__c 
                 FROM Course_Detail__c 
-                WHERE Status__c='Active' and Account__r.Location__Latitude__s != null];       
-                
+                WHERE Status__c='Active' and Account__r.Location__Latitude__s != null];                    
    }    
-   
+
    @isTest
    private static void testGetOpenCourses(){
     List<Course_Detail__c> control = new List<Course_detail__c>();
@@ -30,8 +30,7 @@ global class mapV4Controller {
     control.add(new Course_Detail__c(Name='Course1', Status__c='Open', Account__c = account.id));
     control.add(new Course_Detail__c(Name='Course2', Status__c='Open', Account__c = account.id));
     insert control;
-    List<Course_Detail__c> actual = mapV4Controller.getOpenCourses();
-    System.assert(actual.size()!=2);
-   }  
- 
+    List<Course_Detail__c> actual = publicMapController.getOpenCourses();
+    System.assert(actual.size()==2);
+   } 
 }

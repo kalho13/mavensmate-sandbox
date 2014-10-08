@@ -1,0 +1,245 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "query", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 3
+            }, 
+            "type": "String"
+        }, 
+        {
+            "modifiers": [], 
+            "name": "job", 
+            "visibility": "PRIVATE", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 4
+            }, 
+            "type": "String"
+        }
+    ], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "start", 
+            "parameters": [
+                {
+                    "type": "BatchableContext", 
+                    "name": "BC"
+                }
+            ], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 31, 
+                "line": 16
+            }, 
+            "returnType": "QueryLocator", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "execute", 
+            "parameters": [
+                {
+                    "type": "BatchableContext", 
+                    "name": "BC"
+                }, 
+                {
+                    "type": "LIST", 
+                    "name": "scope"
+                }
+            ], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 17, 
+                "line": 21
+            }, 
+            "returnType": "void", 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "finish", 
+            "parameters": [
+                {
+                    "type": "BatchableContext", 
+                    "name": "BC"
+                }
+            ], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 14, 
+                "line": 56
+            }, 
+            "returnType": "void", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [
+        {
+            "type": "String", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 31, 
+                "line": 12
+            }, 
+            "name": "jobNumber"
+        }, 
+        {
+            "type": "BatchableContext", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 63, 
+                "line": 16
+            }, 
+            "name": "BC"
+        }, 
+        {
+            "type": "BatchableContext", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 51, 
+                "line": 21
+            }, 
+            "name": "BC"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 73, 
+                "line": 21
+            }, 
+            "name": "scope"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 23
+            }, 
+            "name": "i"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 44, 
+                "line": 30
+            }, 
+            "name": "details"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 33
+            }, 
+            "name": "a"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 42, 
+                "line": 40
+            }, 
+            "name": "shipping"
+        }, 
+        {
+            "type": "Integer", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 25, 
+                "line": 42
+            }, 
+            "name": "b"
+        }, 
+        {
+            "type": "BatchableContext", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 47, 
+                "line": 56
+            }, 
+            "name": "BC"
+        }, 
+        {
+            "type": "SingleEmailMessage", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 32, 
+                "line": 57
+            }, 
+            "name": "mail"
+        }
+    ], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "MergeJobParts", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 8
+            }, 
+            "type": null
+        }, 
+        {
+            "modifiers": [], 
+            "name": "MergeJobParts", 
+            "parameters": [
+                {
+                    "type": "String", 
+                    "name": "jobNumber"
+                }
+            ], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 9, 
+                "line": 12
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "MergeJobParts", 
+    "tableDeclaration": {
+        "type": "MergeJobParts", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }, 
+        "name": "MergeJobParts"
+    }, 
+    "key": "01pS00000006s6AIAQ", 
+    "id": "01pS00000006s6AIAQ", 
+    "externalReferences": []
+}

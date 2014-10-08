@@ -1,0 +1,19 @@
+{
+    "username": "kal@ropescoursesinc.com.sandbox", 
+    "project_name": "Apex Batch", 
+    "org_url": "", 
+    "namespace": "", 
+    "metadata_container": "1dcS00000008nu5IAA", 
+    "environment": "sandbox", 
+    "workspace": "/Users/Kal/Documents/Workspaces/mavensmate", 
+    "id": "3U7HQZ6RMQLZQP3T8MWWBA9CCQNTCBOG", 
+    "subscription": [
+        "ApexClass", 
+        "ApexComponent", 
+        "ApexPage", 
+        "ApexTrigger", 
+        "StaticResource", 
+        "CustomObject", 
+        "Profile"
+    ]
+}

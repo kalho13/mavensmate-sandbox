@@ -1,0 +1,38 @@
+{
+    "properties": [], 
+    "methods": [
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getOpenCourses", 
+            "parameters": [], 
+            "visibility": "GLOBAL", 
+            "references": [], 
+            "location": {
+                "column": 41, 
+                "line": 4
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [], 
+    "namespace": null, 
+    "name": "v9MapController", 
+    "tableDeclaration": {
+        "type": "v9MapController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 14, 
+            "line": 1
+        }, 
+        "name": "v9MapController"
+    }, 
+    "key": "01pS00000006rshIAA", 
+    "id": "01pS00000006rshIAA", 
+    "externalReferences": []
+}

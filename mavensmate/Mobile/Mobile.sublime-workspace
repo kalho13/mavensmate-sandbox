@@ -332,10 +332,10 @@
 			}
 		},
 		{
-			"file": "src/pages/MobileJobsPage.page-meta.xml",
+			"file": "src/classes/SenchaJobsController.cls",
 			"settings":
 			{
-				"buffer_size": 200,
+				"buffer_size": 2917,
 				"line_ending": "Unix"
 			}
 		}
@@ -378,6 +378,12 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/classes"
+	],
 	"file_history":
 	[
 		"/Users/Kal/Documents/Workspaces/mavensmate/Mobile/src/pages/MobileSample_jQueryMobile.page",
@@ -742,26 +748,28 @@
 				},
 				{
 					"buffer": 4,
-					"file": "src/pages/MobileJobsPage.page-meta.xml",
+					"file": "src/classes/SenchaJobsController.cls",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 200,
+						"buffer_size": 2917,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2112,
+								2112
 							]
 						],
 						"settings":
 						{
-							"bs_sintax": "xml",
-							"buffer_scroll_name": "29dac086",
-							"syntax": "Packages/XML/XML.tmLanguage"
+							"bs_sintax": "tex",
+							"buffer_scroll_name": "b5285316",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -842,6 +850,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},

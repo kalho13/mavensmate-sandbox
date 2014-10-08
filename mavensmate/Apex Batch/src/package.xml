@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>BatchManager</members>
+		<members>ExecuteBatch</members>
+		<members>MergeJobParts</members>
+		<members>SelectPartsControllerV2</members>
+		<members>SelectedPartsController</members>
+		<members>SelectedPartsControllerV2</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Duplicate_Job_Batch</members>
+		<name>ApexPage</name>
+	</types>
+	<version>28.0</version>
+</Package>

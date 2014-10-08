@@ -1,0 +1,8 @@
+<apex:page  controller="BatchManager">
+<apex:form >
+
+  <h1>Duplicate Job Batch</h1>
+  <apex:commandButton action="{!RunBatch}" value="Merge Duplicate Records"/>
+
+  </apex:form>
+</apex:page>

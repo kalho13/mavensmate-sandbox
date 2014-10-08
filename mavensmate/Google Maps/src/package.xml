@@ -7,7 +7,11 @@
 		<members>TestConfiguration</members>
 		<members>Utility</members>
 		<members>inspectionMapController</members>
+		<members>inspectionMapControllerTest</members>
 		<members>mapV4Controller</members>
+		<members>publicMapController</members>
+		<members>publicMapControllerTest</members>
+		<members>v8MapController</members>
 		<name>ApexClass</name>
 	</types>
 	<types>

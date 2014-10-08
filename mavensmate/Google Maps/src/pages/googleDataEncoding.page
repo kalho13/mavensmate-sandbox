@@ -1,12 +1,9 @@
 <apex:page controller="GoogleDataEncoding">
     <apex:form >
-        <apex:pageBlock 
-               title="Create a Google Chart for Time and Distance">
-            <apex:outputLabel 
-               value="Enter data set, separated by commas: " 
+        <apex:pageBlock title="Create a Google Chart for Time and Distance">
+            <apex:outputLabel value="Enter data set, separated by commas: " 
                for="dataInput"/><br/>
-            <apex:inputTextArea 
-               id="dataInput" title="First Data Point" 
+            <apex:inputTextArea id="dataInput" title="First Data Point" 
                value="{!dataSet}" rows="3" cols="50"/><br/>
             <apex:selectRadio value="{!graph}" 
                layout="pageDirection">

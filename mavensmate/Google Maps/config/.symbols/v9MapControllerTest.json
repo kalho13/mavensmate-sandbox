@@ -3,21 +3,6 @@
     "methods": [
         {
             "modifiers": [
-                "STATIC"
-            ], 
-            "name": "getOpenCourses", 
-            "parameters": [], 
-            "visibility": "GLOBAL", 
-            "references": [], 
-            "location": {
-                "column": 41, 
-                "line": 4
-            }, 
-            "returnType": "LIST", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
                 "TEST", 
                 "STATIC"
             ], 
@@ -27,7 +12,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 26
+                "line": 4
             }, 
             "returnType": "void", 
             "type": null
@@ -40,8 +25,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 28, 
-                "line": 27
+                "column": 29, 
+                "line": 5
             }, 
             "name": "control"
         }, 
@@ -50,8 +35,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 13, 
-                "line": 28
+                "column": 14, 
+                "line": 6
             }, 
             "name": "account"
         }, 
@@ -60,26 +45,28 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 28, 
-                "line": 33
+                "column": 29, 
+                "line": 11
             }, 
             "name": "actual"
         }
     ], 
     "constructors": [], 
     "namespace": null, 
-    "name": "mapV4Controller", 
+    "name": "v9MapControllerTest", 
     "tableDeclaration": {
-        "type": "mapV4Controller", 
-        "modifiers": [], 
+        "type": "v9MapControllerTest", 
+        "modifiers": [
+            "TEST"
+        ], 
         "references": [], 
         "location": {
-            "column": 14, 
-            "line": 1
+            "column": 15, 
+            "line": 2
         }, 
-        "name": "mapV4Controller"
+        "name": "v9MapControllerTest"
     }, 
-    "key": "01pS00000005zfhIAA", 
-    "id": "01pS00000005zfhIAA", 
+    "key": "01pS00000006rsSIAQ", 
+    "id": "01pS00000006rsSIAQ", 
     "externalReferences": []
 }

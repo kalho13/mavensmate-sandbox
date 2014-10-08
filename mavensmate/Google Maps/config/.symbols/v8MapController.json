@@ -1,0 +1,76 @@
+{
+    "properties": [
+        {
+            "modifiers": [], 
+            "name": "courseList", 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 3
+            }, 
+            "type": "LIST"
+        }
+    ], 
+    "methods": [
+        {
+            "modifiers": [], 
+            "name": "getCourseList", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 34, 
+                "line": 4
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }, 
+        {
+            "modifiers": [
+                "STATIC"
+            ], 
+            "name": "getOpenCourses", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 40, 
+                "line": 13
+            }, 
+            "returnType": "LIST", 
+            "type": null
+        }
+    ], 
+    "innerClasses": [], 
+    "variables": [], 
+    "constructors": [
+        {
+            "modifiers": [], 
+            "name": "v8MapController", 
+            "parameters": [], 
+            "visibility": "PUBLIC", 
+            "references": [], 
+            "location": {
+                "column": 10, 
+                "line": 6
+            }, 
+            "type": null
+        }
+    ], 
+    "namespace": null, 
+    "name": "v8MapController", 
+    "tableDeclaration": {
+        "type": "v8MapController", 
+        "modifiers": [], 
+        "references": [], 
+        "location": {
+            "column": 27, 
+            "line": 1
+        }, 
+        "name": "v8MapController"
+    }, 
+    "key": "01pS00000006rsIIAQ", 
+    "id": "01pS00000006rsIIAQ", 
+    "externalReferences": []
+}

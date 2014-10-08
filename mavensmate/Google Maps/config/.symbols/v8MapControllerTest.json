@@ -3,21 +3,6 @@
     "methods": [
         {
             "modifiers": [
-                "STATIC"
-            ], 
-            "name": "getOpenCourses", 
-            "parameters": [], 
-            "visibility": "GLOBAL", 
-            "references": [], 
-            "location": {
-                "column": 41, 
-                "line": 4
-            }, 
-            "returnType": "LIST", 
-            "type": null
-        }, 
-        {
-            "modifiers": [
                 "TEST", 
                 "STATIC"
             ], 
@@ -27,7 +12,7 @@
             "references": [], 
             "location": {
                 "column": 24, 
-                "line": 26
+                "line": 7
             }, 
             "returnType": "void", 
             "type": null
@@ -40,8 +25,8 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 28, 
-                "line": 27
+                "column": 29, 
+                "line": 12
             }, 
             "name": "control"
         }, 
@@ -50,36 +35,58 @@
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 13, 
-                "line": 28
+                "column": 14, 
+                "line": 13
             }, 
             "name": "account"
+        }, 
+        {
+            "type": "v8MapController", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 22, 
+                "line": 18
+            }, 
+            "name": "c"
         }, 
         {
             "type": "LIST", 
             "modifiers": [], 
             "references": [], 
             "location": {
-                "column": 28, 
-                "line": 33
+                "column": 29, 
+                "line": 19
+            }, 
+            "name": "courseList"
+        }, 
+        {
+            "type": "LIST", 
+            "modifiers": [], 
+            "references": [], 
+            "location": {
+                "column": 29, 
+                "line": 21
             }, 
             "name": "actual"
         }
     ], 
     "constructors": [], 
     "namespace": null, 
-    "name": "mapV4Controller", 
+    "name": "v8MapControllerTest", 
     "tableDeclaration": {
-        "type": "mapV4Controller", 
-        "modifiers": [], 
+        "type": "v8MapControllerTest", 
+        "modifiers": [
+            "TEST"
+        ], 
         "references": [], 
         "location": {
-            "column": 14, 
-            "line": 1
+            "column": 15, 
+            "line": 2
         }, 
-        "name": "mapV4Controller"
+        "name": "v8MapControllerTest"
     }, 
-    "key": "01pS00000005zfhIAA", 
-    "id": "01pS00000005zfhIAA", 
+    "key": "01pS00000006rsNIAQ", 
+    "id": "01pS00000006rsNIAQ", 
     "externalReferences": []
 }

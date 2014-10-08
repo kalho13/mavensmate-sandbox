@@ -256,10 +256,37 @@
 	"buffers":
 	[
 		{
-			"file": "src/pages/v6Map.page",
+			"contents": "public class publicMapController {\n\n\n @RemoteAction\n   public static List<Course_Detail__c> getOpenCourses(){\n    return [SELECT \n                Id, \n                Name, \n                Account__r.Name, \n                Account__r.Location__Latitude__s, \n                Account__r.Location__Longitude__s,\n                Account__r.ShippingStreet, \n                Account__r.ShippingCity, \n                Account__r.ShippingState, \n                Account__r.ShippingPostalCode, \n                Account__r.ShippingCountry, \n                Account__r.Website,\n                Model__c, \n                Year_Built__c, \n                Status__c \n                FROM Course_Detail__c \n                WHERE Status__c='Active' and Account__r.Location__Latitude__s != null];                    \n   }    \n\n   \n}",
+			"file": "src/classes/publicMapController.cls",
+			"file_size": 1414,
+			"file_write_time": 130568303760000000,
 			"settings":
 			{
-				"buffer_size": 8986,
+				"buffer_size": 816,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/v8MapController.cls",
+			"settings":
+			{
+				"buffer_size": 1138,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/publicMapControllerTest.cls",
+			"settings":
+			{
+				"buffer_size": 656,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/classes/inspectionMapController.cls",
+			"settings":
+			{
+				"buffer_size": 1788,
 				"line_ending": "Unix"
 			}
 		}
@@ -302,8 +329,26 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/apex-scripts",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/config",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages"
+	],
 	"file_history":
 	[
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/InspectionMapController_Test.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/inspectionMapControllerTest.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/mapV4Controller.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestConfiguration.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapControllerTest.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v8MapController.cls",
+		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v8MapControllerTest.cls",
+		"/Users/kal/Documents/workspaces/mavensmate/Google Maps/src/classes/v8MapController.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/chartMap.page",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/googleDataEncoding.page",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/GoogleDataEncoding.cls",
@@ -311,7 +356,6 @@
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/GoogleChartController.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/inspectionMap.page",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/inspectionMapController.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/InspectionMapController_Test.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v6Map.page",
 		"/Users/kal/Documents/Private Sub sPageSetup()",
 		"/Users/kal/Documents/ApplicationScreenUpdating False",
@@ -349,13 +393,10 @@
 		"/Users/kal/Dropbox/googleEarthPage_MuchMoreProgress",
 		"/Users/kal/Dropbox/googleEarthPage",
 		"/Users/kal/Documents/ContactUs/ContactUS_jQuery.html",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestConfiguration.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/publicMapController.cls",
 		"/Users/kal/Library/Application Support/Sublime Text 3/Packages/User/mavensmate.sublime-settings",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/TestMapController.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Safety Equipment/src/classes/TestConfiguration.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/v9MapController.cls",
-		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/classes/mapV4Controller.cls",
 		"/Users/Kal/Documents/Workspaces/mavensmate/Google Maps/src/pages/v10Map.page",
 		"/Users/kal/Documents/ContactUs/jquery.stateselect.js",
 		"/Users/kal/Documents/ContactUs/dynamicAddress.js",
@@ -472,38 +513,135 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/pages/v6Map.page",
-					"semi_transient": true,
+					"file": "src/classes/publicMapController.cls",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8986,
+						"buffer_size": 816,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8231,
-								8469
+								732,
+								732
 							]
 						],
 						"settings":
 						{
-							"bs_sintax": "plain text",
-							"buffer_scroll_name": "a5b15881",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"bs_sintax": "tex",
+							"buffer_scroll_name": "cd93bdd7",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/classes/v8MapController.cls",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1137,
+								1137
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "tex",
+							"buffer_scroll_name": "28f8adfd",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/classes/publicMapControllerTest.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 656,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								642,
+								642
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "tex",
+							"buffer_scroll_name": "df60c869",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/classes/inspectionMapController.cls",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1239,
+								1239
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "tex",
+							"buffer_scroll_name": "06f4731d",
+							"syntax": "Packages/MavensMate/sublime/lang/Apex.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -578,6 +716,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -585,7 +724,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 217.0,
+	"side_bar_width": 436.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
